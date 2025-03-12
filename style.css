@@ -1,17 +1,21 @@
+:root{
+    --anyad: "10";
+}
+
 body{
     margin: 0;
     width: 100%;
     height: 1500px;
 }
 
-
+/* nav */
 nav{
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    height: 150px;
+    height: 20%;
     background-color: yellow;
 }
 
@@ -23,14 +27,13 @@ nav{
 .nav_logo{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     flex: 50%;
 }
 
-.nav_img{
-    width: 80px;
-    height: 80px;
-    background-color: red;
+#nav_img{
+    width: 20%;
+    margin-left: 10%;
 }
 
 .nav_logo div:nth-child(2){
@@ -51,4 +54,18 @@ nav{
     height: 30px;
     background-color: red;
     border: 1px solid black;
+}
+
+
+
+
+/* fontok */
+@font-face {
+    font-family: "My Custom Font";
+    src: url(fonts/aAwalRamadhan.ttf) format("truetype");
+}
+p{ 
+    margin: 0;
+    font-size: 200%;
+    font-family: "My Custom Font", Verdana, Tahoma;
 }
