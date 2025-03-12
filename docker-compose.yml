@@ -1,0 +1,42 @@
+services:
+  mariadb:
+    image: mariadb:11.4
+    container_name: amox_mariadb
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+      MARIADB_USER: amox
+      MARIADB_PASSWORD: amox
+      MARIADB_DATABASE: amox
+    volumes:
+      - ./data/mariadb:/var/lib/mysql:rw
+
+  nginx:
+    image: nginx:latest
+    container_name: amox_nginx
+    restart: unless-stopped
+    depends_on:
+      - amoxbot
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /home/akos/ssl/amoxstudios.com/cloudflare.crt:/etc/nginx/ssl/cloudflare.crt:ro
+      - /home/akos/ssl/amoxstudios.com/cloudflare.key:/etc/nginx/ssl/cloudflare.key:ro
+
+  amoxbot:
+    restart: unless-stopped
+    container_name: amox_bot
+    depends_on:
+      - mariadb
+    env_file:
+      - .env
+    volumes:
+      - ./data/logs:/app/logs:rw
+    build:
+      context: ./app/
+      dockerfile: Dockerfile

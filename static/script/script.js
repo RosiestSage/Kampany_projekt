@@ -74,3 +74,27 @@ document.addEventListener("scroll", (e) => {
     }
     lastScrollTop = st <= 0 ? 0 : st;
 }, false);
+
+
+document.getElementById("purchaseButton").addEventListener("click", () => {
+
+    fetch('/create-checkout-session', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cart)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.url) {
+            window.location.href = data.url;
+        } else {
+            alert('No redirect URL in response.');
+        }
+    })
+    .catch(error => {
+        console.error('Error creating session:', error);
+        alert('Error creating payment session');
+    });
+});
