@@ -1,0 +1,30 @@
+-index
+    -header animalt
+        -logo
+        -arabok logo
+        -11.A Arabok
+        -optionok
+        =>legördülésnél kisebb height
+        =>11.A Arabok átmegy 11.Arabok-ba
+        -kisebb képernyő => logo+hamburger
+    -videi ~ slideshow a többi page-re
+    -saját bemutatkozás
+    -footer
+-tamogato tanarok
+    -cardokban bemutatni őket, arabbá szerkesztve
+    -footer
+-modos merch
+    -kosár megjelenik
+        -popup windowba rendelés
+    -cardokban termék
+        -mennyibe
+        -mennyiség hozzádása
+
+szarrá animalni mindent hogy azt hidjék hogy modern
+
+színek
+    -arabos színek
+        -sárga
+        -szürke
+        -fehér
+        -fekete
