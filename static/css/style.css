@@ -20,15 +20,18 @@ nav{
 }
 
 #filling{
-    width: 100%;
-    height: 150px;
+    position: relative;
 }
 
 .nav_logo{
     display: flex;
     align-items: center;
     justify-content: start;
-    flex: 50%;
+    flex: 30%;
+}
+
+.nav_logo div p{
+    font-size: 300%;
 }
 
 #nav_img{
@@ -47,25 +50,30 @@ nav{
     flex: 50%;
 }
 
-.nav_options div{
+.nav_options p{
+    font-size: 300%;
     margin-left: 5%;
     margin-right: 5%;
-    width: 100%;
-    height: 30px;
-    background-color: red;
-    border: 1px solid black;
 }
 
+a{
+    text-decoration: none;
+    color: unset;
+}
 
+section{
+    width: 100%;
+    height: 1500px;
+    background-color: black;
+}
 
 
 /* fontok */
 @font-face {
     font-family: "My Custom Font";
-    src: url(fonts/aAwalRamadhan.ttf) format("truetype");
+    src: url(../fonts/aAwalRamadhan.ttf) format("truetype");
 }
 p{ 
     margin: 0;
-    font-size: 200%;
     font-family: "My Custom Font", Verdana, Tahoma;
 }

@@ -1,63 +1,33 @@
-let fillingHeight = document.getElementById('filling').clientHeight;
-let navHeight = document.querySelector('nav').clientHeight - 171;
-console.log(navHeight)
-
-/*
-document.addEventListener("scroll", (e) => {
-
-    console.log(window.pageYOffset)
-    if (window.pageYOffset > 200){
-        document.querySelector('nav').style.height = navHeight - 5 + "px";
-        document.getElementById('filling').style.height = navHeight - 5 + "px";
-        document.getElementById('nav_img').style.height = imgHeight - 5 + "px";
-        document.getElementById('nav_img').style.width = imgWidth - 5 + "px";
-        navHeight -= 1;
-    }
-
-    if (window.pageYOffset > 200){
-        document.querySelector('nav').style.height = navHeight + 5 + "px";
-        document.getElementById('filling').style.height = navHeight + 5 + "px";
-        document.getElementById('nav_img').style.height = imgHeight + 5 + "px";
-        document.getElementById('nav_img').style.width = imgWidth + 5 + "px";
-        navHeight += 1;
-    }
-    if (navHeight > 100){
-        document.querySelector('nav').style.height = navHeight - 10 + "px";
-        document.getElementById('filling').style.height = navHeight - 10 + "px";
-        navHeight -= 10;
-    }
-    const rect = document.querySelector('nav').getBoundingClientRect();
-    console.log(rect.bottom)
-    if (rect.bottom < 0){
-        document.querySelector('nav').style.height = navHeight + 10 + "px";
-        document.getElementById('filling').style.height = navHeight + 10 + "px";
-        navHeight += 10;
-    }
-});
-*/
+let navHeight = 20;
+//let fillingHeight = document.querySelector('nav').clientHeight +"px";
+//document.getElementById('filling').style.height = fillingHeight;
 
 let lastScrollTop = 0;
-let imgWidth = document.getElementById('nav_img').clientWidth - 171;
+let imgWidth = 34;
+
+//filling height nem mukszik
+
 
 
 document.addEventListener("scroll", (e) => {
-
     let st = window.pageYOffset;
     if (st < 500){
         if (st > lastScrollTop ){
-            
             if (navHeight > 10){
                 document.querySelector('nav').style.height = navHeight -1 + "%";
-                document.getElementById('filling').style.height = navHeight -1 + "%";
+                //document.getElementById('filling').style.height = document.querySelector('nav').clientHeight +"px";
                 document.getElementById('nav_img').style.width = imgWidth - 1 + "%";
                 navHeight--;
-                console.log(navHeight)
             }
+
         } else if (st < lastScrollTop){
             if (navHeight > 9 && navHeight < 20){
                 document.querySelector('nav').style.height = navHeight + 1 + "%";
-                document.getElementById('filling').style.height = navHeight + 1 + "%";
+                console.log(document.querySelector('nav').clientHeight)
+                //document.getElementById('filling').style.height -= 1;
                 document.getElementById('nav_img').style.width = imgWidth + 1 + "%";
+
+
                 navHeight++;
                 
             }
