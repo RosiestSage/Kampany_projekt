@@ -1,7 +1,7 @@
 services:
   mariadb:
     image: mariadb:11.4
-    container_name: amox_mariadb
+    container_name: arab_mariadb
     restart: unless-stopped
     ports:
       - "3306:3306"
@@ -9,34 +9,40 @@ services:
       - .env
     environment:
       MARIADB_ROOT_PASSWORD: root
-      MARIADB_USER: amox
-      MARIADB_PASSWORD: amox
-      MARIADB_DATABASE: amox
+      MARIADB_USER: arab
+      MARIADB_PASSWORD: arab
+      MARIADB_DATABASE: arab
     volumes:
-      - ./data/mariadb:/var/lib/mysql:rw
+      - mysql:/var/lib/mysql:rw
 
   nginx:
     image: nginx:latest
-    container_name: amox_nginx
+    container_name: arab_nginx
     restart: unless-stopped
     depends_on:
-      - amoxbot
+      - webserver
     ports:
       - "443:443"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - /home/akos/ssl/amoxstudios.com/cloudflare.crt:/etc/nginx/ssl/cloudflare.crt:ro
-      - /home/akos/ssl/amoxstudios.com/cloudflare.key:/etc/nginx/ssl/cloudflare.key:ro
+      - /home/akos/ssl/akos60.dev/cloudflare.crt:/etc/nginx/ssl/cloudflare.crt:ro
+      - /home/akos/ssl/akos60.dev/cloudflare.key:/etc/nginx/ssl/cloudflare.key:ro
 
-  amoxbot:
+  webserver:
     restart: unless-stopped
-    container_name: amox_bot
+    container_name: arab_webserver
     depends_on:
       - mariadb
     env_file:
       - .env
     volumes:
-      - ./data/logs:/app/logs:rw
+      - logs:/webserver/logs:rw
+      - ./static:/webserver/static:ro
+      - ./templates:/webserver/templates:ro
     build:
-      context: ./app/
+      context: ./webserver/
       dockerfile: Dockerfile
+    
+volumes:
+  logs:
+  mysql:
