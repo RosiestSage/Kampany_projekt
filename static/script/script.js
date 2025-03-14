@@ -15,33 +15,28 @@ document.addEventListener("scroll", (e) => {
         if (st > lastScrollTop ){
             if (navHeight > 10){
                 document.querySelector('nav').style.height = navHeight -1 + "%";
-                //document.getElementById('filling').style.height = document.querySelector('nav').clientHeight +"px";
-                document.getElementById('nav_img').style.width = imgWidth - 1 + "%";
+                document.getElementById('nav_img').classList = ["collapse"];
+                document.getElementById('11a').innerText = "11.Arabok";
+                document.getElementById('11a').style.marginLeft = -50 +"%";
+                document.getElementById('arabok').classList = "vanish";
                 navHeight--;
             }
 
         } else if (st < lastScrollTop){
             if (navHeight > 9 && navHeight < 20){
                 document.querySelector('nav').style.height = navHeight + 1 + "%";
-                console.log(document.querySelector('nav').clientHeight)
-                //document.getElementById('filling').style.height -= 1;
                 document.getElementById('nav_img').style.width = imgWidth + 1 + "%";
+                document.getElementById('nav_img').classList = ["expand"];
+                document.getElementById('arabok').classList = "appear";
+                document.getElementById('11a').innerText = "11.A";
+                document.getElementById('11a').style.marginLeft = 0;
 
-
+                console.log("szexbaszás")
                 navHeight++;
-                
             }
         }
+    }
 
-    }
-    /*
-    if (st == 0){
-        document.querySelector('nav').style.height =  "20%";
-        document.getElementById('filling').style.height = "20%";
-        document.getElementById('nav_img').style.width = "20%";
-        navHeight = "20%";
-    }
-        */
     lastScrollTop = st <= 0 ? 0 : st;
 }, false);
 
