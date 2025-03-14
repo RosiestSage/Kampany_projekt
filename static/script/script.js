@@ -8,7 +8,7 @@ let imgWidth = 34;
 //filling height nem mukszik
 
 
-
+//header
 document.addEventListener("scroll", (e) => {
     let st = window.pageYOffset;
     if (st < 500){
@@ -40,6 +40,20 @@ document.addEventListener("scroll", (e) => {
     lastScrollTop = st <= 0 ? 0 : st;
 }, false);
 
+
+
+
+
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~Csoki~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+document.querySelector('.items').addEventListener("click", () =>{
+    document.getElementById('items_popup').style.display = 'flex';
+});
+document.querySelector('#close').addEventListener("click", () =>{
+    document.getElementById('items_popup').style.display = 'none';
+});
 /*
 document.getElementById("purchaseButton").addEventListener("click", () => {
 

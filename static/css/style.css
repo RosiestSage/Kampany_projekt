@@ -146,7 +146,7 @@ section{
 /* fontok */
 @font-face {
     font-family: "My Custom Font";
-    src: url(../fonts/aAwalRamadhan.ttf) format("truetype");
+    src: url(../fonts/aAwalRamadhan.otf) format("opentype");
 }
 p{ 
     margin: 0;
