@@ -1,77 +1,105 @@
-let navHeight = 20;
 let lastScrollTop = 0;
 let imgHeight = 0;
 //filling height nem mukszik
 let bodyWidth = document.querySelector('body').clientWidth;
-let kivonando = 0;
-let navKivonando =0;
-
+let mrgleftKivonando = 0;
+let navHeight = 0;
 window.addEventListener("load", () =>{
     bodyWidth = document.querySelector('body').clientWidth
-    
+    navHeight = document.querySelector('nav').clientHeight;
+    console.log(navHeight)
     if (bodyWidth <= 450){
        imgHeight = 60;
        document.querySelector('.nav_img').style.width = imgHeight + "%";
-
-       //navHeight = 20;
-       //navKivonando = [0, 1];
-       kivonando =0; 
+       mrgleftKivonando =0; 
     }
     if (bodyWidth < 700 && bodyWidth > 450){
         imgHeight = 40;
         document.querySelector('.nav_img').style.width = imgHeight + "%";
-
-        //navHeight = 30;
-        //navKivonando = [10, 10];
-        kivonando = 40; 
-
-
+        mrgleftKivonando = 40; 
     }
     if (bodyWidth < 1000 && bodyWidth > 600){
         imgHeight = 50;
         document.querySelector('.nav_img').style.width = imgHeight + "%";
-
-        //navHeight = 30;
-        //navKivonando = [0, 1];
-        kivonando = 50;
+        mrgleftKivonando = 50;
 
     }
     if (bodyWidth > 1000 && bodyWidth < 1500){
-        imgHeight = 45;
-        document.querySelector('.nav_img').style.width = imgHeight + "%";
-
-        //navHeight = 30;
-        //navKivonando = [0, 1];
-        kivonando = 50; 
+        //imgHeight = 50;
+        //document.querySelector('.nav_img').style.width = imgHeight + "%";
+        mrgleftKivonando = 70; 
     }
     if (bodyWidth > 1500){
         imgHeight = 26;
         document.querySelector('.nav_img').style.width = imgHeight + "%";
-
-        //navHeight = 30;
-        //navKivonando = [0, 1];
-        kivonando = 50; 
+        mrgleftKivonando = 50; 
     }
-    document.querySelector('nav').style.height = navHeight + "%";
 })
 
-//header
+
+document.addEventListener("scroll", (e) => {
+    let st = window.pageYOffset;
+    if (st > lastScrollTop ){
+        document.querySelector('nav').classList =  ["navcollapse"];
+        document.querySelector('.nav_img').classList =  ["nav_img collapse"];
+        setTimeout(function () {document.querySelector(".a11").innerText = "11.Arabok"}, 100)
+        document.querySelector('.a11').style.marginLeft = - mrgleftKivonando +"%";
+        document.querySelector('.arabok').classList = ["arabok vanish"];
+        navHeight = document.querySelector('nav').clientHeight;
+
+
+
+    } else if (st < lastScrollTop){
+        if ( st < 50){
+            document.querySelector('nav').classList = "";
+            document.querySelector('nav').classList = ["navexpending"];
+            document.querySelector('.nav_img').classList = ["nav_img expand"];
+            document.querySelector('.arabok').classList = ["arabok appear"];
+            document.querySelector('.a11').innerText = "11.A";
+            document.querySelector('.a11').style.marginLeft = 0;
+        }
+    }
+/*
+    if(st > 300){
+        setTimeout(function () {
+            console.log("szexpéter")
+            document.querySelector(".a11").innerText = "11.Arabok"
+            document.querySelector('nav').classList =  ["navcollapse"];
+            document.querySelector('.nav_img').classList =  ["nav_img collapse"];
+        }, 100)
+    }
+    if (st < 300){
+        console.log("sz")
+        document.querySelector('nav').classList = "";
+        document.querySelector('nav').classList = ["navexpending"];
+        document.querySelector('.nav_img').classList = ["nav_img expand"];
+        document.getElementById('arabok').classList = "appear";
+        document.querySelector('.a11').innerText = "11.A";
+    }
+*/
+    lastScrollTop = st <= 0 ? 0 : st;
+}, false);
+
+
+
+//header a sok munka, a semmiért
+/*
 document.addEventListener("scroll", (e) => {
     let st = window.pageYOffset;
     if (st < 500){
         if (st > lastScrollTop ){
-            if (navHeight > 9){
-                document.querySelector('nav').style.height = navHeight - 1 + "%";
+            if (navHeight > minHeight){
+                document.querySelector('nav').style.height = navHeight - navKivonando + "%";
                 document.querySelector('.nav_img').classList =  ["nav_img collapse"];
                 setTimeout(function () {document.querySelector(".a11").innerText = "11.Arabok"}, 100)
 
-                document.querySelector('.a11').style.marginLeft = - kivonando +"%";
+                document.querySelector('.a11').style.marginLeft = - mrgleftKivonando +"%";
                 document.getElementById('arabok').classList = "vanish";
-                navHeight--;
+                navHeight -= navKivonando;
             }
 
         } else if (st < lastScrollTop){
-            if (navHeight > 9 && navHeight  < 20){
+            if (navHeight < maxHeight){
                 console.log(navKivonando)
                 document.querySelector('nav').style.height = navHeight + 1 + "%";
                 document.querySelector('.nav_img').classList = ["nav_img expand"];
@@ -86,12 +114,12 @@ document.addEventListener("scroll", (e) => {
     console.log(navHeight)
     lastScrollTop = st <= 0 ? 0 : st;
 }, false);
-
+*/
 document.querySelector(".hamburgermenu").addEventListener("click", () =>{
     document.querySelector(".telefon_menu").style.display = "flex";
     document.querySelector(".telefon_menu").classList.add("menuopen");
 })
-
+ 
 
 document.querySelector(".xbutton").addEventListener("click", () =>{
     document.querySelector(".telefon_menu").classList = "telefon_menu menuclose";
@@ -106,14 +134,13 @@ document.querySelector(".xbutton").addEventListener("click", () =>{
 })
 
 
-
 //~~~~~~~~~~~~~~~~~~~~~~~~~Csoki~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-document.querySelector('.items').addEventListener("click", () =>{
-    document.getElementById('items_popup').style.display = 'flex';
+document.querySelector('.open_popup').addEventListener("click", () =>{
+    document.querySelector('.popup').style.display = 'flex';
 });
-document.querySelector('#close').addEventListener("click", () =>{
-    document.getElementById('items_popup').style.display = 'none';
+document.querySelector('.close').addEventListener("click", () =>{
+    document.querySelector('.popup').style.display = 'none';
 });
 /*
 document.getElementById("purchaseButton").addEventListener("click", () => {

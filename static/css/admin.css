@@ -37,7 +37,7 @@ table td{
 
 }
 
-#items_popup{
+.popup{
     position: absolute;
     background-color: ghostwhite;
     top: 30%;
@@ -45,7 +45,7 @@ table td{
     flex-direction: column;
 }
 
-#items_popup #close{
+.popup .close{
     margin: 5%;
     align-self: flex-end;
     justify-self: end;

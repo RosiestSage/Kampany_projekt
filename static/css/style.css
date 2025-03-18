@@ -6,16 +6,17 @@ body{
     margin: 0;
     width: 100%;
     height: 1500px;
+    display: flex;
+    justify-content: center;
 }
 
 /* nav */
 nav{
-    position: fixed;
+    position: fixed; 
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    height: 20%;
     background-image: url("../images/Dűne.webp");
     background-repeat: no-repeat;
     background-size: cover;
@@ -84,10 +85,63 @@ a{
 
 /* tartalom */
 section{
-    width: 100%;
-    height: 1500px;
+    margin-top: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20%;
+    width: 80%;
+
 }
 
+.cardgrid{
+    flex: 30%;
+    display: flex;
+    margin-bottom: 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.card{
+    border-radius: 20px;
+    height: 400px;
+    width: 300px;
+    background-color: grey;
+}
+
+.popup{
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    background-color: rgba(43, 41, 41, 0.7);
+    backdrop-filter: blur(5px);
+    position: fixed;
+
+}
+
+.popup_window{
+    height: 600px;
+    width: 600px;
+    position: fixed;
+    background-color: ghostwhite;
+    backdrop-filter: blur(5px);
+    top: 3%;
+    left: 30%;
+    
+}
+
+.close{
+    margin: 5%;
+    align-self: flex-end;
+    justify-self: end;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    border: 1px solid black;
+}
 
 
 
@@ -399,6 +453,12 @@ section{
         animation-duration: 0.3s;
         animation-fill-mode: both;
     }
+
+    .navcollapse{
+        animation-name: navcollapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
     
     .expand{
         animation-name: expanding;
@@ -425,6 +485,15 @@ section{
         }
         100%{
             transform: scale(70%);
+        }
+    }
+
+    @keyframes navcollapsing {
+        0%{
+            transform: scaleY(100%);
+        }
+        100%{
+            transform: scaleY(70%);
         }
     }
     
@@ -468,6 +537,9 @@ section{
 
 /*decent méretek*/
 @media screen and (width> 1000px) {
+    nav{
+        height: 40%;
+    }
     .nav_options{
         font-size: 80%;
         flex: 100%;
@@ -480,7 +552,7 @@ section{
 
 
     .nav_img{
-        width: 30%;
+        width: 40%;
     }
 
     .collapse{
@@ -488,9 +560,21 @@ section{
         animation-duration: 0.3s;
         animation-fill-mode: both;
     }
+
+    .navcollapse{
+        animation-name: navcollapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
     
     .expand{
         animation-name: expanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navexpending{
+        animation-name: navexpanding;
         animation-duration: 0.3s;
         animation-fill-mode: both;
     }
@@ -513,16 +597,37 @@ section{
             transform: scale(100%);
         }
         100%{
-            transform: scale(70%);
+            transform: scale(40%);
+        }
+    }
+
+    @keyframes navcollapsing {
+        0%{
+            height: 40%;
+        }
+        100%{
+            height: 15%;
+            opacity: 90%;
         }
     }
     
     @keyframes expanding{
         0%{
-            transform: scale(70%)
+            transform: scale(40%)
         }
         100%{
             transform: scale(100%);
+        }
+    }
+
+    @keyframes navexpanding{
+        0%{
+            height: 15%;
+        }
+        100%{
+            height: 40%;
+            opacity: 1;
+
         }
     }
     
