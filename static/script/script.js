@@ -11,7 +11,7 @@ window.addEventListener("load", () =>{
     console.log(navHeight)
     if (bodyWidth <= 450){
        imgHeight = 60;
-       csukas = 150;
+       csukas = 100;
        //document.querySelector('.nav_img').style.width = imgHeight + "%";
        mrgleftKivonando =0; 
     }

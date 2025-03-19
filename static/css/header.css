@@ -1,0 +1,1040 @@
+:root{
+    --anyad: "kurva";
+}
+
+body{
+    margin: 0;
+    width: 100%;
+    height: 1500px;
+    display: flex;
+    justify-content: center;
+}
+
+/* nav */
+nav{
+    z-index: 1;
+    position: fixed; 
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    background-image: url("../images/Dűne.webp");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 10%;
+}
+
+
+.nav_logo{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.nav_logo div p{
+    text-align: center;
+    font-size: 300%;
+}
+
+.nav_img{
+    width: 35%;
+    margin-left: 10%;
+}
+
+.nav_options{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex: 50%;
+}
+
+.nav_options p{
+    font-size: 250%;
+    margin-left: 5%;
+    margin-right: 5%;
+    transform: scale(100%);
+    transition-duration: 0.3s;
+}
+
+.nav_options p:hover{
+    cursor: pointer;
+    transform: scale(120%);
+    transition-duration: 0.3s;
+}
+
+a{
+    text-decoration: none;
+    color: unset;
+}
+
+
+
+.telefon_menu{
+    display: none;
+    opacity: 0;
+}
+
+
+
+/* reszponzív */
+
+/* telefon */
+@media screen and (width <= 450px) {
+
+    /* nav */
+    nav{
+        
+        height: 35%;
+        flex-direction: column;
+
+    }
+
+    .nav_logo{
+       justify-content: space-around;
+       flex: 60%;
+    }
+
+    .nav_img{
+        margin: 0;
+        align-self: center;
+        justify-self: center;
+        width: 50%;
+    }
+
+    .nav_options{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        font-size: 50%;
+        width: 100%;
+        margin-bottom: 5%;
+    }
+
+    .navcollapse{
+        animation-name: navcollapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navexpending{
+        animation-name: navexpanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .arabok11{
+        display: none;
+
+    }
+
+    .hamburgermenu{
+        width: 15%;
+        padding: 2%;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .hamburgermenu:hover{
+        background-color: rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+    }
+    
+    .telefon_menu{
+        z-index: 0;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(43, 41, 41, 0.7);
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+    }
+
+    .telefon_menu p{
+        margin-top: 10%;
+        font-size: 200%;
+    }
+ 
+    .telefon_menu p img{
+        margin: 0;
+        height: 30%;
+    }
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+
+    .collapse{
+        animation-name: collapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    .expand{
+        animation-name: expanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+
+    @keyframes collapsing{
+        0%{
+            width: 50%;
+        }
+        100%{
+            width: 20%;
+        }
+    }
+
+    @keyframes navcollapsing {
+        0%{
+            height: 35%;
+        }
+        100%{
+            height: 10%;
+            opacity: 90%;
+            flex-direction: row;
+        }
+    }
+
+    
+    @keyframes expanding{
+        0%{
+            width: 20%;
+        }
+        100%{
+            width: 50%;
+        }
+    }
+
+    
+    @keyframes navexpanding{
+        0%{
+            height: 15%;
+        }
+        100%{
+            height: 40%;
+            opacity: 1;
+
+        }
+    }
+    .vanish{
+        animation-name: vanish;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+
+    @keyframes vanish{
+        0%{
+            opacity: 1;
+        }
+        70%{
+            opacity: 0;
+            display: none;
+        }
+        100%{
+            opacity: 0;
+            display: none;
+        }
+    }
+
+    .appear{
+        animation-name: appear;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+
+    @keyframes appear{
+        0%{
+            opacity: 0;
+        }
+        70%{
+            opacity: 1;
+            display: flex;
+        }
+        100%{
+            opacity: 1;
+            display: flex;
+        }
+    }
+}
+
+/*tablet lófaszok*/
+@media screen and (width > 450px) and (width <600px){
+    .nav_options{
+        display: none;
+    }
+    .hamburgermenu{
+        display: block;
+        width: 10%;
+        margin-right: 2%;
+        padding: 2%;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.5);
+        justify-self: center;
+    }
+
+    nav{
+        height: 30%;
+    }
+    .nav_logo{
+        justify-content: space-around;
+    }
+
+    .nav_img{
+        margin: 0;
+    }
+
+    .nav_logo .arabok11{
+        margin-left: -10%;
+        text-align: center;
+    }
+
+    .hamburgermenu:hover{
+        background-color: rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+    }
+    
+    .telefon_menu{
+        z-index: 0;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(43, 41, 41, 0.7);
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+    }
+
+    .telefon_menu p{
+        margin-top: 10%;
+        font-size: 200%;
+    }
+    .telefon_menu p img{
+        margin: 0;
+        height: 30%;
+    }
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+
+    .collapse{
+        animation-name: collapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navcollapse{
+        animation-name: navcollapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    .expand{
+        animation-name: expanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navexpending{
+        animation-name: navexpanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    
+    .vanish{
+        animation-name: vanish;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    
+    .appear{
+        animation-name: appear;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+
+    
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+
+    @keyframes collapsing{
+        0%{
+            transform: scale(100%);
+        }
+        100%{
+            transform: scale(50%);
+        }
+    }
+
+    @keyframes navcollapsing {
+        0%{
+            height: 30%;
+        }
+        100%{
+            height: 15%;
+            opacity: 90%;
+        }
+    }
+    
+    @keyframes expanding{
+        0%{
+            transform: scale(50%)
+        }
+        100%{
+            transform: scale(100%);
+        }
+    }
+
+    @keyframes navexpanding{
+        0%{
+            height: 15%;
+        }
+        100%{
+            height: 30%;
+            opacity: 1;
+
+        }
+    }
+
+    @keyframes vanish{
+        0%{
+            opacity: 1;
+        }
+        70%{
+            opacity: 0;
+            display: none;
+        }
+        100%{
+            opacity: 0;
+            display: none;
+        }
+    }
+    
+    @keyframes appear{
+        0%{
+            opacity: 0;
+        }
+        70%{
+            opacity: 1;
+            display: block;
+        }
+        100%{
+            opacity: 1;
+            display: block;
+        }
+    }
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+
+}
+/*smol laptop vagymittomén lófaszok*/
+@media screen and (width > 600px) and (width < 1000px){
+    nav{
+        height: 25%;
+    }
+
+    .nav_img{
+        margin: 0;
+        width: 40%;
+    }
+    
+    .nav_options{
+        text-align: center;
+        font-size: 60%;
+        flex: 80%;
+    }
+
+    .nav_options p{
+        margin: 0;
+    }
+    
+    .nav_logo{
+        flex: 70%;
+    }
+
+    .nav_logo div p{
+        font-size: 200%;
+    }
+
+    .hamburgermenu{
+        display: none;
+    }
+
+    .collapse{
+        animation-name: collapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navcollapse{
+        animation-name: navcollapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    .expand{
+        animation-name: expanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navexpending{
+        animation-name: navexpanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    .vanish{
+        animation-name: vanish;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    
+    .appear{
+        animation-name: appear;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+
+
+    @keyframes collapsing{
+        0%{
+            transform: scale(100%);
+        }
+        100%{
+            transform: scale(40%);
+        }
+    }
+
+    @keyframes navcollapsing {
+        0%{
+            height: 25%;
+        }
+        100%{
+            height: 10%;
+            opacity: 90%;
+
+        }
+    }
+    
+    @keyframes expanding{
+        0%{
+            transform: scale(40%)
+        }
+        100%{
+            transform: scale(100%);
+        }
+    }
+
+    @keyframes navexpanding{
+        0%{
+            height: 15%;
+        }
+        100%{
+            height: 25%;
+            opacity: 1;
+
+        }
+    }
+
+    
+    @keyframes vanish{
+        0%{
+            opacity: 1;
+        }
+        70%{
+            opacity: 0;
+            display: none;
+        }
+        100%{
+            opacity: 0;
+            display: none;
+        }
+    }
+    
+    @keyframes appear{
+        0%{
+            opacity: 0;
+        }
+        70%{
+            opacity: 1;
+            display: block;
+        }
+        100%{
+            opacity: 1;
+            display: block;
+        }
+    }
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+}
+
+/*decent méretek*/
+@media screen and (width> 1000px) and (width < 1400px) {
+    nav{
+        height: 40%;
+    }
+    .nav_options{
+        font-size: 80%;
+        flex: 100%;
+    }   
+
+    .nav_logo div p{
+        font-size: 300%;
+
+    }
+
+    .hamburgermenu{
+        display: none;
+    }
+
+
+    .nav_img{
+        width: 50%;
+    }
+
+    .collapse{
+        animation-name: collapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navcollapse{
+        animation-name: navcollapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    .expand{
+        animation-name: expanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navexpending{
+        animation-name: navexpanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    .vanish{
+        animation-name: vanish;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    
+    .appear{
+        animation-name: appear;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+
+
+    @keyframes collapsing{
+        0%{
+            transform: scale(100%);
+        }
+        100%{
+            transform: scale(40%);
+        }
+    }
+
+    @keyframes navcollapsing {
+        0%{
+            height: 40%;
+        }
+        100%{
+            height: 15%;
+            opacity: 90%;
+        }
+    }
+    
+    @keyframes expanding{
+        0%{
+            transform: scale(40%)
+        }
+        100%{
+            transform: scale(100%);
+        }
+    }
+
+    @keyframes navexpanding{
+        0%{
+            height: 15%;
+        }
+        100%{
+            height: 40%;
+            opacity: 1;
+
+        }
+    }
+    
+    @keyframes vanish{
+        0%{
+            opacity: 1;
+        }
+        70%{
+            opacity: 0;
+            display: none;
+        }
+        100%{
+            opacity: 0;
+            display: none;
+        }
+    }
+    
+    @keyframes appear{
+        0%{
+            opacity: 0;
+        }
+        70%{
+            opacity: 1;
+            display: block;
+        }
+        100%{
+            opacity: 1;
+            display: block;
+        }
+    }
+
+    /*tartalom*/
+
+    /*index*/
+
+    /*tamogatok*/
+
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+}
+
+/*gép*/
+@media screen and (width> 1400px) {
+    nav{
+        height: 30%;
+    }
+
+    .nav_options{
+        font-size: 100%;
+        flex: 50%;
+    }   
+
+    .nav_logo div p{
+        font-size: 400%;
+
+    }
+
+    .hamburgermenu{
+        display: none;
+    }
+
+
+    .nav_img{
+        width: 40%;
+    }
+
+    .collapse{
+        animation-name: collapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navcollapse{
+        animation-name: navcollapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    
+    .expand{
+        animation-name: expanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+  
+    .navexpending{
+        animation-name: navexpanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }  
+    .vanish{
+        animation-name: vanish;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    
+    .appear{
+        animation-name: appear;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+
+
+    @keyframes collapsing{
+        0%{
+            transform: scale(100%);
+        }
+        100%{
+            transform: scale(50%);
+        }
+    }
+
+    @keyframes navcollapsing {
+        0%{
+            height: 30%;
+        }
+        100%{
+            height: 15%;
+            opacity: 90%;
+        }
+    }
+    
+    @keyframes expanding{
+        0%{
+            transform: scale(50%)
+        }
+        100%{
+            transform: scale(100%);
+        }
+    }
+
+    @keyframes navexpanding{
+        0%{
+            height: 15%;
+        }
+        100%{
+            height: 30%;
+            opacity: 1;
+
+        }
+    }
+
+    @keyframes vanish{
+        0%{
+            opacity: 1;
+        }
+        70%{
+            opacity: 0;
+            display: none;
+        }
+        100%{
+            opacity: 0;
+            display: none;
+        }
+    }
+    
+    @keyframes appear{
+        0%{
+            opacity: 0;
+        }
+        70%{
+            opacity: 1;
+            display: block;
+        }
+        100%{
+            opacity: 1;
+            display: block;
+        }
+    }
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+}
+
+/* fontok */
+@font-face {
+    font-family: "My Custom Font";
+    src: url(../fonts/Shayan.ttf) format("truetype");
+}
+p{ 
+    margin: 0;
+    font-family: "My Custom Font", Verdana, Tahoma;
+}
