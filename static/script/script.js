@@ -1,3 +1,6 @@
+import data from "./tanarinfo.js";
+import {Tanar} from "./tanar.js";
+
 let lastScrollTop = 0;
 let imgHeight = 0;
 //filling height nem mukszik
@@ -185,9 +188,34 @@ document.querySelector(".xbutton").addEventListener("click", () =>{
 })
 
 
+
+// ~~~~~Támogatók
+
+let tanarok = [];
+const datas = data;
+
+datas.forEach(dt => {
+    tanarok.push(new Tanar(dt))
+});
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~Csoki~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+console.log(document.getElementById("1"))
+
+document.getElementById("1").addEventListener("click", () =>{
+    console.log("anyád")
+    popup()
+})
+document.getElementById("3").addEventListener("click", () =>{
+    popup()
+})
+document.getElementById("4").addEventListener("click", () =>{
+    popup()
+})
+document.getElementById("5").addEventListener("click", () =>{
+    popup()
+})
 
 function popup(){
     console.log("szex")
@@ -195,6 +223,8 @@ function popup(){
     document.querySelector(".popup").classList.add("menuopen");
 
 };
+
+
 document.querySelector('.close').addEventListener("click", () =>{
     document.querySelector(".popup").classList = "popup menuclose";
 

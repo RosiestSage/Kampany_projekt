@@ -2,23 +2,15 @@
     --anyad: "kurva";
 }
 
-body{
-    margin: 0;
-    width: 100%;
-    height: 1500px;
-    display: flex;
-    justify-content: center;
-}
 
 /* nav */
 nav{
-    z-index: 1;
+    z-index: 0;
     position: fixed; 
     display: flex;
     align-items: center;
     justify-content: space-around;
     width: 100%;
-    background-image: url("../images/Dűne.webp");
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: 10%;
@@ -42,6 +34,7 @@ nav{
 }
 
 .nav_options{
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -141,7 +134,7 @@ a{
     }
     
     .telefon_menu{
-        z-index: 0;
+        z-index: -2;
         position: fixed;
         height: 100%;
         width: 100%;
@@ -206,7 +199,7 @@ a{
             opacity: 1;
         }
         100%{
-            z-index: 0;
+            z-index: -2;
             opacity: 0;
         }
     }
@@ -228,6 +221,7 @@ a{
             height: 10%;
             opacity: 90%;
             flex-direction: row;
+            background-color: rgba(43, 41, 41, 0.9);
         }
     }
 
@@ -774,6 +768,9 @@ a{
         100%{
             height: 15%;
             opacity: 90%;
+            color: white;
+            background-color: rgba(43, 41, 41, 0.7);
+
         }
     }
     
@@ -789,10 +786,14 @@ a{
     @keyframes navexpanding{
         0%{
             height: 15%;
+            color: white;
+            background-color: rgba(43, 41, 41, 0.7);
         }
         100%{
             height: 40%;
             opacity: 1;
+            color: black;
+            background-color: none;
 
         }
     }
@@ -1030,11 +1031,3 @@ a{
 }
 
 /* fontok */
-@font-face {
-    font-family: "My Custom Font";
-    src: url(../fonts/Shayan.ttf) format("truetype");
-}
-p{ 
-    margin: 0;
-    font-family: "My Custom Font", Verdana, Tahoma;
-}
