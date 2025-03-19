@@ -4,61 +4,110 @@ let imgHeight = 0;
 let bodyWidth = document.querySelector('body').clientWidth;
 let mrgleftKivonando = 0;
 let navHeight = 0;
+let csukas = 0;
 window.addEventListener("load", () =>{
     bodyWidth = document.querySelector('body').clientWidth
     navHeight = document.querySelector('nav').clientHeight;
     console.log(navHeight)
     if (bodyWidth <= 450){
        imgHeight = 60;
-       document.querySelector('.nav_img').style.width = imgHeight + "%";
+       csukas = 150;
+       //document.querySelector('.nav_img').style.width = imgHeight + "%";
        mrgleftKivonando =0; 
     }
     if (bodyWidth < 700 && bodyWidth > 450){
         imgHeight = 40;
-        document.querySelector('.nav_img').style.width = imgHeight + "%";
-        mrgleftKivonando = 40; 
+        csukas = 50;
+        //document.querySelector('.nav_img').style.width = imgHeight + "%";
+        mrgleftKivonando = 0; 
     }
     if (bodyWidth < 1000 && bodyWidth > 600){
         imgHeight = 50;
-        document.querySelector('.nav_img').style.width = imgHeight + "%";
+        csukas = 100;
+        //document.querySelector('.nav_img').style.width = imgHeight + "%";
         mrgleftKivonando = 50;
 
     }
     if (bodyWidth > 1000 && bodyWidth < 1500){
         //imgHeight = 50;
         //document.querySelector('.nav_img').style.width = imgHeight + "%";
-        mrgleftKivonando = 70; 
+        mrgleftKivonando = 50; 
+        csukas = 100;
     }
     if (bodyWidth > 1500){
         imgHeight = 26;
-        document.querySelector('.nav_img').style.width = imgHeight + "%";
+        //document.querySelector('.nav_img').style.width = imgHeight + "%";
         mrgleftKivonando = 50; 
+        csukas = 100;
+
     }
-})
 
 
-document.addEventListener("scroll", (e) => {
+
     let st = window.pageYOffset;
-    if (st > lastScrollTop ){
+    if (st > csukas ){
         document.querySelector('nav').classList =  ["navcollapse"];
         document.querySelector('.nav_img').classList =  ["nav_img collapse"];
         setTimeout(function () {document.querySelector(".a11").innerText = "11.Arabok"}, 100)
         document.querySelector('.a11').style.marginLeft = - mrgleftKivonando +"%";
         document.querySelector('.arabok').classList = ["arabok vanish"];
         navHeight = document.querySelector('nav').clientHeight;
+        if (bodyWidth <= 450){
+           document.querySelector(".nav_options").classList = ["nav_options vanish"];
+           document.querySelector(".hamburgermenu").classList = ["hamburgermenu appear"]
+        }
+
+
+    } else if (st < csukas){
+            document.querySelector('nav').classList = "";
+            document.querySelector('nav').classList = ["navexpending"];
+            document.querySelector('.nav_img').classList = ["nav_img expand"];
+            document.querySelector('.arabok').classList = ["arabok appear"];
+            document.querySelector('.a11').style.marginLeft = 0;
+            document.querySelector('.a11').innerText = "11.A";
+            if (bodyWidth <= 450){
+                document.querySelector(".nav_options").classList = ["nav_options appear"];
+                document.querySelector(".hamburgermenu").classList = ["hamburgermenu vanish"]
+
+            }
+    }
+})
+
+
+document.addEventListener("scroll", (e) => {
+    let st = window.pageYOffset;
+    if (st > csukas ){
+        document.querySelector('nav').classList =  ["navcollapse"];
+        document.querySelector('.nav_img').classList =  ["nav_img collapse"];
+        //setTimeout(function () {document.querySelector(".a11").innerText = "11.Arabok"}, 100)
+        document.querySelector(".a11").innerText = "11.Arabok"
+        document.querySelector('.a11').style.marginLeft = - mrgleftKivonando +"%";
+        document.querySelector('.arabok').classList = ["arabok vanish"];
+        navHeight = document.querySelector('nav').clientHeight;
+        if (bodyWidth <= 450){
+           document.querySelector(".nav_options").classList = ["nav_options vanish"];
+           document.querySelector(".hamburgermenu").classList = ["hamburgermenu appear"]
+        }
 
 
 
     } else if (st < lastScrollTop){
-        if ( st < 50){
+
+        if ( st < csukas){
             document.querySelector('nav').classList = "";
             document.querySelector('nav').classList = ["navexpending"];
             document.querySelector('.nav_img').classList = ["nav_img expand"];
             document.querySelector('.arabok').classList = ["arabok appear"];
             document.querySelector('.a11').innerText = "11.A";
             document.querySelector('.a11').style.marginLeft = 0;
+            if (bodyWidth <= 450){
+                document.querySelector(".nav_options").classList = ["nav_options appear"];
+                document.querySelector(".hamburgermenu").classList = ["hamburgermenu vanish"]
+
+            }
         }
     }
+
 /*
     if(st > 300){
         setTimeout(function () {
@@ -78,6 +127,8 @@ document.addEventListener("scroll", (e) => {
     }
 */
     lastScrollTop = st <= 0 ? 0 : st;
+
+
 }, false);
 
 
@@ -136,11 +187,23 @@ document.querySelector(".xbutton").addEventListener("click", () =>{
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~Csoki~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-document.querySelector('.open_popup').addEventListener("click", () =>{
+
+
+function popup(){
+    console.log("szex")
     document.querySelector('.popup').style.display = 'flex';
-});
+    document.querySelector(".popup").classList.add("menuopen");
+
+};
 document.querySelector('.close').addEventListener("click", () =>{
-    document.querySelector('.popup').style.display = 'none';
+    document.querySelector(".popup").classList = "popup menuclose";
+
+    setTimeout(function (){
+        document.querySelector(".popup").style.opacity = 0;
+        document.querySelector(".popup").style.zIndex = 0;
+        document.querySelector(".popup").style.display = "none";
+        document.querySelector(".popup").classList = "popup";
+    }, 300)
 });
 /*
 document.getElementById("purchaseButton").addEventListener("click", () => {

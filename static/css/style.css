@@ -43,10 +43,6 @@ nav{
     margin-left: 10%;
 }
 
-.nav_logo div:nth-child(2){
-    margin-left: 5%;
-}
-
 .nav_options{
     display: flex;
     align-items: center;
@@ -73,9 +69,7 @@ a{
     color: unset;
 }
 
-.hamburgermenu{
-    display: none;
-}
+
 
 .telefon_menu{
     display: none;
@@ -92,33 +86,97 @@ section{
     flex-wrap: wrap;
     margin-bottom: 20%;
     width: 80%;
+    z-index: 0;
 
 }
 
 .cardgrid{
     flex: 30%;
+    height: 100%;
     display: flex;
-    margin-bottom: 5%;
     justify-content: center;
     align-items: center;
 }
 
 .card{
-    border-radius: 20px;
-    height: 400px;
-    width: 300px;
+    border-radius: 30px;
+    height: 80%;
+    width: 400px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+}
+
+.courtain{
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    position: absolute;
+    background-image: url("../images/frame.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: 60%;
+    width: 100%;
+
+}
+
+.card .ekcsölikep{
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    margin: 0;
+    height: 60%;
+    background-image: url("../images/Somesz.webp");
+    background-size: 60%;
+    background-position-x: 50%;
+    background-position-y: 150%;
+    background-repeat: no-repeat;
     background-color: grey;
+}
+
+.card h1:nth-child(3){
+    margin: 0;
+    height: 15%;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    
+
+}
+
+.card .cardbutton{
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom-right-radius: 30px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25%;
+}
+
+.card button{
+    color: white;
+    height: 50%;
+    width: 70%;
+    border-radius: 30px;
+    border: 1px solid black;
+    background-color: #17a2b8;
+    text-align: center;
 }
 
 .popup{
     height: 100%;
     width: 100%;
     display: none;
-    flex-direction: column;
+    flex-wrap: wrap;
+
     background-color: rgba(43, 41, 41, 0.7);
     backdrop-filter: blur(5px);
     position: fixed;
-
+    justify-content: center;
+    align-content: end;
 }
 
 .popup_window{
@@ -127,9 +185,7 @@ section{
     position: fixed;
     background-color: ghostwhite;
     backdrop-filter: blur(5px);
-    top: 3%;
-    left: 30%;
-    
+    align-self: center;
 }
 
 .close{
@@ -151,8 +207,44 @@ section{
 @media screen and (width <= 450px) {
 
     /* nav */
+    nav{
+        
+        height: 35%;
+        flex-direction: column;
+
+    }
+
+    .nav_logo{
+       justify-content: space-around;
+       flex: 60%;
+    }
+
+    .nav_img{
+        margin: 0;
+        align-self: center;
+        justify-self: center;
+        width: 50%;
+    }
+
     .nav_options{
-        display: none;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        font-size: 50%;
+        width: 100%;
+        margin-bottom: 5%;
+    }
+
+    .navcollapse{
+        animation-name: navcollapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navexpending{
+        animation-name: navexpanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
     }
 
     .arabok11{
@@ -161,13 +253,11 @@ section{
     }
 
     .hamburgermenu{
-        display: block;
-        width: 20%;
-        margin-right: 10%;
+        width: 15%;
         padding: 2%;
         border: 2px solid black;
         border-radius: 10px;
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.7);
     }
 
     .hamburgermenu:hover{
@@ -217,7 +307,7 @@ section{
 
     .menuclose{
         animation-name: menuclose;
-        animation-duration: 0.3s;
+        animation-duration: 0.2s;
         animation-fill-mode: both;
     }
 
@@ -258,156 +348,58 @@ section{
 
     @keyframes collapsing{
         0%{
-            transform: scale(100%);
+            width: 50%;
         }
         100%{
-            transform: scale(80%);
+            width: 20%;
         }
     }
+
+    @keyframes navcollapsing {
+        0%{
+            height: 35%;
+        }
+        100%{
+            height: 10%;
+            opacity: 90%;
+            flex-direction: row;
+        }
+    }
+
     
     @keyframes expanding{
         0%{
-            transform: scale(80%)
+            width: 20%;
         }
         100%{
-            transform: scale(100%);
+            width: 50%;
         }
     }
 
-    /* tartalom */
-}
-
-/*tablet lófaszok*/
-@media screen and (width > 450px) and (width <600px){
-    .nav_options{
-        display: none;
-    }
-    .hamburgermenu{
-        display: block;
-        width: 10%;
-        margin-right: 10%;
-        padding: 2%;
-        border: 2px solid black;
-        border-radius: 10px;
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    .hamburgermenu:hover{
-        background-color: rgba(255, 255, 255, 0.7);
-        cursor: pointer;
-    }
     
-    .telefon_menu{
-        z-index: 0;
-        position: fixed;
-        height: 100%;
-        width: 100%;
-        background-color: rgba(43, 41, 41, 0.7);
-        backdrop-filter: blur(5px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        color: white;
+    @keyframes navexpanding{
+        0%{
+            height: 15%;
+        }
+        100%{
+            height: 40%;
+            opacity: 1;
+
+        }
     }
 
-    .telefon_menu p{
-        margin-top: 10%;
-        font-size: 200%;
+
+    /* section */
+    section{
+        margin-top: 110%;
     }
 
-    /* .telefon_menu p a{
-        transform: scale(100%);
-        transition-duration: 0.3s;
-    }
-    .telefon_menu p a:hover{
-        cursor: pointer;
-        transform: scale(120%);
-        transition-duration: 0.3s;
-    } */
-
-    .telefon_menu p img{
-        margin: 0;
-        height: 30%;
-    }
-
-    .menuopen{
-        animation-name: menuopen;
-        animation-duration: 0.3s;
-        animation-fill-mode: both;
-    }
-
-    .menuclose{
-        animation-name: menuclose;
-        animation-duration: 0.3s;
-        animation-fill-mode: both;
-    }
-
-    .collapse{
-        animation-name: collapsing;
-        animation-duration: 0.3s;
-        animation-fill-mode: both;
-    }
-    
-    .expand{
-        animation-name: expanding;
-        animation-duration: 0.3s;
-        animation-fill-mode: both;
-    }
-    
     .vanish{
         animation-name: vanish;
         animation-duration: 0.2s;
         animation-fill-mode: both;
     }
-    
-    .appear{
-        animation-name: appear;
-        animation-duration: 0.5s;
-        animation-fill-mode: both;
-    }
 
-    
-    @keyframes menuopen {
-        0%{
-            z-index: 1;
-            opacity: 0;
-        }
-        100%{
-            z-index: 1;
-            opacity: 1;
-        }
-    }
-
-    @keyframes menuclose {
-        0%{
-            z-index: 1;
-            opacity: 1;
-        }
-        100%{
-            z-index: 0;
-            opacity: 0;
-        }
-    }
-
-    @keyframes collapsing{
-        0%{
-            transform: scale(100%);
-        }
-        100%{
-            transform: scale(70%);
-        }
-    }
-    
-    @keyframes expanding{
-        0%{
-            transform: scale(70%)
-        }
-        100%{
-            transform: scale(100%);
-        }
-    }
-    
     @keyframes vanish{
         0%{
             opacity: 1;
@@ -421,31 +413,113 @@ section{
             display: none;
         }
     }
-    
+
+    .appear{
+        animation-name: appear;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+
     @keyframes appear{
         0%{
             opacity: 0;
         }
         70%{
             opacity: 1;
-            display: block;
+            display: flex;
         }
         100%{
             opacity: 1;
-            display: block;
+            display: flex;
         }
     }
+    
+    /* tartalom */
 }
-/*smol laptop vagymittomén lófaszok*/
-@media screen and (width > 600px) and (width < 1000px){
+
+/*tablet lófaszok*/
+@media screen and (width > 450px) and (width <600px){
     .nav_options{
-        font-size: 70%;
-        flex: 100%;
-    }   
+        display: none;
+    }
+    .hamburgermenu{
+        display: block;
+        width: 10%;
+        margin-right: 2%;
+        padding: 2%;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.5);
+        justify-self: center;
+    }
 
-    .nav_logo div p{
+    nav{
+        height: 30%;
+    }
+    .nav_logo{
+        justify-content: space-around;
+    }
+
+    .nav_img{
+        margin: 0;
+    }
+
+    .nav_logo .arabok11{
+        margin-left: -10%;
+        text-align: center;
+
+
+    }
+
+    .hamburgermenu:hover{
+        background-color: rgba(255, 255, 255, 0.7);
+        cursor: pointer;
+    }
+    
+    .telefon_menu{
+        z-index: 0;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(43, 41, 41, 0.7);
+        backdrop-filter: blur(5px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+    }
+
+    .telefon_menu p{
+        margin-top: 10%;
         font-size: 200%;
+    }
 
+    /* .telefon_menu p a{
+        transform: scale(100%);
+        transition-duration: 0.3s;
+    }
+    .telefon_menu p a:hover{
+        cursor: pointer;
+        transform: scale(120%);
+        transition-duration: 0.3s;
+    } */
+
+    .telefon_menu p img{
+        margin: 0;
+        height: 30%;
+    }
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
     }
 
     .collapse{
@@ -465,6 +539,211 @@ section{
         animation-duration: 0.3s;
         animation-fill-mode: both;
     }
+
+    .navexpending{
+        animation-name: navexpanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    
+    .vanish{
+        animation-name: vanish;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    
+    .appear{
+        animation-name: appear;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+
+    
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+
+    @keyframes collapsing{
+        0%{
+            transform: scale(100%);
+        }
+        100%{
+            transform: scale(50%);
+        }
+    }
+
+    @keyframes navcollapsing {
+        0%{
+            height: 30%;
+        }
+        100%{
+            height: 15%;
+            opacity: 90%;
+        }
+    }
+    
+    @keyframes expanding{
+        0%{
+            transform: scale(50%)
+        }
+        100%{
+            transform: scale(100%);
+        }
+    }
+
+    @keyframes navexpanding{
+        0%{
+            height: 15%;
+        }
+        100%{
+            height: 30%;
+            opacity: 1;
+
+        }
+    }
+
+    @keyframes vanish{
+        0%{
+            opacity: 1;
+        }
+        70%{
+            opacity: 0;
+            display: none;
+        }
+        100%{
+            opacity: 0;
+            display: none;
+        }
+    }
+    
+    @keyframes appear{
+        0%{
+            opacity: 0;
+        }
+        70%{
+            opacity: 1;
+            display: block;
+        }
+        100%{
+            opacity: 1;
+            display: block;
+        }
+    }
+
+    /* tartalom */
+    section{
+        margin-top: 60%;
+    }
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+
+}
+/*smol laptop vagymittomén lófaszok*/
+@media screen and (width > 600px) and (width < 1000px){
+    nav{
+        height: 25%;
+    }
+
+    .nav_img{
+        margin: 0;
+        width: 40%;
+    }
+    
+    .nav_options{
+        text-align: center;
+        font-size: 60%;
+        flex: 80%;
+    }
+
+    .nav_options p{
+        margin: 0;
+    }
+    
+    .nav_logo{
+        flex: 70%;
+    }
+
+    .nav_logo div p{
+        font-size: 200%;
+    }
+
+    .hamburgermenu{
+        display: none;
+    }
+
+    .collapse{
+        animation-name: collapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navcollapse{
+        animation-name: navcollapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    .expand{
+        animation-name: expanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navexpending{
+        animation-name: navexpanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
     
     .vanish{
         animation-name: vanish;
@@ -484,27 +763,41 @@ section{
             transform: scale(100%);
         }
         100%{
-            transform: scale(70%);
+            transform: scale(40%);
         }
     }
 
     @keyframes navcollapsing {
         0%{
-            transform: scaleY(100%);
+            height: 25%;
         }
         100%{
-            transform: scaleY(70%);
+            height: 10%;
+            opacity: 90%;
+
         }
     }
     
     @keyframes expanding{
         0%{
-            transform: scale(70%)
+            transform: scale(40%)
         }
         100%{
             transform: scale(100%);
         }
     }
+
+    @keyframes navexpanding{
+        0%{
+            height: 15%;
+        }
+        100%{
+            height: 25%;
+            opacity: 1;
+
+        }
+    }
+
     
     @keyframes vanish{
         0%{
@@ -533,10 +826,49 @@ section{
             display: block;
         }
     }
+
+    /* tartalom */
+
+    section{
+        margin-top: 35%;
+    }
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
 }
 
 /*decent méretek*/
-@media screen and (width> 1000px) {
+@media screen and (width> 1000px) and (width < 1500px) {
     nav{
         height: 40%;
     }
@@ -550,9 +882,13 @@ section{
 
     }
 
+    .hamburgermenu{
+        display: none;
+    }
+
 
     .nav_img{
-        width: 40%;
+        width: 50%;
     }
 
     .collapse{
@@ -658,10 +994,52 @@ section{
             display: block;
         }
     }
+
+    /*tartalom*/
+    section{
+        margin-top: 30%;
+    }
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
 }
 
 /*gép*/
 @media screen and (width> 1500px) {
+    nav{
+        height: 30%;
+    }
+
     .nav_options{
         font-size: 100%;
         flex: 50%;
@@ -672,9 +1050,13 @@ section{
 
     }
 
+    .hamburgermenu{
+        display: none;
+    }
+
 
     .nav_img{
-        width: 30%;
+        width: 40%;
     }
 
     .collapse{
@@ -682,13 +1064,25 @@ section{
         animation-duration: 0.3s;
         animation-fill-mode: both;
     }
+
+    .navcollapse{
+        animation-name: navcollapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
     
     .expand{
         animation-name: expanding;
         animation-duration: 0.3s;
         animation-fill-mode: both;
     }
-    
+  
+    .navexpending{
+        animation-name: navexpanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }  
     .vanish{
         animation-name: vanish;
         animation-duration: 0.2s;
@@ -707,19 +1101,40 @@ section{
             transform: scale(100%);
         }
         100%{
-            transform: scale(70%);
+            transform: scale(50%);
+        }
+    }
+
+    @keyframes navcollapsing {
+        0%{
+            height: 30%;
+        }
+        100%{
+            height: 15%;
+            opacity: 90%;
         }
     }
     
     @keyframes expanding{
         0%{
-            transform: scale(70%)
+            transform: scale(50%)
         }
         100%{
             transform: scale(100%);
         }
     }
-    
+
+    @keyframes navexpanding{
+        0%{
+            height: 15%;
+        }
+        100%{
+            height: 30%;
+            opacity: 1;
+
+        }
+    }
+
     @keyframes vanish{
         0%{
             opacity: 1;
@@ -745,6 +1160,39 @@ section{
         100%{
             opacity: 1;
             display: block;
+        }
+    }
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
         }
     }
 }
