@@ -201,27 +201,37 @@ datas.forEach(dt => {
 //~~~~~~~~~~~~~~~~~~~~~~~~~Csoki~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-console.log(document.getElementById("1"))
 
 document.getElementById("1").addEventListener("click", () =>{
-    console.log("anyád")
-    popup()
+    popup(0)
+})
+document.getElementById("2").addEventListener("click", () =>{
+    popup(1)
 })
 document.getElementById("3").addEventListener("click", () =>{
-    popup()
+    popup(2)
 })
 document.getElementById("4").addEventListener("click", () =>{
-    popup()
-})
-document.getElementById("5").addEventListener("click", () =>{
-    popup()
+    popup(3)
 })
 
-function popup(){
-    console.log("szex")
+function popup(tanar){
+    let osztalyok = document.getElementById("tanitott_osztalyok");
+    osztalyok.innerHTML = "";
     document.querySelector('.popup').style.display = 'flex';
-    document.querySelector(".popup").classList.add("menuopen");
-
+    document.querySelector('.popup').classList.add("menuopen");
+    document.getElementById('popup_ekcsölikep').src = tanarok[tanar].Src;
+    document.querySelector('.tanarnev').innerText = tanarok[tanar].Nev;
+    document.querySelector('.funfact').innerText = tanarok[tanar].Funfact;
+    document.querySelector('.tanari').innerText = tanarok[tanar].Tanari;
+    document.querySelector('.jutalmak').innerText = tanarok[tanar].Jutalmak;
+    let tanítottak = tanarok[tanar].TanitottOsztalyok.split(",");
+    console.log(osztalyok)
+    tanítottak.forEach(osztaly =>{
+        let li = document.createElement("li");
+        li.innerText = osztaly;
+        osztalyok.appendChild(li);
+    })
 };
 
 
