@@ -8,7 +8,17 @@ let bodyWidth = document.querySelector('body').clientWidth;
 let mrgleftKivonando = 0;
 let navHeight = 0;
 let csukas = 0;
+
+let tanarok = [];
+const datas = data;
+
+datas.forEach(dt => {
+    tanarok.push(new Tanar(dt))
+});
+
+
 window.addEventListener("load", () =>{
+    loadCards(tanarok);
     bodyWidth = document.querySelector('body').clientWidth
     navHeight = document.querySelector('nav').clientHeight;
     console.log(navHeight)
@@ -111,24 +121,6 @@ document.addEventListener("scroll", (e) => {
         }
     }
 
-/*
-    if(st > 300){
-        setTimeout(function () {
-            console.log("szexpéter")
-            document.querySelector(".a11").innerText = "11.Arabok"
-            document.querySelector('nav').classList =  ["navcollapse"];
-            document.querySelector('.nav_img').classList =  ["nav_img collapse"];
-        }, 100)
-    }
-    if (st < 300){
-        console.log("sz")
-        document.querySelector('nav').classList = "";
-        document.querySelector('nav').classList = ["navexpending"];
-        document.querySelector('.nav_img').classList = ["nav_img expand"];
-        document.getElementById('arabok').classList = "appear";
-        document.querySelector('.a11').innerText = "11.A";
-    }
-*/
     lastScrollTop = st <= 0 ? 0 : st;
 
 
@@ -191,48 +183,65 @@ document.querySelector(".xbutton").addEventListener("click", () =>{
 
 // ~~~~~Támogatók
 
-let tanarok = [];
-const datas = data;
-
-datas.forEach(dt => {
-    tanarok.push(new Tanar(dt))
-});
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~Csoki~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-document.getElementById("1").addEventListener("click", () =>{
-    popup(0)
-})
-document.getElementById("2").addEventListener("click", () =>{
-    popup(1)
-})
-document.getElementById("3").addEventListener("click", () =>{
-    popup(2)
-})
-document.getElementById("4").addEventListener("click", () =>{
-    popup(3)
-})
 
 function popup(tanar){
     let osztalyok = document.getElementById("tanitott_osztalyok");
     osztalyok.innerHTML = "";
     document.querySelector('.popup').style.display = 'flex';
     document.querySelector('.popup').classList.add("menuopen");
-    document.getElementById('popup_ekcsölikep').src = tanarok[tanar].Src;
+    let bkgsrc = tanarok[tanar].Src.replace(/"/g, "");;
+    console.log(bkgsrc)
+    document.getElementById('popup_ekcsölikep').src = bkgsrc;
     document.querySelector('.tanarnev').innerText = tanarok[tanar].Nev;
     document.querySelector('.funfact').innerText = tanarok[tanar].Funfact;
     document.querySelector('.tanari').innerText = tanarok[tanar].Tanari;
     document.querySelector('.jutalmak').innerText = tanarok[tanar].Jutalmak;
     let tanítottak = tanarok[tanar].TanitottOsztalyok.split(",");
-    console.log(osztalyok)
     tanítottak.forEach(osztaly =>{
         let li = document.createElement("li");
         li.innerText = osztaly;
         osztalyok.appendChild(li);
     })
 };
+
+
+function loadCards(tanarok){
+    console.log(tanarok.length)
+    
+    tanarok.forEach(tanar =>{
+        let card = `<div id="${tanarok.indexOf(tanar)}_card" class="cardgrid cardappear"><div class="card"><div id="${tanarok.indexOf(tanar)}_img" class="ekcsölikep" src="" alt=""></div><div class="courtain" alt=""></div><div class="cardtext"><h1 class="tanarnevcard">${tanar.Nev}</h1></div><div class="cardbutton"><button id="${tanarok.indexOf(tanar) + 1}"  class="open_popup"><h1>Info</h1></button></div></div></div>`
+        document.querySelector('section').innerHTML += card;    
+        
+    })
+
+    tanarok.forEach(tanar =>{
+        let bkgsrc = tanar.Src;
+
+        let index = `${tanarok.indexOf(tanar)}_img`
+        document.getElementById(index).style.backgroundImage = `url(${bkgsrc})`;
+        
+    })
+
+    document.getElementById("1").addEventListener("click", () =>{
+        popup(0)
+    })
+    document.getElementById("2").addEventListener("click", () =>{
+        popup(1)
+    })
+    document.getElementById("3").addEventListener("click", () =>{
+        popup(2)
+    })
+    document.getElementById("4").addEventListener("click", () =>{
+        popup(3)
+    })
+}
+
+
+
+
 
 
 document.querySelector('.close').addEventListener("click", () =>{
@@ -245,6 +254,12 @@ document.querySelector('.close').addEventListener("click", () =>{
         document.querySelector(".popup").classList = "popup";
     }, 300)
 });
+
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~Csoki~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
 /*
 document.getElementById("purchaseButton").addEventListener("click", () => {
 

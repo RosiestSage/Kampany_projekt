@@ -14,6 +14,7 @@ body{
     display: flex;
     justify-content: center;
     background: lightblue url("../images/Dűne.webp") no-repeat fixed;
+    background-size: cover;
     
   
 }
@@ -48,7 +49,19 @@ section{
     position: relative;
     box-shadow: inset -2px -2px 10px black;
 
+}
 
+.cardappear{
+    transform: translateY(100px);
+    opacity: 0;
+    animation: showcontent 0.5s 0s linear 1 forwards;
+}
+
+@keyframes showcontent {
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .courtain{
@@ -73,7 +86,6 @@ section{
     border-top-right-radius: 5%;
     margin: 0;
     height: 70%;
-    background-image: url("../images/Somesz.webp");
     background-size: 70%;
     background-position-x: 50%;
     background-position-y: 150%;
@@ -156,7 +168,9 @@ section{
     width: 50%;
     border-radius: 5%;
     position: fixed;
-    background-color: ghostwhite;
+    background-image: url("../images/popup_background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
     backdrop-filter: blur(5px);
     align-self: center;
     display: flex;
@@ -184,6 +198,7 @@ section{
     justify-content: space-between;
 }
 
+
 .tanarkep .courtain{
     position: absolute;
     background-image: url("../images/frame.png");
@@ -191,14 +206,19 @@ section{
     background-repeat: no-repeat;
     margin: 0;
     width: 50%;
-    box-shadow: inset 10px 10px 20px black ;
-
+    box-shadow: none;
     /* rgba(237,171,35); */
 }
 
 .tanarnev{
+    margin-bottom: 20%;
     justify-self: center;
     align-self: center;
+    font-size: 200%;
+    background: -webkit-linear-gradient(#f30202, #8f1717);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
 }
 
 #popup_ekcsölikep{
@@ -299,7 +319,7 @@ section{
 
     /*támogatók*/
     section{
-        margin-top: 100%;
+        margin-top: 130%;
     }
 
     .cardgrid{
@@ -464,18 +484,6 @@ section{
             transform: scale(40%);
         }
     }
-
-    @keyframes navcollapsing {
-        0%{
-            height: 25%;
-        }
-        100%{
-            height: 10%;
-            opacity: 90%;
-
-        }
-    }
-    
     @keyframes expanding{
         0%{
             transform: scale(40%)
