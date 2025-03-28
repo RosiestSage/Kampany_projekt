@@ -21,7 +21,6 @@ body{
 
 /* tartalom */
 section{
-    margin-top: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -168,14 +167,12 @@ section{
     width: 50%;
     border-radius: 5%;
     position: fixed;
-    background-image: url("../images/popup_background.jpg");
+    background-image: url("../images/popup_background2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     backdrop-filter: blur(5px);
     align-self: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+
 }
 
 .tanarpopup{
@@ -188,9 +185,18 @@ section{
 
 }
 
+.opacitybackground{
+    border-radius: 5%;
+
+    background-color: rgba(0,0,0, 0.7);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .tanarkep{
     flex: 50%;
-    height: 100%;
     align-self: center;
     flex-direction: column;
     display: flex;
@@ -201,17 +207,17 @@ section{
 
 .tanarkep .courtain{
     position: absolute;
-    background-image: url("../images/frame.png");
-    background-size: cover;
+    background-image: unset;
+    /* background-image: url("../images/arabic-9249596_1280-removebg-preview.png"); */
     background-repeat: no-repeat;
-    margin: 0;
-    width: 50%;
+    margin: -20px;
+    width: 300px;
+    height: 400px;
     box-shadow: none;
     /* rgba(237,171,35); */
 }
 
 .tanarnev{
-    margin-bottom: 20%;
     justify-self: center;
     align-self: center;
     font-size: 200%;
@@ -225,24 +231,41 @@ section{
     border-top-left-radius: 5%;
     border-top-right-radius: 5%;
     margin: 0;
-    width: 70%;
-    height: 70%;
+    width: 250px;
+    height: 330px;
     background-repeat: no-repeat;
     background-color: grey;
 }
 
 .tanardata{
+    height: 80%;
     flex: 50%;
     display: flex;
     justify-content: space-around;
-    align-items: center;
     flex-direction: column;
-    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+
 }
 
 .tanardata h1{
     font-size: 150%;
     margin: 0;
+}
+
+.tanardata div {
+    padding-bottom: 10px;
+}
+.funfact{
+    padding: 20px;
+    font-style: italic;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+
+#tanitott_osztalyok{
+    margin: 0;
+    
 }
 
 .close{
@@ -253,6 +276,7 @@ section{
     background-color: red;
     color: white;
     border: 1px solid black;
+    margin-bottom: 10px;
 }
 
 
@@ -319,26 +343,54 @@ section{
 
     /*támogatók*/
     section{
-        margin-top: 130%;
+        margin-top: 300px;
     }
 
     .cardgrid{
-        height: 50%;
+        height: 500px;
     }
 
     .card{
         width: 270px;
+        height: 400px;
     }
 
     .popup_window{
-        height: 50%;
+        height: 80%;
         width: 100%;
     }
 
+    .tanarpopup{
+        flex-direction: column;
+    }
+
+    .tanardata{
+        align-items: center;
+    }
+
+    .close{
+        margin-top: 20px;
+    }
+
+    .tanardata div{
+        text-align: center;
+    }
+
+    #tanitott_osztalyok{
+        padding: 0;
+        list-style-type: none;
+    }
+
+    
+    #popup_ekcsölikep{
+        margin-top: 20px;
+        width: 150px;
+        height: 200px;
+    }
 }
 
 /*tablet lófaszok*/
-@media screen and (width > 450px) and (width <600px){    
+@media screen and (width > 450px) and (width <= 600px){    
     .vanish{
         animation-name: vanish;
         animation-duration: 0.2s;
@@ -393,47 +445,56 @@ section{
     
 
     section{
-        margin-top: 50%;
+        margin-top: 300px;
     }
 
     .cardgrid{
-        height: 50%;
+        height: 500px;
     }
 
     .card{
         width: 270px;
+        height: 450px;
+    }
+
+
+    .popup_window{
+        height: 80%;
+        width: 100%;
+    }
+
+    .tanarpopup{
+        flex-direction: column;
+    }
+
+    .tanardata{
+        align-items: center;
+    }
+
+    .close{
+        margin-top: 20px;
+    }
+
+    .tanardata div{
+        text-align: center;
+    }
+
+    #tanitott_osztalyok{
+        padding: 0;
+        list-style-type: none;
+    }
+
+    
+    #popup_ekcsölikep{
+        margin-top: 20px;
+        width: 150px;
+        height: 200px;
     }
 
 
 }
 /*smol laptop vagymittomén lófaszok*/
 @media screen and (width > 600px) and (width < 1000px){
-    nav{
-        height: 25%;
-    }
-
-    .nav_img{
-        margin: 0;
-        width: 40%;
-    }
-    
-    .nav_options{
-        text-align: center;
-        font-size: 60%;
-        flex: 80%;
-    }
-
-    .nav_options p{
-        margin: 0;
-    }
-    
-    .nav_logo{
-        flex: 70%;
-    }
-
-    .nav_logo div p{
-        font-size: 200%;
-    }
 
     .hamburgermenu{
         display: none;
@@ -457,11 +518,6 @@ section{
         animation-fill-mode: both;
     }
 
-    .navexpending{
-        animation-name: navexpanding;
-        animation-duration: 0.3s;
-        animation-fill-mode: both;
-    }
     
     .vanish{
         animation-name: vanish;
@@ -493,16 +549,6 @@ section{
         }
     }
 
-    @keyframes navexpanding{
-        0%{
-            height: 15%;
-        }
-        100%{
-            height: 25%;
-            opacity: 1;
-
-        }
-    }
 
     
     @keyframes vanish{
@@ -573,15 +619,45 @@ section{
     }
 
     section{
-        margin-top: 20%;
+        margin-top: 250px;
     }
 
     .cardgrid{
-        height: 60%;
+        height: 450px;
     }
 
     .card{
         width: 300px;
+        height: 450px;
+    }
+
+    .popup_window{
+        height: 60%;
+        width: 80%;
+    }
+
+    .tanardata{
+        align-items: center;
+    }
+
+    .close{
+        margin-top: 20px;
+    }
+
+    .tanardata div{
+        text-align: center;
+    }
+
+    #tanitott_osztalyok{
+        padding: 0;
+        list-style-type: none;
+    }
+
+    
+    #popup_ekcsölikep{
+        margin-top: 20px;
+        width: 250px;
+        height: 350px;
     }
 
 }
@@ -628,7 +704,7 @@ section{
     }
 
     section{
-        margin-top: 20%;
+        margin-top: 300px;
     }
     .cardgrid{
         height: 70%;
@@ -637,6 +713,35 @@ section{
     .card{
         width: 350px;
     }
+
+    .popup_window{
+        height: 500px;
+        width: 700px;
+    }
+
+    .tanardata{
+        align-items: center;
+    }
+
+    .close{
+        margin-top: 20px;
+    }
+
+    .tanardata div{
+        text-align: center;
+    }
+
+    #tanitott_osztalyok{
+        padding: 0;
+        list-style-type: none;
+    }
+
+    
+    #popup_ekcsölikep{
+        margin-top: 20px;
+        width: 250px;
+    }
+    
 
 }
 
@@ -677,6 +782,19 @@ section{
             opacity: 0;
         }
     }
+
+    section{
+        margin-top: 400px;
+    }
+    .cardgrid{
+        height: 700px;
+    }
+
+    .card{
+        width: 500px;
+        height: 700px;
+    }
+
 }
 
 @media screen and (width> 2000px) {
@@ -718,14 +836,15 @@ section{
 
     
     section{
-        margin-top: 30%;
+        margin-top: 400px;
     }
     .cardgrid{
-        height: 500%;
+        height: 700px;
     }
 
     .card{
         width: 500px;
+        height: 700px;
     }
 
 }

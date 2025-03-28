@@ -18,7 +18,9 @@ datas.forEach(dt => {
 
 
 window.addEventListener("load", () =>{
-    loadCards(tanarok);
+    setTimeout(function () { loadCards(tanarok)}, 100)
+
+   
     bodyWidth = document.querySelector('body').clientWidth
     navHeight = document.querySelector('nav').clientHeight;
     console.log(navHeight)
@@ -38,24 +40,26 @@ window.addEventListener("load", () =>{
         imgHeight = 50;
         csukas = 100;
         //document.querySelector('.nav_img').style.width = imgHeight + "%";
-        mrgleftKivonando = 50;
+        mrgleftKivonando = 40;
 
     }
     if (bodyWidth > 1000 && bodyWidth < 1500){
         //imgHeight = 50;
         //document.querySelector('.nav_img').style.width = imgHeight + "%";
-        mrgleftKivonando = 50; 
+        mrgleftKivonando = 5; 
         csukas = 100;
     }
     if (bodyWidth > 1500){
         imgHeight = 26;
         //document.querySelector('.nav_img').style.width = imgHeight + "%";
-        mrgleftKivonando = 50; 
+        mrgleftKivonando = 0; 
         csukas = 100;
 
     }
 
-
+    if (bodyWidth <= 450){
+        document.querySelector(".hamburgermenu").classList = ["hamburgermenu vanish"]
+    }
 
     let st = window.pageYOffset;
     if (st > csukas ){
@@ -65,10 +69,6 @@ window.addEventListener("load", () =>{
         document.querySelector('.a11').style.marginLeft = - mrgleftKivonando +"%";
         document.querySelector('.arabok').classList = ["arabok vanish"];
         navHeight = document.querySelector('nav').clientHeight;
-        if (bodyWidth <= 450){
-           document.querySelector(".nav_options").classList = ["nav_options vanish"];
-           document.querySelector(".hamburgermenu").classList = ["hamburgermenu appear"]
-        }
 
 
     } else if (st < csukas){
@@ -78,17 +78,14 @@ window.addEventListener("load", () =>{
             document.querySelector('.arabok').classList = ["arabok appear"];
             document.querySelector('.a11').style.marginLeft = 0;
             document.querySelector('.a11').innerText = "11.A";
-            if (bodyWidth <= 450){
-                document.querySelector(".nav_options").classList = ["nav_options appear"];
-                document.querySelector(".hamburgermenu").classList = ["hamburgermenu vanish"]
-
-            }
     }
 })
 
 
 document.addEventListener("scroll", (e) => {
     let st = window.pageYOffset;
+    bodyWidth = document.querySelector('body').clientWidth
+
     if (st > csukas ){
         document.querySelector('nav').classList =  ["navcollapse"];
         document.querySelector('.nav_img').classList =  ["nav_img collapse"];
@@ -98,6 +95,7 @@ document.addEventListener("scroll", (e) => {
         document.querySelector('.arabok').classList = ["arabok vanish"];
         navHeight = document.querySelector('nav').clientHeight;
         if (bodyWidth <= 450){
+            console.log("mosmivan")
            document.querySelector(".nav_options").classList = ["nav_options vanish"];
            document.querySelector(".hamburgermenu").classList = ["hamburgermenu appear"]
         }
@@ -236,6 +234,21 @@ function loadCards(tanarok){
     })
     document.getElementById("4").addEventListener("click", () =>{
         popup(3)
+    })
+    document.getElementById("5").addEventListener("click", () =>{
+        popup(4)
+    })
+    document.getElementById("6").addEventListener("click", () =>{
+        popup(5)
+    })
+    document.getElementById("7").addEventListener("click", () =>{
+        popup(6)
+    })
+    document.getElementById("8").addEventListener("click", () =>{
+        popup(7)
+    })
+    document.getElementById("9").addEventListener("click", () =>{
+        popup(8)
     })
 }
 
