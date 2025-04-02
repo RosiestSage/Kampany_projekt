@@ -1,0 +1,967 @@
+/* hamburger menü fix */
+
+
+:root{
+    --anyad: "kurva";
+}
+
+body{
+    position: relative;
+    z-index: -2;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background: lightblue url("../images/Dűne.webp") no-repeat fixed;
+    background-size: cover;
+    
+  
+}
+
+/* tartalom */
+section{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    height: 80%;
+    width: 80%;
+    z-index: -1;
+}
+
+.sectionh1{
+    font-size: 70px;
+    background: -webkit-linear-gradient(#f30202, #8f1717);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+.cardgrid{
+    flex: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.card{
+    border-radius: 30px;
+    height: 500px;
+    width: 400px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: inset -2px -2px 10px black;
+    
+
+}
+
+.cardappear{
+    transform: translateY(100px);
+    opacity: 0;
+    animation: showcontent 0.5s 0s linear 1 forwards;
+}
+
+@keyframes showcontent {
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.courtain{
+    box-sizing: border-box;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    position: absolute;
+    background-image: url("../images/frame.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    height: 70%;
+    width: 100%;
+    box-shadow: inset 10px 10px 20px black ;
+
+    /* rgba(237,171,35); */
+
+}
+
+.card .ekcsölikep{
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    margin: 0;
+    height: 70%;
+    background-size: 80%;
+    background-position-x: 50%;
+    background-position-y: 100%;
+    background-image: url("../images/hoodie.png");
+    background-repeat: no-repeat;
+    background-color: rgb(139, 134, 140);
+}
+
+.card .cardtext{
+    height: 10%;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    box-shadow: inset;
+    -webkit-box-shadow: 0px -5px 3px  rgba(237,171,35) ;
+    -moz-box-shadow: 0px -5px 3px  rgba(237,171,35) ;
+    display: flex;
+    align-items: center;
+}
+
+.cardtext h1{
+    text-align: center;
+    width: 100%;
+    font-size: 200%;
+    margin:0;
+    background: -webkit-linear-gradient(#f30202, #8f1717);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+
+}
+
+
+.card .cardbutton{
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+
+}
+
+.card .cardbutton button{
+    color: white;
+    height: 50%;
+    width: 70%;
+    border-radius: 30px;
+    border: 1px solid black;
+    background-color: #17a2b8;
+    text-align: center;
+    margin: 0;
+}
+
+.card .cardbutton button:hover{
+    cursor: pointer;
+    box-shadow: inset 2px 2px 10px  rgba(0,0,0) ;
+}
+
+.card .cardbutton button h1{
+    font-size: unset;
+    color: white;
+    margin: 0;
+
+}
+
+.popup{
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-wrap: wrap;
+    background-color: rgba(43, 41, 41, 0.7);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    justify-content: center;
+    align-content: end;
+}
+
+.popup_window{
+    height: 60%;
+    width: 50%;
+    border-radius: 5%;
+    position: fixed;
+    background-image: url("../images/popup_background2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(5px);
+    align-self: center;
+
+}
+
+.productpopup{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.opacitybackground{
+    border-radius: 5%;
+
+    background-color: rgba(0,0,0, 0.7);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.tanarkep{
+    flex: 50%;
+    align-self: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.tanarkep .courtain{
+    position: absolute;
+    background-image: unset;
+    /* background-image: url("../images/arabic-9249596_1280-removebg-preview.png"); */
+    background-repeat: no-repeat;
+    margin: -20px;
+    width: 300px;
+    height: 400px;
+    box-shadow: none;
+    /* rgba(237,171,35); */
+}
+
+.tanarnev{
+    justify-self: center;
+    align-self: center;
+    font-size: 200%;
+    background: -webkit-linear-gradient(#f30202, #8f1717);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+#popup_ekcsölikep{
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    margin: 0;
+    width: 250px;
+    height: 330px;
+    background-repeat: no-repeat;
+    background-color: grey;
+}
+
+.tanardata{
+    height: 80%;
+    flex: 50%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    color: white;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+
+}
+
+.tanardata h1{
+    font-size: 150%;
+    margin: 0;
+}
+
+.tanardata div {
+    padding-bottom: 10px;
+}
+.funfact{
+    padding: 20px;
+    font-style: italic;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+}
+
+#tanitott_osztalyok{
+    margin: 0;
+    
+}
+
+.close{
+    align-self: center;
+    justify-self: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: red;
+    color: white;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+
+
+.close:hover{
+    cursor: pointer;
+    box-shadow: inset 2px 2px 10px  rgba(0,0,0) ;
+}
+
+
+
+
+
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+
+/* reszponzív */
+
+/* telefon */
+@media screen and (width <= 450px) {
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+
+    .collapse{
+        animation-name: collapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    .expand{
+        animation-name: expanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+
+
+
+    /*index*/
+
+    /*támogatók*/
+    section{
+        margin-top: 300px;
+    }
+
+    .cardgrid{
+        height: 500px;
+    }
+
+    .card{
+        width: 270px;
+        height: 400px;
+    }
+
+    .popup_window{
+        height: 80%;
+        width: 100%;
+    }
+
+    .productpopup{
+        flex-direction: column;
+    }
+
+    .tanardata{
+        align-items: center;
+    }
+
+    .close{
+        margin-top: 20px;
+    }
+
+    .tanardata div{
+        text-align: center;
+    }
+
+    #tanitott_osztalyok{
+        padding: 0;
+        list-style-type: none;
+    }
+
+    
+    #popup_ekcsölikep{
+        margin-top: 20px;
+        width: 150px;
+        height: 200px;
+    }
+}
+
+/*tablet lófaszok*/
+@media screen and (width > 450px) and (width <= 600px){    
+    .vanish{
+        animation-name: vanish;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    
+    .appear{
+        animation-name: appear;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+    /* tartalom */
+
+    /*index*/
+
+    /*támogatók*/
+
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+
+    
+
+    section{
+        margin-top: 300px;
+    }
+
+    .cardgrid{
+        height: 500px;
+    }
+
+    .card{
+        width: 270px;
+        height: 450px;
+    }
+
+
+    .popup_window{
+        height: 80%;
+        width: 100%;
+    }
+
+    .productpopup{
+        flex-direction: column;
+    }
+
+    .tanardata{
+        align-items: center;
+    }
+
+    .close{
+        margin-top: 20px;
+    }
+
+    .tanardata div{
+        text-align: center;
+    }
+
+    #tanitott_osztalyok{
+        padding: 0;
+        list-style-type: none;
+    }
+
+    
+    #popup_ekcsölikep{
+        margin-top: 20px;
+        width: 150px;
+        height: 200px;
+    }
+
+
+}
+/*smol laptop vagymittomén lófaszok*/
+@media screen and (width > 600px) and (width < 1000px){
+
+    .hamburgermenu{
+        display: none;
+    }
+
+    .collapse{
+        animation-name: collapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .navcollapse{
+        animation-name: navcollapsing;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+    
+    .expand{
+        animation-name: expanding;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    
+    .vanish{
+        animation-name: vanish;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    
+    .appear{
+        animation-name: appear;
+        animation-duration: 0.5s;
+        animation-fill-mode: both;
+    }
+
+
+    @keyframes collapsing{
+        0%{
+            transform: scale(100%);
+        }
+        100%{
+            transform: scale(40%);
+        }
+    }
+    @keyframes expanding{
+        0%{
+            transform: scale(40%)
+        }
+        100%{
+            transform: scale(100%);
+        }
+    }
+
+
+    
+    @keyframes vanish{
+        0%{
+            opacity: 1;
+        }
+        70%{
+            opacity: 0;
+            display: none;
+        }
+        100%{
+            opacity: 0;
+            display: none;
+        }
+    }
+    
+    @keyframes appear{
+        0%{
+            opacity: 0;
+        }
+        70%{
+            opacity: 1;
+            display: block;
+        }
+        100%{
+            opacity: 1;
+            display: block;
+        }
+    }
+
+    /* tartalom */
+    /*index*/
+
+    /*tamogatok*/
+
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+
+    section{
+        margin-top: 250px;
+    }
+
+    .cardgrid{
+        height: 450px;
+    }
+
+    .card{
+        width: 300px;
+        height: 450px;
+    }
+
+    .popup_window{
+        height: 60%;
+        width: 80%;
+    }
+
+    .tanardata{
+        align-items: center;
+    }
+
+    .close{
+        margin-top: 20px;
+    }
+
+    .tanardata div{
+        text-align: center;
+    }
+
+    #tanitott_osztalyok{
+        padding: 0;
+        list-style-type: none;
+    }
+
+    
+    #popup_ekcsölikep{
+        margin-top: 20px;
+        width: 250px;
+        height: 350px;
+    }
+
+}
+
+/*decent méretek*/
+@media screen and (width > 1000px) and (width < 1400px) {
+
+    /*tartalom*/
+
+    /*index*/
+
+    /*tamogatok*/
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+
+    section{
+        margin-top: 300px;
+    }
+    .cardgrid{
+        height: 70%;
+    }
+
+    .card{
+        width: 350px;
+    }
+
+    .popup_window{
+        height: 500px;
+        width: 700px;
+    }
+
+    .tanardata{
+        align-items: center;
+    }
+
+    .close{
+        margin-top: 20px;
+    }
+
+    .tanardata div{
+        text-align: center;
+    }
+
+    #tanitott_osztalyok{
+        padding: 0;
+        list-style-type: none;
+    }
+
+    
+    #popup_ekcsölikep{
+        margin-top: 20px;
+        width: 250px;
+    }
+    
+
+}
+
+/*gép*/
+@media screen and (width> 1400px) {
+
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+
+    section{
+        margin-top: 400px;
+    }
+    .cardgrid{
+        height: 700px;
+    }
+
+    .card{
+        width: 500px;
+        height: 700px;
+    }
+
+}
+
+@media screen and (width> 2000px) {
+
+
+    .menuopen{
+        animation-name: menuopen;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    .menuclose{
+        animation-name: menuclose;
+        animation-duration: 0.2s;
+        animation-fill-mode: both;
+    }
+
+    @keyframes menuopen {
+        0%{
+            z-index: 1;
+            opacity: 0;
+        }
+        100%{
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    @keyframes menuclose {
+        0%{
+            z-index: 1;
+            opacity: 1;
+        }
+        100%{
+            z-index: 0;
+            opacity: 0;
+        }
+    }
+
+    
+    section{
+        margin-top: 400px;
+    }
+    .cardgrid{
+        height: 700px;
+    }
+
+    .card{
+        width: 500px;
+        height: 700px;
+    }
+
+}
+
+/* fontok */
+/* @font-face {
+    font-family: "My Custom Font";
+    src: url(../fonts/Shayan.ttf) format("truetype");
+} */
+
+p{ 
+    margin: 0;
+    font-family: "My Custom Font", Verdana, Tahoma;
+}

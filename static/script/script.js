@@ -186,70 +186,123 @@ document.querySelector(".xbutton").addEventListener("click", () =>{
 
 
 function popup(tanar){
-    let osztalyok = document.getElementById("tanitott_osztalyok");
-    osztalyok.innerHTML = "";
-    document.querySelector('.popup').style.display = 'flex';
-    document.querySelector('.popup').classList.add("menuopen");
-    let bkgsrc = tanarok[tanar].Src.replace(/"/g, "");;
-    console.log(bkgsrc)
-    document.getElementById('popup_ekcsölikep').src = bkgsrc;
-    document.querySelector('.tanarnev').innerText = tanarok[tanar].Nev;
-    document.querySelector('.funfact').innerText = tanarok[tanar].Funfact;
-    document.querySelector('.tanari').innerText = tanarok[tanar].Tanari;
-    document.querySelector('.jutalmak').innerText = tanarok[tanar].Jutalmak;
-    let tanítottak = tanarok[tanar].TanitottOsztalyok.split(",");
-    tanítottak.forEach(osztaly =>{
-        let li = document.createElement("li");
-        li.innerText = osztaly;
-        osztalyok.appendChild(li);
-    })
+    if (document.URL.includes("tamogato_tanarok.html")){
+
+        let osztalyok = document.getElementById("tanitott_osztalyok");
+        osztalyok.innerHTML = "";
+        document.querySelector('.popup').style.display = 'flex';
+        document.querySelector('.popup').classList.add("menuopen");
+        let bkgsrc = tanarok[tanar].Src.replace(/"/g, "");;
+        console.log(bkgsrc)
+        document.getElementById('popup_ekcsölikep').src = bkgsrc;
+        document.querySelector('.tanarnev').innerText = tanarok[tanar].Nev;
+        document.querySelector('.funfact').innerText = tanarok[tanar].Funfact;
+        document.querySelector('.tanari').innerText = tanarok[tanar].Tanari;
+        document.querySelector('.jutalmak').innerText = tanarok[tanar].Jutalmak;
+        let tanítottak = tanarok[tanar].TanitottOsztalyok.split(",");
+        tanítottak.forEach(osztaly =>{
+            let li = document.createElement("li");
+            li.innerText = osztaly;
+            osztalyok.appendChild(li);
+        })
+    }
+    if (document.URL.includes("modos_merch.html")){
+        document.querySelector('.popup').style.display = 'flex';
+        document.querySelector('.popup').classList.add("menuopen");
+
+
+
+    }
 };
 
 
 function loadCards(tanarok){
-    console.log(tanarok.length)
+    if (document.URL.includes("tamogato_tanarok.html")){
+        console.log(tanarok.length)
+        
+        tanarok.forEach(tanar =>{
+            let card = `<div id="${tanarok.indexOf(tanar)}_card" class="cardgrid cardappear"><div class="card"><div id="${tanarok.indexOf(tanar)}_img" class="ekcsölikep" src="" alt=""></div><div class="courtain" alt=""></div><div class="cardtext"><h1 class="tanarnevcard">${tanar.Nev}</h1></div><div class="cardbutton"><button id="${tanarok.indexOf(tanar) + 1}"  class="open_popup"><h1>Info</h1></button></div></div></div>`
+            document.querySelector('section').innerHTML += card;    
+            
+        })
     
-    tanarok.forEach(tanar =>{
-        let card = `<div id="${tanarok.indexOf(tanar)}_card" class="cardgrid cardappear"><div class="card"><div id="${tanarok.indexOf(tanar)}_img" class="ekcsölikep" src="" alt=""></div><div class="courtain" alt=""></div><div class="cardtext"><h1 class="tanarnevcard">${tanar.Nev}</h1></div><div class="cardbutton"><button id="${tanarok.indexOf(tanar) + 1}"  class="open_popup"><h1>Info</h1></button></div></div></div>`
-        document.querySelector('section').innerHTML += card;    
-        
-    })
+        tanarok.forEach(tanar =>{
+            let bkgsrc = tanar.Src;
+    
+            let index = `${tanarok.indexOf(tanar)}_img`
+            document.getElementById(index).style.backgroundImage = `url(${bkgsrc})`;
+            
+        })
+    
+        document.getElementById("1").addEventListener("click", () =>{
+            popup(0)
+        })
+        document.getElementById("2").addEventListener("click", () =>{
+            popup(1)
+        })
+        document.getElementById("3").addEventListener("click", () =>{
+            popup(2)
+        })
+        document.getElementById("4").addEventListener("click", () =>{
+            popup(3)
+        })
+        document.getElementById("5").addEventListener("click", () =>{
+            popup(4)
+        })
+        document.getElementById("6").addEventListener("click", () =>{
+            popup(5)
+        })
+        document.getElementById("7").addEventListener("click", () =>{
+            popup(6)
+        })
+        document.getElementById("8").addEventListener("click", () =>{
+            popup(7)
+        })
+        document.getElementById("9").addEventListener("click", () =>{
+            popup(8)
+        })
 
-    tanarok.forEach(tanar =>{
-        let bkgsrc = tanar.Src;
+    }
+    if (document.URL.includes("modos_merch.html")){
+        document.getElementById("1").addEventListener("click", () =>{
+            popup(0)
+        })
+    }
+}
 
-        let index = `${tanarok.indexOf(tanar)}_img`
-        document.getElementById(index).style.backgroundImage = `url(${bkgsrc})`;
-        
-    })
 
-    document.getElementById("1").addEventListener("click", () =>{
-        popup(0)
-    })
-    document.getElementById("2").addEventListener("click", () =>{
-        popup(1)
-    })
-    document.getElementById("3").addEventListener("click", () =>{
-        popup(2)
-    })
-    document.getElementById("4").addEventListener("click", () =>{
-        popup(3)
-    })
-    document.getElementById("5").addEventListener("click", () =>{
-        popup(4)
-    })
-    document.getElementById("6").addEventListener("click", () =>{
-        popup(5)
-    })
-    document.getElementById("7").addEventListener("click", () =>{
-        popup(6)
-    })
-    document.getElementById("8").addEventListener("click", () =>{
-        popup(7)
-    })
-    document.getElementById("9").addEventListener("click", () =>{
-        popup(8)
-    })
+
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+
+document.querySelector('.prev').addEventListener("click", (n) =>{
+
+    showSlides(slideIndex += -1);
+})
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slideIndex;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  console.log(  dots[slideIndex-1])
+  dots[slideIndex-1].classList.add = " active";
 }
 
 

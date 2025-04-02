@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <title>Módos merch</title>
     <link rel="stylesheet" href="../static/css/header.css">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/modos.css">
 
     <link rel="shortcut icon" href="../static/images/arabok_icon.png" type="image/x-icon">
 </head>
@@ -34,10 +34,85 @@
         </div>
         <img class="hamburgermenu" src="../static/images/ekcsöli hamburger.png" alt="">
     </nav>
-    <div id="filling">
 
+
+    <div class="popup">
+        <div class="popup_window">
+            <div class="opacitybackground">
+                <div class="productpopup">
+                    <div class="tanarkep">
+                        <div class="slideshow-container">
+                            <div class="mySlides fade">
+                                <img src="img1.jpg" style="width:100%">
+                            </div>
+                        
+                            <div class="mySlides fade">
+                                <img src="img2.jpg" style="width:100%">
+                                <div class="text">Caption Two</div>
+                            </div>
+                        
+                            <div class="mySlides fade">
+                                <img src="img3.jpg" style="width:100%">
+                            </div>
+                        
+                            <!-- Next and previous buttons -->
+                            <a class="prev">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                        </div>
+                        <br>
+                        
+                        <!-- The dots/circles -->
+                        <div style="text-align:center">
+                            <span class="dot" onclick="currentSlide(1)"></span>
+                            <span class="dot" onclick="currentSlide(2)"></span>
+                        </div>
+                        
+                    </div>
+                    <div class="tanardata">
+                        <div><h1>Ár: </h1> <span class="tanari"></span>Ft</div>
+                        <div class="colors">
+                            <p class="red"></p>
+                            <p class="blue"></p>
+                            <p class="black"></p>
+                            <p class="white"></p>
+                        </div>
+                        <div class="cart"></div>
+                    </div>
+                </div>
+                <button class="close">Bezár</button>
+            </div>
+        </div>
     </div>
 
-    <script src="../static/script/script.js"></script>
+    <section>
+        <h1 class="sectionh1">Ruházat</h1>
+        <div class="cardgrid">
+            <div class="card">
+                <img class="ekcsölikep" src="" alt="">
+                <div class="courtain" alt=""></div>
+                <div class="cardtext">
+                    <h1 class="tanarnevcard">Módos Pulóver</h1>
+                </div>
+                <div class="cardbutton">
+                    <button id="1"  class="open_popup"><h1>Info</h1></button>
+                </div>
+            </div>
+
+            <div class="card">
+
+            </div>
+
+        </div>
+
+        <h1 class="sectionh1">Kellélek</h1>
+        <div class="cardgrid">
+            <div class="card"></div>
+            <div class="card"></div>
+
+        </div>
+
+    </section>
+
+    <script type="module" src="../static/script/script.js"></script>
 </body>
 </html>
