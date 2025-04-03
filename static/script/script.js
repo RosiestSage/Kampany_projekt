@@ -1,16 +1,16 @@
-import data from "./tanarinfo.js";
-import {Tanar} from "./tanar.js";
+import tanardata from "./info.js";
+import {Tanar} from "./class.js";
 
 let lastScrollTop = 0;
 let imgHeight = 0;
-//filling height nem mukszik
 let bodyWidth = document.querySelector('body').clientWidth;
 let mrgleftKivonando = 0;
 let navHeight = 0;
 let csukas = 0;
+let slideIndex = 1;
 
 let tanarok = [];
-const datas = data;
+const datas = tanardata;
 
 datas.forEach(dt => {
     tanarok.push(new Tanar(dt))
@@ -23,7 +23,6 @@ window.addEventListener("load", () =>{
    
     bodyWidth = document.querySelector('body').clientWidth
     navHeight = document.querySelector('nav').clientHeight;
-    console.log(navHeight)
     if (bodyWidth <= 450){
        imgHeight = 60;
        csukas = 100;
@@ -187,10 +186,12 @@ document.querySelector(".xbutton").addEventListener("click", () =>{
 
 function popup(tanar){
     if (document.URL.includes("tamogato_tanarok.html")){
-
+        console.log("szexpéter")
         let osztalyok = document.getElementById("tanitott_osztalyok");
         osztalyok.innerHTML = "";
         document.querySelector('.popup').style.display = 'flex';
+        console.log(document.querySelector('.popup_window'))
+        document.querySelector('.popup_window').style.backgroundImage = "url('../static/images/popup_background2.jpg')";
         document.querySelector('.popup').classList.add("menuopen");
         let bkgsrc = tanarok[tanar].Src.replace(/"/g, "");;
         console.log(bkgsrc)
@@ -209,6 +210,7 @@ function popup(tanar){
     if (document.URL.includes("modos_merch.html")){
         document.querySelector('.popup').style.display = 'flex';
         document.querySelector('.popup').classList.add("menuopen");
+        document.querySelector('.popup_window').style.backgroundImage = "url('../static/images/product bkg.avif')";
 
 
 
@@ -271,41 +273,37 @@ function loadCards(tanarok){
 }
 
 
+document.getElementById("tocart").addEventListener("click", () =>{
+    const product = document.getElementById("tocart").closest("[data-info]").querySelector("[data]").innerHTML;
+    const price = document.getElementById("tocart").closest("[data-info]").querySelector(".price").innerHTML;
+    const colour = document.getElementById("tocart").closest("[data-info]").querySelector("[data-active]").classList.value;
+    const size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
+    const amount = document.getElementById("tocart").closest("[data-info]").querySelector("[number]").value;
 
-let slideIndex = 1;
-showSlides(slideIndex);
+    console.log(product);
+    console.log(price);
+    console.log(colour);
+    console.log(size);
+    console.log(amount);
+});
 
-// Next/previous controls
 
-document.querySelector('.prev').addEventListener("click", (n) =>{
+//carousel
 
-    showSlides(slideIndex += -1);
+const buttons = document.querySelectorAll("[data-carousel-button]")
+buttons.forEach(button =>{
+    button.addEventListener("click", () =>{
+        const offset = button.dataset.carouselButton === "next" ? 1: -1;
+        const slides = button.closest("[data-carousel]").querySelector("[data-slides]");
+        const activeSlide = slides.querySelector("[data-active]");
+        let newIndex = [...slides.children].indexOf(activeSlide) + offset;
+        if (newIndex < 0) newIndex = slides.children.length - 1;
+        if (newIndex >= slides.children.length) newIndex = 0;
+
+        slides.children[newIndex].dataset.active = true;
+        delete activeSlide.dataset.active;
+    })
 })
-
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slideIndex;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  console.log(  dots[slideIndex-1])
-  dots[slideIndex-1].classList.add = " active";
-}
-
-
 
 
 

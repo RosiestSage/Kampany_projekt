@@ -1,4 +1,4 @@
-const data = [
+const tanardata = [
     //Név;Tanári;Kiket tanít;Fun Fact;Jutalom1,Jutalom2;Kép src
     'Somjai László;206;10.A,12.B,9.E,9.NY,12.E,11.A,11.B,11.C;Szeretem a futballt, utálom a lilákat. Csak a Fradi;Feleletmentesítő,Dogamentesítő;"../static/images/Somjai László.jpg"',
     'Kottra Richárd;Iroda;11.A; Szeretek főzni, nagyon jó pizzát sütök. Ha van egy kis szabadidőm makettezek, manó- és gombaházakat gyártok.;-;"../static/images/Kottra Richárd.jpg"',
@@ -11,4 +11,9 @@ const data = [
     'Bors Henriette;206;11.A,12.A,9.KNY,12.D,11.D,10.D,13.D,13.E;Chill guy;Feleletmentesítő,Dogamentesítő;"../static/images/Bors Henriette.jpg"',
 ]
 
-export default data;
+const merch = [
+    //Merchnév;Kép1;Kép2;Ár;színek
+]
+
+
+export default tanardata;

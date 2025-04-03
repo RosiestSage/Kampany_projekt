@@ -168,7 +168,7 @@ section{
     width: 50%;
     border-radius: 5%;
     position: fixed;
-    background-image: url("../images/popup_background2.jpg");
+    /* background-image: url("../images/popup_background2.jpg"); */
     background-size: cover;
     background-repeat: no-repeat;
     backdrop-filter: blur(5px);

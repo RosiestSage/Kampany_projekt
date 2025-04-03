@@ -180,7 +180,7 @@ section{
     width: 50%;
     border-radius: 5%;
     position: fixed;
-    background-image: url("../images/popup_background2.jpg");
+    /* background-image: url("../images/popup_background2.jpg"); */
     background-size: cover;
     background-repeat: no-repeat;
     backdrop-filter: blur(5px);
@@ -250,7 +250,7 @@ section{
     background-color: grey;
 }
 
-.tanardata{
+.product{
     height: 80%;
     flex: 50%;
     display: flex;
@@ -261,14 +261,27 @@ section{
 
 }
 
-.tanardata h1{
+.product h1{
     font-size: 150%;
     margin: 0;
 }
 
-.tanardata div {
+.product div {
     padding-bottom: 10px;
 }
+
+.sizes{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
+
+
+
+
 .funfact{
     padding: 20px;
     font-style: italic;
@@ -298,99 +311,127 @@ section{
     box-shadow: inset 2px 2px 10px  rgba(0,0,0) ;
 }
 
-
-
-
-
-
-* {box-sizing:border-box}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
+/* cart */
+.cart{
+    position: fixed;
+    right: 0%;
+    bottom: 0%;
+    height: 150px;
+    width: 150px;
+    border-top-left-radius: 150px;
+    border-left: 1px solid black;
+    border-top:  1px solid black;
+    z-index: 0;
+    background-color: rgba(159, 0, 0, .8);
 }
 
-/* Hide the images by default */
-.mySlides {
-  display: none;
+
+.cart img{
+    position: absolute;
+    width: 80%;
+    right: 0%;
+    bottom: 0%;
 }
 
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+.cart:hover{
+    cursor: pointer;
+    background-color: rgba(159, 0, 0, .9);
+
 }
 
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+#counter{
+    font-size: 30px;
+    color: rgba(159, 0, 0, 1);
+    position: absolute;
+    text-align: center;
+    right: 15px;
+    bottom: 70px;
+    height: 30px;
+    width: 30px;
+    background-color: grey;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px 10px  rgba(0,0,0) ;
+    box-shadow: inset px 1px 10px  rgba(0,0,0) ;
 }
 
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+
+/* carouse */
+.carousel{
+    margin-top: 20px;
+    position: relative;
+    align-self: center;
+    justify-self: center;
 }
 
-/* Caption text */
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
+article{
+    flex: 50%;
+    align-self: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
+.carousel ul{
+    margin: 0;
+    padding: 0;
+    position: relative;
+    height: 300px;
+    width: 230px;
+    list-style-type: none;
 }
 
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
+.slide{
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: 200ms opacity ease-out;
+    transition-delay: 200ms;
 }
 
-.active, .dot:hover {
-  background-color: #717171;
+.slide[data-active]{
+    opacity: 1;
+    z-index: 5;
+    transition-delay: 0ms;
 }
 
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
+.slide > img{
+    display: block;
+    height: 300px;
+    width: 230px;
 }
 
-@keyframes fade {
-  from {opacity: .4}
-  to {opacity: 1}
+.carousel-button{
+    position: absolute;
+    z-index: 10;
+    background: none;
+    border: none;
+    font-size: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, .7);
+    cursor: pointer;
+    border-radius: 2px;
+    padding: 2px;
+
 }
 
+.carousel-button:hover,
+.carousel-button:focus{
+    color: white;
+
+}
+
+.carousel-button.prev{
+    left: 1rem;
+}
+
+.carousel-button.next{
+    right: 1rem;
+}
 
 /* reszponzív */
 
@@ -470,7 +511,7 @@ section{
         flex-direction: column;
     }
 
-    .tanardata{
+    .product{
         align-items: center;
     }
 
@@ -478,7 +519,7 @@ section{
         margin-top: 20px;
     }
 
-    .tanardata div{
+    .product div{
         text-align: center;
     }
 
@@ -573,7 +614,7 @@ section{
         flex-direction: column;
     }
 
-    .tanardata{
+    .product{
         align-items: center;
     }
 
@@ -581,7 +622,7 @@ section{
         margin-top: 20px;
     }
 
-    .tanardata div{
+    .product div{
         text-align: center;
     }
 
@@ -742,7 +783,7 @@ section{
         width: 80%;
     }
 
-    .tanardata{
+    .product{
         align-items: center;
     }
 
@@ -750,7 +791,7 @@ section{
         margin-top: 20px;
     }
 
-    .tanardata div{
+    .product div{
         text-align: center;
     }
 
@@ -825,7 +866,7 @@ section{
         width: 700px;
     }
 
-    .tanardata{
+    .product{
         align-items: center;
     }
 
@@ -833,7 +874,7 @@ section{
         margin-top: 20px;
     }
 
-    .tanardata div{
+    .product div{
         text-align: center;
     }
 

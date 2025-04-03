@@ -35,48 +35,55 @@
         <img class="hamburgermenu" src="../static/images/ekcsöli hamburger.png" alt="">
     </nav>
 
+    
+    <div class="cart">
+        <img src="../static/images/shopping cart.png" alt="">
+        <div id="counter"><p>0</p></div>
+    </div>
 
     <div class="popup">
         <div class="popup_window">
             <div class="opacitybackground">
                 <div class="productpopup">
-                    <div class="tanarkep">
-                        <div class="slideshow-container">
-                            <div class="mySlides fade">
-                                <img src="img1.jpg" style="width:100%">
+                        <article>
+                            <div class="carousel" data-carousel>
+                                <button data-carousel-button="prev" class="carousel-button prev">&#10094</button>
+                                <button data-carousel-button="next" class="carousel-button next">&#10095</button>
+                                <ul data-slides>
+                                    <li class="slide" data-active>
+                                        <img src="../static/images/hoodie.png" alt="">
+                                    </li>
+                                    
+                                    <li class="slide">
+                                        <img src="../static/images/hoodie.png" alt="">
+                                    </li>
+                                    
+                                </ul>
                             </div>
-                        
-                            <div class="mySlides fade">
-                                <img src="img2.jpg" style="width:100%">
-                                <div class="text">Caption Two</div>
-                            </div>
-                        
-                            <div class="mySlides fade">
-                                <img src="img3.jpg" style="width:100%">
-                            </div>
-                        
-                            <!-- Next and previous buttons -->
-                            <a class="prev">&#10094;</a>
-                            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                        </div>
-                        <br>
-                        
-                        <!-- The dots/circles -->
-                        <div style="text-align:center">
-                            <span class="dot" onclick="currentSlide(1)"></span>
-                            <span class="dot" onclick="currentSlide(2)"></span>
-                        </div>
-                        
-                    </div>
-                    <div class="tanardata">
-                        <div><h1>Ár: </h1> <span class="tanari"></span>Ft</div>
+                        </article>
+                    <div class="product" data-info>
+                        <h1 data>Módos Pulcsi</h1>
+                        <div><h1>Ár: </h1> <span class="price">6000</span>Ft</div>
+                        <h1>Szín: </h1>
                         <div class="colors">
                             <p class="red"></p>
                             <p class="blue"></p>
                             <p class="black"></p>
-                            <p class="white"></p>
+                            <p class="white" data-active></p>
                         </div>
-                        <div class="cart"></div>
+                        <h1>Méret: </h1>
+
+                        <div class="sizes">
+                            <p data-active>S</p>
+                            <p>M</p>
+                            <p>L</p>
+                            <p>XL</p>
+                            <p>XXL</p>
+                        </div>
+                        <div>
+                            <input number type="number" value="0">
+                            <button id="tocart">Kosárba</button>
+                        </div>
                     </div>
                 </div>
                 <button class="close">Bezár</button>
