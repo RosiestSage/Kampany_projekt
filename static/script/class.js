@@ -13,3 +13,19 @@ export class Tanar{
         this.Src = split[5];        
     }
 }
+
+export class Product {
+
+    constructor(id, price, name) {
+        this.Size;
+        this.Color;
+
+        this.id = id
+        this.Price = price
+        this.Name = name
+    }
+
+    toServerRepr() {
+        return {"color": this.Color, "size": this.Size, "quantity": Number(this.Amount)}
+    }
+}

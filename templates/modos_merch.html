@@ -41,6 +41,19 @@
         <div id="counter"><p>0</p></div>
     </div>
 
+    <div id="cart_popup">
+        <p id="name"></p>
+        <p id="price"></p>
+        <p id="colour"></p>
+        <p id="size"></p>
+        <p id="amount"></p>
+
+        <button id="purchaseButton">Purchase</button>
+        <button class="close2">Bezár</button>
+
+    </div>
+
+
     <div class="popup">
         <div class="popup_window">
             <div class="opacitybackground">
@@ -55,14 +68,14 @@
                                     </li>
                                     
                                     <li class="slide">
-                                        <img src="../static/images/hoodie.png" alt="">
+                                        <img src="../static/images/hoodie_back.png" alt="">
                                     </li>
                                     
                                 </ul>
                             </div>
                         </article>
                     <div class="product" data-info>
-                        <h1 data>Módos Pulcsi</h1>
+                        <h1 id="hoodie" data>Módos Pulcsi</h1>
                         <div><h1>Ár: </h1> <span class="price">6000</span>Ft</div>
                         <h1>Szín: </h1>
                         <div class="colors">
@@ -81,7 +94,7 @@
                             <p>XXL</p>
                         </div>
                         <div>
-                            <input number type="number" value="0">
+                            <input number type="number" value="1">
                             <button id="tocart">Kosárba</button>
                         </div>
                     </div>

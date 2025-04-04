@@ -1,5 +1,5 @@
 import tanardata from "./info.js";
-import {Tanar} from "./class.js";
+import {Tanar, Product} from "./class.js";
 
 let lastScrollTop = 0;
 let imgHeight = 0;
@@ -9,6 +9,12 @@ let navHeight = 0;
 let csukas = 0;
 let slideIndex = 1;
 
+
+
+/**
+ * @type {Array<Product>}
+ */
+const cart = [];
 let tanarok = [];
 const datas = tanardata;
 
@@ -16,6 +22,26 @@ datas.forEach(dt => {
     tanarok.push(new Tanar(dt))
 });
 
+
+/** @type {Array<Product>} */
+const products = [new Product("hoodie", 6000, "Módos Pulcsi")];
+
+fetch('/get-products', {
+    method: 'GET'
+})
+.then(response => response.json())
+.then(data => {
+    if (data.error) {
+        throw new Error(data.error)
+    } else {
+        data.forEach((value) => {
+            products.push(new Product(value.id, value.price, value.name))
+        })
+    }
+})
+.catch(error => {
+    console.error('Error fetching products:', error);
+});
 
 window.addEventListener("load", () =>{
     setTimeout(function () { loadCards(tanarok)}, 100)
@@ -274,19 +300,44 @@ function loadCards(tanarok){
 
 
 document.getElementById("tocart").addEventListener("click", () =>{
-    const product = document.getElementById("tocart").closest("[data-info]").querySelector("[data]").innerHTML;
-    const price = document.getElementById("tocart").closest("[data-info]").querySelector(".price").innerHTML;
-    const colour = document.getElementById("tocart").closest("[data-info]").querySelector("[data-active]").classList.value;
-    const size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
-    const amount = document.getElementById("tocart").closest("[data-info]").querySelector("[number]").value;
+    const product_id = document.getElementById("tocart").closest("[data-info]").querySelector("[data]").id;
 
-    console.log(product);
-    console.log(price);
-    console.log(colour);
-    console.log(size);
-    console.log(amount);
+    const product = products.find((value) => {return value.id === product_id})
+
+    if (product === undefined) {
+        alert("Product not found.")
+    }
+
+
+
+    product.Color = document.getElementById("tocart").closest("[data-info]").querySelector("[data-active]").classList.value;
+    product.Size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
+    product.Amount = document.getElementById("tocart").closest("[data-info]").querySelector("[number]").value;
+
+
+    //name;price;colour;size;amount
+    document.getElementById("name").innerHTML = product.Name;
+    document.getElementById("price").innerHTML = product.Price;
+    document.getElementById("colour").innerHTML = product.Color;
+    document.getElementById("size").innerHTML = product.Size;
+    document.getElementById("amount").innerHTML = product.Amount;
+    
+    cart.push(product)
+
+
+    //Remove
+    // cart.pop(cart.find((value) => {return value.id == product.id && product.Size == value.Size && product.Color == value.Color}))
+    //+html-ből törlés
+    
+    
+    console.log(cart)
+    
+
+
 });
 
+
+//módos
 
 //carousel
 
@@ -307,6 +358,12 @@ buttons.forEach(button =>{
 
 
 
+document.querySelector(".cart").addEventListener("click", () =>{
+    //#cart_popup
+    document.getElementById("cart_popup").style.display = "block";
+})
+
+
 
 document.querySelector('.close').addEventListener("click", () =>{
     document.querySelector(".popup").classList = "popup menuclose";
@@ -317,22 +374,37 @@ document.querySelector('.close').addEventListener("click", () =>{
         document.querySelector(".popup").style.display = "none";
         document.querySelector(".popup").classList = "popup";
     }, 300)
+
 });
 
-
+document.querySelector('.close2').addEventListener("click", () =>{
+        document.getElementById("cart_popup").style.display = "none"
+});
 //~~~~~~~~~~~~~~~~~~~~~~~~~Csoki~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
-/*
 document.getElementById("purchaseButton").addEventListener("click", () => {
+    const cart_data = {};
+    
+    
+    Object.keys(cart).forEach((key) => {
+        const array = cart[key]
+        cart_data[key] = []
+        array.forEach((product) => {
+            cart_data[key].push(product.toServerRepr())
+        })
+    });
 
+
+    console.log(JSON.stringify(cart_data))
+    return
     fetch('/create-checkout-session', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(cart)
+        body: JSON.stringify(cart_data)
     })
     .then(response => response.json())
     .then(data => {
@@ -347,4 +419,3 @@ document.getElementById("purchaseButton").addEventListener("click", () => {
         alert('Error creating payment session');
     });
 });
-*/
