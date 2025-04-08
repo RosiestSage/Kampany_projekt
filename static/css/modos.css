@@ -271,11 +271,42 @@ section{
     padding-bottom: 10px;
 }
 
+.pricetag{
+    margin: 20px 0;
+
+}
+
 .sizes{
     width: 80%;
     display: flex;
     justify-content: space-around;
+    margin: 20px 0;
 }
+
+.sizes p{
+    height: 40px;
+    width: 40px;
+    margin: auto;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px black;
+
+}
+
+.sizes p:hover{
+    box-shadow: 2px 2px 5px black, inset 2px 2px 3px  black;
+    cursor: pointer;
+}
+
+.sizes > [data-active]{
+    box-shadow: 2px 2px 5px black, inset 2px 2px 3px  black;
+
+}
+
+
 
 
 #cart_popup{
@@ -456,6 +487,69 @@ article{
     right: 1rem;
 }
 
+
+.colors{
+    margin: 20px 0;
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.colors p{
+    margin: 0;
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    box-shadow: 2px 2px 5px black;
+}
+
+.colors p:hover{
+    box-shadow: 2px 2px 5px black, inset 2px 2px 3px  black;
+    cursor: pointer;
+
+}
+
+.colors > [data-active]{
+    box-shadow: 2px 2px 5px black, inset 2px 2px 3px  black;
+
+}
+
+.red{
+    background-color: red;
+}
+
+.white{
+    background-color: white;
+}
+
+.black{
+    background-color: rgb(24, 23, 23);
+}
+
+.blue{
+    background-color: blue;
+}
+
+
+#tocart{
+    margin: 0;
+    padding: 0;
+    border: unset;
+    background-color: rgb(75, 75, 230);
+    height: 50px;
+    width: 100px;
+    font-size: 20px;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px black;
+}
+
+#tocart:hover{
+    box-shadow: 2px 2px 5px black, inset 2px 2px 5px  black;
+    cursor: pointer;
+}
 /* reszponzív */
 
 /* telefon */

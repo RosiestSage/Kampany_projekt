@@ -120,7 +120,6 @@ document.addEventListener("scroll", (e) => {
         document.querySelector('.arabok').classList = ["arabok vanish"];
         navHeight = document.querySelector('nav').clientHeight;
         if (bodyWidth <= 450){
-            console.log("mosmivan")
            document.querySelector(".nav_options").classList = ["nav_options vanish"];
            document.querySelector(".hamburgermenu").classList = ["hamburgermenu appear"]
         }
@@ -212,15 +211,13 @@ document.querySelector(".xbutton").addEventListener("click", () =>{
 
 function popup(tanar){
     if (document.URL.includes("tamogato_tanarok.html")){
-        console.log("szexpéter")
+
         let osztalyok = document.getElementById("tanitott_osztalyok");
         osztalyok.innerHTML = "";
         document.querySelector('.popup').style.display = 'flex';
-        console.log(document.querySelector('.popup_window'))
         document.querySelector('.popup_window').style.backgroundImage = "url('../static/images/popup_background2.jpg')";
         document.querySelector('.popup').classList.add("menuopen");
         let bkgsrc = tanarok[tanar].Src.replace(/"/g, "");;
-        console.log(bkgsrc)
         document.getElementById('popup_ekcsölikep').src = bkgsrc;
         document.querySelector('.tanarnev').innerText = tanarok[tanar].Nev;
         document.querySelector('.funfact').innerText = tanarok[tanar].Funfact;
@@ -299,42 +296,7 @@ function loadCards(tanarok){
 }
 
 
-document.getElementById("tocart").addEventListener("click", () =>{
-    const product_id = document.getElementById("tocart").closest("[data-info]").querySelector("[data]").id;
 
-    const product = products.find((value) => {return value.id === product_id})
-
-    if (product === undefined) {
-        alert("Product not found.")
-    }
-
-
-
-    product.Color = document.getElementById("tocart").closest("[data-info]").querySelector("[data-active]").classList.value;
-    product.Size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
-    product.Amount = document.getElementById("tocart").closest("[data-info]").querySelector("[number]").value;
-
-
-    //name;price;colour;size;amount
-    document.getElementById("name").innerHTML = product.Name;
-    document.getElementById("price").innerHTML = product.Price;
-    document.getElementById("colour").innerHTML = product.Color;
-    document.getElementById("size").innerHTML = product.Size;
-    document.getElementById("amount").innerHTML = product.Amount;
-    
-    cart.push(product)
-
-
-    //Remove
-    // cart.pop(cart.find((value) => {return value.id == product.id && product.Size == value.Size && product.Color == value.Color}))
-    //+html-ből törlés
-    
-    
-    console.log(cart)
-    
-
-
-});
 
 
 //módos
@@ -358,14 +320,10 @@ buttons.forEach(button =>{
 
 
 
-document.querySelector(".cart").addEventListener("click", () =>{
-    //#cart_popup
-    document.getElementById("cart_popup").style.display = "block";
-})
-
 
 
 document.querySelector('.close').addEventListener("click", () =>{
+    console.log("szex")
     document.querySelector(".popup").classList = "popup menuclose";
 
     setTimeout(function (){
@@ -374,14 +332,98 @@ document.querySelector('.close').addEventListener("click", () =>{
         document.querySelector(".popup").style.display = "none";
         document.querySelector(".popup").classList = "popup";
     }, 300)
-
+    
 });
 
 document.querySelector('.close2').addEventListener("click", () =>{
-        document.getElementById("cart_popup").style.display = "none"
+    document.getElementById("cart_popup").style.display = "none"
 });
 //~~~~~~~~~~~~~~~~~~~~~~~~~Csoki~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+let activeIndex = 0;
+const colours = document.querySelector(".colors").children;
+for (let i = 0; i < colours.length; i++){
+    colours[i].addEventListener("click", () =>{
+        colours[i].dataset.active = true;
+        activeIndex = i;
+        for (let m = 0; m < colours.length; m++){
+            if (activeIndex != m){
+                delete colours[m].dataset.active;
+            }
+
+        }
+    })
+}
+
+let sizeIndex = 0;
+const sizes = document.querySelector(".sizes").children;
+for (let i = 0; i < sizes.length; i++){
+    sizes[i].addEventListener("click", () =>{
+        sizes[i].dataset.active = true;
+        sizeIndex = i;
+        for (let m = 0; m < sizes.length; m++){
+            if (sizeIndex != m){
+                delete sizes[m].dataset.active;
+            }
+
+        }
+    })
+}
+
+
+
+document.getElementById("tocart").addEventListener("click", () =>{
+    let product_id = document.getElementById("tocart").closest("[data-info]").querySelector("[data]").id;
+
+    let product = products.find((value) => {return value.id === product_id})
+
+    if (product === undefined) {
+        alert("Product not found.")
+    }
+
+
+
+    product.Color = document.getElementById("tocart").closest("[data-info]").querySelector("[data-active]").classList.value;
+    product.Size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
+    //product.Amount = document.getElementById("tocart").closest("[data-info]").querySelector("[number]").value;
+    
+    console.log(product)
+    cart.push(product)
+
+    cart.forEach(carted =>{
+        // document.getElementById("cart_popup").innerHTML += ` 
+        // <div>
+        //     <p>${carted.Name}</p>
+        //     <p>${carted.Color}</p>
+        //     <p>${carted.Size}</p>
+        //     <p></p>
+        //     <p></p>
+        // </div>`
+        console.log(carted)
+    })
+
+/*
+    //name;price;colour;size;amount
+    document.getElementById("name").innerHTML = product.Name;
+    document.getElementById("price").innerHTML = product.Price;
+    document.getElementById("colour").innerHTML = product.Color;
+    document.getElementById("size").innerHTML = product.Size;
+    //document.getElementById("amount").innerHTML = product.Amount;
+*/
+
+
+    //Remove
+    // cart.pop(cart.find((value) => {return value.id == product.id && product.Size == value.Size && product.Color == value.Color}))
+    //+html-ből törlés
+    
+    
+
+});
+
+document.querySelector(".cart").addEventListener("click", () =>{
+    //#cart_popup
+    document.getElementById("cart_popup").style.display = "block";
+})
 
 
 document.getElementById("purchaseButton").addEventListener("click", () => {
@@ -395,8 +437,8 @@ document.getElementById("purchaseButton").addEventListener("click", () => {
             cart_data[key].push(product.toServerRepr())
         })
     });
-
-
+    
+    
     console.log(JSON.stringify(cart_data))
     return
     fetch('/create-checkout-session', {
