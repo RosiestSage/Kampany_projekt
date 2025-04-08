@@ -39,8 +39,9 @@ export class Merch{
     constructor(sor) {
         const split = sor.split(";")
         this.Id = split[0];   
-        this.MerchName = split[1];   
-        this.Sources = split[2];  
+        this.MerchName = split[1];  
+        let sources = split[2].split(",")
+        this.Sources = sources;  
         this.Ár = Number(split[3]);   
         this.Colours = split[4];   
 

@@ -13,7 +13,8 @@ const tanardata = [
 
 const merch = [
     //Id;Merchnév;Kép1,Kép2;Ár;színek
-    'hoodie;Módos Pulcsi;"../static/images/hoodie.png","../static/images/hoodie.png";6000;black,white,red,blue'
+    'hoodie;Módos Pulóver;"../static/images/hoodie.png","../static/images/hoodie.png";6000;black,white,red,blue',
+    'hoodie;Módos Póló;"../static/images/hoodie.png","../static/images/hoodie.png";6000;black,white,red,blue'
 
 ]
 

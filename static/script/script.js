@@ -51,7 +51,7 @@ fetch('/get-products', {
 });
 
 window.addEventListener("load", () =>{
-    setTimeout(function () { loadCards(tanarok)}, 100)
+    setTimeout(function () { loadCards(tanarok, merchinfo)}, 100)
 
    
     bodyWidth = document.querySelector('body').clientWidth
@@ -296,8 +296,44 @@ function loadCards(tanarok, merchinfo){
 
     }
     if (document.URL.includes("modos_merch.html")){
-        document.getElementById("1").addEventListener("click", () =>{
+        let index = 0;
+        merchinfo.forEach(merch =>{
+            if (merch.Id == "hoodie"){
+                document.getElementById("ruha").innerHTML += `
+                <div class="card">
+                    <img id="${index}${merch.Id}_img" class="ekcsölikep" src="" alt="">
+                    <div class="courtain" alt=""></div>
+                    <div class="cardtext">
+                        <h1 class="tanarnevcard">${merch.MerchName}</h1>
+                    </div>
+                    <div class="cardbutton">
+                        <button id="${index}"  class="open_popup"><h1>Info</h1></button>
+                    </div>
+                </div>`
+
+            }
+
+
+            console.log(document.getElementById(`${merch.Id}_img`))
+            console.log(merch.Sources[0])
+            document.getElementById(`${index}${merch.Id}_img`).style.backgroundImage = `url(${merch.Sources[0]})`;
+
+            index++
+        })
+
+
+
+        document.getElementById("0").addEventListener("click", () =>{
             popup(0)
+        })
+        document.getElementById("1").addEventListener("click", () =>{
+            popup(1)
+        })
+        document.getElementById("2").addEventListener("click", () =>{
+            popup(2)
+        })
+        document.getElementById("3").addEventListener("click", () =>{
+            popup(3)
         })
     }
 }
