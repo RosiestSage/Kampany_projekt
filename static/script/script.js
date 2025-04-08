@@ -1,5 +1,5 @@
 import tanardata from "./info.js";
-import {Tanar, Product} from "./class.js";
+import {Tanar, Product, Merch} from "./class.js";
 
 let lastScrollTop = 0;
 let imgHeight = 0;
@@ -11,17 +11,24 @@ let slideIndex = 1;
 
 
 
+
 /**
  * @type {Array<Product>}
  */
 const cart = [];
 let tanarok = [];
-const datas = tanardata;
+const tanardatas = tanardata.tanardata;
 
-datas.forEach(dt => {
+let merchinfo = [];
+const merchdata = tanardata.merch;
+
+tanardatas.forEach(dt => {
     tanarok.push(new Tanar(dt))
 });
 
+merchdata.forEach(dt => {
+    merchinfo.push(new Merch(dt))
+})
 
 /** @type {Array<Product>} */
 const products = [new Product("hoodie", 6000, "Módos Pulcsi")];
@@ -241,7 +248,7 @@ function popup(tanar){
 };
 
 
-function loadCards(tanarok){
+function loadCards(tanarok, merchinfo){
     if (document.URL.includes("tamogato_tanarok.html")){
         console.log(tanarok.length)
         
@@ -373,6 +380,7 @@ for (let i = 0; i < sizes.length; i++){
 
 
 document.getElementById("tocart").addEventListener("click", () =>{
+    console.log(cart)
     let product_id = document.getElementById("tocart").closest("[data-info]").querySelector("[data]").id;
 
     let product = products.find((value) => {return value.id === product_id})
@@ -387,7 +395,7 @@ document.getElementById("tocart").addEventListener("click", () =>{
     product.Size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
     //product.Amount = document.getElementById("tocart").closest("[data-info]").querySelector("[number]").value;
     
-    console.log(product)
+    //console.log(product)
     cart.push(product)
 
     cart.forEach(carted =>{
@@ -399,17 +407,18 @@ document.getElementById("tocart").addEventListener("click", () =>{
         //     <p></p>
         //     <p></p>
         // </div>`
-        console.log(carted)
+        //console.log(carted)
     })
 
-/*
+    console.log(cart)
+
     //name;price;colour;size;amount
     document.getElementById("name").innerHTML = product.Name;
     document.getElementById("price").innerHTML = product.Price;
     document.getElementById("colour").innerHTML = product.Color;
     document.getElementById("size").innerHTML = product.Size;
     //document.getElementById("amount").innerHTML = product.Amount;
-*/
+
 
 
     //Remove

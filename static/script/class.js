@@ -29,3 +29,22 @@ export class Product {
         return {"color": this.Color, "size": this.Size, "quantity": Number(this.Amount)}
     }
 }
+
+
+export class Merch{
+    /**
+    //Id;Merchnév;Kép1,Kép2;Ár;színek
+     
+     */
+    constructor(sor) {
+        const split = sor.split(";")
+        this.Id = split[0];   
+        this.MerchName = split[1];   
+        this.Sources = split[2];  
+        this.Ár = Number(split[3]);   
+        this.Colours = split[4];   
+
+
+
+    }
+}

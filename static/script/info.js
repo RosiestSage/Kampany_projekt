@@ -12,9 +12,12 @@ const tanardata = [
 ]
 
 const merch = [
-    //Id;Merchnév;Kép1;Kép2;Ár;színek
+    //Id;Merchnév;Kép1,Kép2;Ár;színek
+    'hoodie;Módos Pulcsi;"../static/images/hoodie.png","../static/images/hoodie.png";6000;black,white,red,blue'
 
 ]
 
-
-export default tanardata;
+export default {
+    tanardata,
+    merch,
+};
