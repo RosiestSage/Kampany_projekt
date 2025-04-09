@@ -380,9 +380,6 @@ document.querySelector('.close').addEventListener("click", () =>{
     
 });
 
-document.querySelector('.close2').addEventListener("click", () =>{
-    document.getElementById("cart_popup").style.display = "none"
-});
 //~~~~~~~~~~~~~~~~~~~~~~~~~Csoki~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 let activeIndex = 0;
@@ -419,7 +416,7 @@ for (let i = 0; i < sizes.length; i++){
 
 
 document.getElementById("tocart").addEventListener("click", () =>{
-
+    document.getElementById("cart_popup").innerHTML = ""
     let product_id = document.getElementById("tocart").closest("[data-info]").querySelector("[data]").id;
 
     let product = products.find((value) => {return value.id === product_id})
@@ -430,7 +427,7 @@ document.getElementById("tocart").addEventListener("click", () =>{
     
     let newProduct = new Product(product.id, product.Price, product.Name)
 
-
+    
     newProduct.Color = document.getElementById("tocart").closest("[data-info]").querySelector("[data-active]").classList.value;
     newProduct.Size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
     //product.Amount = document.getElementById("tocart").closest("[data-info]").querySelector("[number]").value;
@@ -451,9 +448,9 @@ document.getElementById("tocart").addEventListener("click", () =>{
     })
 
 
+    
 
-
-
+    
 
     //name;price;colour;size;amount
     /*
@@ -478,6 +475,9 @@ document.querySelector(".cart").addEventListener("click", () =>{
     <button class="close2">Bezár</button>`
 })
 
+document.querySelector('.close2').addEventListener("click", () =>{
+                document.getElementById("cart_popup").style.display = "none"
+});
 
 document.getElementById("purchaseButton").addEventListener("click", () => {
     const cart_data = {};
