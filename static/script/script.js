@@ -367,7 +367,7 @@ function popup(tanar){
                     <div class="product" data-info>
                     <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
                     <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
-                    <h1>Szín: </h1>
+                    
                     
                     
                     <div>
