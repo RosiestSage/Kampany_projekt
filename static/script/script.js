@@ -329,12 +329,15 @@ function loadCards(tanarok, merchinfo){
         document.getElementById("1").addEventListener("click", () =>{
             popup(1)
         })
+
+        /*
         document.getElementById("2").addEventListener("click", () =>{
             popup(2)
         })
         document.getElementById("3").addEventListener("click", () =>{
             popup(3)
         })
+            */
     }
 }
 
@@ -366,7 +369,6 @@ buttons.forEach(button =>{
 
 
 document.querySelector('.close').addEventListener("click", () =>{
-    console.log("szex")
     document.querySelector(".popup").classList = "popup menuclose";
 
     setTimeout(function (){
@@ -385,6 +387,7 @@ document.querySelector('.close2').addEventListener("click", () =>{
 
 let activeIndex = 0;
 const colours = document.querySelector(".colors").children;
+console.log("szex")
 for (let i = 0; i < colours.length; i++){
     colours[i].addEventListener("click", () =>{
         colours[i].dataset.active = true;
@@ -416,39 +419,44 @@ for (let i = 0; i < sizes.length; i++){
 
 
 document.getElementById("tocart").addEventListener("click", () =>{
-    console.log(cart)
+
     let product_id = document.getElementById("tocart").closest("[data-info]").querySelector("[data]").id;
 
     let product = products.find((value) => {return value.id === product_id})
-
+    
     if (product === undefined) {
         alert("Product not found.")
     }
+    
+    let newProduct = new Product(product.id, product.Price, product.Name)
 
 
-
-    product.Color = document.getElementById("tocart").closest("[data-info]").querySelector("[data-active]").classList.value;
-    product.Size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
+    newProduct.Color = document.getElementById("tocart").closest("[data-info]").querySelector("[data-active]").classList.value;
+    newProduct.Size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
     //product.Amount = document.getElementById("tocart").closest("[data-info]").querySelector("[number]").value;
     
     //console.log(product)
-    cart.push(product)
+    cart.push(newProduct)
 
     cart.forEach(carted =>{
-        // document.getElementById("cart_popup").innerHTML += ` 
-        // <div>
-        //     <p>${carted.Name}</p>
-        //     <p>${carted.Color}</p>
-        //     <p>${carted.Size}</p>
-        //     <p></p>
-        //     <p></p>
-        // </div>`
-        //console.log(carted)
+        document.getElementById("cart_popup").innerHTML += ` 
+        <div>
+            <p>${carted.Name}</p>
+            <p>${carted.Color}</p>
+            <p>${carted.Size}</p>
+            <p></p>
+            <p></p>
+        </div>`
+        console.log(carted)
     })
 
-    console.log(cart)
+
+
+
+
 
     //name;price;colour;size;amount
+    /*
     document.getElementById("name").innerHTML = product.Name;
     document.getElementById("price").innerHTML = product.Price;
     document.getElementById("colour").innerHTML = product.Color;
@@ -460,14 +468,14 @@ document.getElementById("tocart").addEventListener("click", () =>{
     //Remove
     // cart.pop(cart.find((value) => {return value.id == product.id && product.Size == value.Size && product.Color == value.Color}))
     //+html-ből törlés
-    
-    
-
+    */
 });
 
 document.querySelector(".cart").addEventListener("click", () =>{
     //#cart_popup
     document.getElementById("cart_popup").style.display = "block";
+    document.getElementById("cart_popup").innerHTML += `<button id="purchaseButton">Purchase</button>
+    <button class="close2">Bezár</button>`
 })
 
 
