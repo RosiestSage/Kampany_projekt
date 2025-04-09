@@ -42,8 +42,9 @@ export class Merch{
         this.MerchName = split[1];  
         let sources = split[2].split(",")
         this.Sources = sources;  
-        this.Ár = Number(split[3]);   
-        this.Colours = split[4];   
+        this.Price = Number(split[3]);   
+        let colors = split[4].split(",")
+        this.Colours = colors;   
 
 
 

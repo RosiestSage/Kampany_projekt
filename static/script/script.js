@@ -31,7 +31,11 @@ merchdata.forEach(dt => {
 })
 
 /** @type {Array<Product>} */
-const products = [new Product("hoodie", 6000, "Módos Pulcsi")];
+const products = [new Product("hoodie", 6000, "Módos Pulcsi"),
+                    new Product("tshirt", 5000, "Módos Póló"),
+                    new Product("mug", 2000, "Módos Bögre"),
+                    new Product("sticker", 500, "Módos Matrica"),
+];
 
 fetch('/get-products', {
     method: 'GET'
@@ -111,6 +115,10 @@ window.addEventListener("load", () =>{
             document.querySelector('.a11').style.marginLeft = 0;
             document.querySelector('.a11').innerText = "11.A";
     }
+
+
+
+    
 })
 
 
@@ -242,11 +250,306 @@ function popup(tanar){
         document.querySelector('.popup').classList.add("menuopen");
         document.querySelector('.popup_window').style.backgroundImage = "url('../static/images/product bkg.avif')";
 
+        if (document.URL.includes("modos_merch.html")){
+            console.log("megolom mafam")
+                if (tanar == 0){
+                    document.querySelector(".opacitybackground").innerHTML = `                
+                    <div class="productpopup">
+                            <article>
+                                <div class="carousel" data-carousel>
+                                    <button data-carousel-button="prev" class="carousel-button prev">&#10094</button>
+                                    <button data-carousel-button="next" class="carousel-button next">&#10095</button>
+                                    <ul data-slides>
+                                        <li class="slide" data-active>
+                                            <img src=${merchinfo[tanar].Sources[0]} alt="">
+                                        </li>
+                                        
+                                        <li class="slide">
+                                            <img src=${merchinfo[tanar].Sources[1]} alt="">
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </article>
+                        <div class="product" data-info>
+                            <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
+                            <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
+                            <h1>Szín: </h1>
+                            <div class="colors">
+                                <p class="${merchinfo[tanar].Colours[0]}"></p>
+                                <p class="${merchinfo[tanar].Colours[1]}"></p>
+                                <p class="${merchinfo[tanar].Colours[2]}"></p>
+                                <p class="${merchinfo[tanar].Colours[3]}"></p>
+                            </div>
+                            <h1>Méret: </h1>
+    
+                            <div class="sizes">
+                                <p>S</p>
+                                <p>M</p>
+                                <p>L</p>
+                                <p>XL</p>
+                                <p>XXL</p>
+                            </div>
+                            <div>
+                            <button id="tocart">Kosárba</button>
+                            </div>
+                            </div>
+                            </div>
+                    <button class="close">Bezár</button>`
+                    ColorAndSize()
+    
+                }
+                
+                if (tanar == 1){
+                    
+                    document.querySelector(".opacitybackground").innerHTML = `                
+                    <div class="productpopup">
+                    <article>
+                    <div class="carousel" data-carousel>
+    
+                    <ul data-slides>
+                    <li class="slide" data-active>
+                    <img src=${merchinfo[tanar].Sources[0]} alt="">
+                    </li>
+                    </ul>
+                    </div>
+                    </article>
+                    <div class="product" data-info>
+                    <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
+                    <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
+                    <h1>Szín: </h1>
+                    <div class="colors">
+                    <p class="${merchinfo[tanar].Colours[0]}"></p>
+                    <p class="${merchinfo[tanar].Colours[1]}"></p>
+                    <p class="${merchinfo[tanar].Colours[2]}"></p>
+                    <p class="${merchinfo[tanar].Colours[3]}"></p>
+                    </div>
+                    <h1>Méret: </h1>
+                    
+                    <div class="sizes">
+                            <p>S</p>
+                            <p>M</p>
+                            <p>L</p>
+                            <p>XL</p>
+                            <p>XXL</p>
+                    </div>
+                    <div>
+                        <button id="tocart">Kosárba</button>
+                    </div>
+                    </div>
+                    </div>
+                    <button class="close">Bezár</button>`
+                
+
+                    ColorAndSize()
+                }
+
+                if (tanar == 2){
+                    
+                    document.querySelector(".opacitybackground").innerHTML = `                
+                    <div class="productpopup">
+                     <article>
+                        <div class="carousel" data-carousel>
+                            <button data-carousel-button="prev" class="carousel-button prev">&#10094</button>
+                            <button data-carousel-button="next" class="carousel-button next">&#10095</button>
+                            <ul data-slides>
+                                <li class="slide" data-active>
+                                    <img src=${merchinfo[tanar].Sources[0]} alt="">
+                                </li>
+                                        
+                                <li class="slide">
+                                    <img src=${merchinfo[tanar].Sources[1]} alt="">
+                                </li>
+                                        
+                            </ul>
+                        </div>
+                    </article>
+                    <div class="product" data-info>
+                    <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
+                    <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
+                    <h1>Szín: </h1>
+                    
+                    
+                    <div>
+                        <button id="tocart">Kosárba</button>
+                    </div>
+                    </div>
+                    </div>
+                    <button class="close">Bezár</button>`
+                
+
+    
+                }
+
+                if (tanar == 3){
+                    document.querySelector(".opacitybackground").innerHTML = `                
+                    <div class="productpopup">
+                            <article>
+                                <div class="carousel" data-carousel>
+                                    <button data-carousel-button="prev" class="carousel-button prev">&#10094</button>
+                                    <button data-carousel-button="next" class="carousel-button next">&#10095</button>
+                                    <ul data-slides>
+                                        <li class="slide" data-active>
+                                            <img src=${merchinfo[tanar].Sources[0]} alt="">
+                                        </li>
+                                        
+                                        <li class="slide">
+                                            <img src=${merchinfo[tanar].Sources[1]} alt="">
+                                        </li>
+
+                                        <li class="slide">
+                                            <img src=${merchinfo[tanar].Sources[2]} alt="">
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </article>
+                        <div class="product" data-info>
+                            <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
+                            <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
+                            
+                            <h1>Típus: </h1>
+    
+                            <div class="sizes">
+                                <p>S</p>
+                                <p>M</p>
+                                <p>L</p>
+                            </div>
+                            <div>
+                            <button id="tocart">Kosárba</button>
+                            </div>
+                            </div>
+                            </div>
+                    <button class="close">Bezár</button>`
+                    Size()
+    
+                }
+    
+          
+        }
+    
+
+
+
+        const buttons = document.querySelectorAll("[data-carousel-button]")
+        buttons.forEach(button =>{
+        button.addEventListener("click", () =>{
+            const offset = button.dataset.carouselButton === "next" ? 1: -1;
+            const slides = button.closest("[data-carousel]").querySelector("[data-slides]");
+            const activeSlide = slides.querySelector("[data-active]");
+            let newIndex = [...slides.children].indexOf(activeSlide) + offset;
+            if (newIndex < 0) newIndex = slides.children.length - 1;
+            if (newIndex >= slides.children.length) newIndex = 0;
+    
+            slides.children[newIndex].dataset.active = true;
+            delete activeSlide.dataset.active;
+        })
+    })
+    
+    
+
+    
+    
+            document.querySelector('.close').addEventListener("click", () =>{
+            document.querySelector(".popup").classList = "popup menuclose";
+    
+            setTimeout(function (){
+                document.querySelector(".popup").style.opacity = 0;
+                document.querySelector(".popup").style.zIndex = 0;
+                document.querySelector(".popup").style.display = "none";
+                document.querySelector(".popup").classList = "popup";
+            }, 300)
+            
+        });
+    
+        document.getElementById("tocart").addEventListener("click", () =>{
+            let product_id = document.getElementById("tocart").closest("[data-info]").querySelector("[data]").id;
+    
+            let product = products.find((value) => {return value.id === product_id})
+            
+            if (product === undefined) {
+                alert("Product not found.")
+            }
+            
+            let newProduct = new Product(product.id, product.Price, product.Name)
+            console.log(newProduct.id)
+            if (newProduct.id != "mug" &&  newProduct.id != "sticker"){
+
+                newProduct.Color = document.getElementById("tocart").closest("[data-info]").querySelector("[data-active]").classList.value;
+                newProduct.Size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
+            }
+            //product.Amount = document.getElementById("tocart").closest("[data-info]").querySelector("[number]").value;
+            
+            //console.log(product)
+            cart.push(newProduct)
+    
+            
+    
+            
+    
+            //name;price;colour;size;amount
+            /*
+            document.getElementById("name").innerHTML = product.Name;
+            document.getElementById("price").innerHTML = product.Price;
+            document.getElementById("colour").innerHTML = product.Color;
+            document.getElementById("size").innerHTML = product.Size;
+            //document.getElementById("amount").innerHTML = product.Amount;
+    
+    
+    
+            //Remove
+            // cart.pop(cart.find((value) => {return value.id == product.id && product.Size == value.Size && product.Color == value.Color}))
+            //+html-ből törlés
+            */
+        });
+    
+    
 
 
     }
 };
 
+
+function ColorAndSize(){
+    Size();
+    Colour();
+
+}
+
+function Size(){
+    let sizeIndex = 0;
+    const sizes = document.querySelector(".sizes").children;
+    for (let i = 0; i < sizes.length; i++){
+        sizes[i].addEventListener("click", () =>{
+            sizes[i].dataset.active = true;
+            sizeIndex = i;
+            for (let m = 0; m < sizes.length; m++){
+                if (sizeIndex != m){
+                    delete sizes[m].dataset.active;
+                }
+
+            }
+        })
+    }
+}
+
+function Colour(){
+    let activeIndex = 0;
+    const colours = document.querySelector(".colors").children;
+    console.log("szex")
+    for (let i = 0; i < colours.length; i++){
+        colours[i].addEventListener("click", () =>{
+            colours[i].dataset.active = true;
+            activeIndex = i;
+            for (let m = 0; m < colours.length; m++){
+                if (activeIndex != m){
+                    delete colours[m].dataset.active;
+                }
+
+            }
+        })
+    }
+}
 
 function loadCards(tanarok, merchinfo){
     if (document.URL.includes("tamogato_tanarok.html")){
@@ -311,14 +614,72 @@ function loadCards(tanarok, merchinfo){
                     </div>
                 </div>`
 
+            
+                document.getElementById(`${index}${merch.Id}_img`).style.backgroundImage = `url(${merch.Sources[0]})`;
+                index++
+
+            }
+            
+            if (merch.Id == "tshirt"){
+                document.getElementById("ruha").innerHTML += `
+                <div class="card">
+                    <img id="${index}${merch.Id}_img" class="ekcsölikep" src="" alt="">
+                    <div class="courtain" alt=""></div>
+                    <div class="cardtext">
+                        <h1 class="tanarnevcard">${merch.MerchName}</h1>
+                    </div>
+                    <div class="cardbutton">
+                        <button id="${index}"  class="open_popup"><h1>Info</h1></button>
+                    </div>
+                </div>`
+                
+                
+                document.getElementById(`${index}${merch.Id}_img`).style.backgroundImage = `url(${merch.Sources[0]})`;
+                document.getElementById(`${index}${merch.Id}_img`).style.backgroundPositionY = "0%";
+                index++
+
             }
 
+            if (merch.Id == "mug"){
+                document.getElementById("kellek").innerHTML += `
+                <div class="card">
+                    <img id="${index}${merch.Id}_img" class="ekcsölikep" src="" alt="">
+                    <div class="courtain" alt=""></div>
+                    <div class="cardtext">
+                        <h1 class="tanarnevcard">${merch.MerchName}</h1>
+                    </div>
+                    <div class="cardbutton">
+                        <button id="${index}"  class="open_popup"><h1>Info</h1></button>
+                    </div>
+                </div>`
+                
+                
+                document.getElementById(`${index}${merch.Id}_img`).style.backgroundImage = `url(${merch.Sources[0]})`;
+                document.getElementById(`${index}${merch.Id}_img`).style.backgroundPositionY = "100%";
+                index++
 
-            console.log(document.getElementById(`${merch.Id}_img`))
-            console.log(merch.Sources[0])
-            document.getElementById(`${index}${merch.Id}_img`).style.backgroundImage = `url(${merch.Sources[0]})`;
+            }
 
-            index++
+            if (merch.Id == "sticker"){
+                document.getElementById("kellek").innerHTML += `
+                <div class="card">
+                    <img id="${index}${merch.Id}_img" class="ekcsölikep" src="" alt="">
+                    <div class="courtain" alt=""></div>
+                    <div class="cardtext">
+                        <h1 class="tanarnevcard">${merch.MerchName}</h1>
+                    </div>
+                    <div class="cardbutton">
+                        <button id="${index}"  class="open_popup"><h1>Info</h1></button>
+                    </div>
+                </div>`
+                
+                
+                document.getElementById(`${index}${merch.Id}_img`).style.backgroundImage = `url(${merch.Sources[0]})`;
+                document.getElementById(`${index}${merch.Id}_img`).style.backgroundPositionY = "80%";
+                document.getElementById(`${index}${merch.Id}_img`).style.backgroundSize = "50%";
+                index++
+
+            }
         })
 
 
@@ -330,15 +691,17 @@ function loadCards(tanarok, merchinfo){
             popup(1)
         })
 
-        /*
+        
         document.getElementById("2").addEventListener("click", () =>{
             popup(2)
         })
         document.getElementById("3").addEventListener("click", () =>{
             popup(3)
         })
-            */
+            
     }
+
+
 }
 
 
@@ -349,168 +712,90 @@ function loadCards(tanarok, merchinfo){
 
 //carousel
 
-const buttons = document.querySelectorAll("[data-carousel-button]")
-buttons.forEach(button =>{
-    button.addEventListener("click", () =>{
-        const offset = button.dataset.carouselButton === "next" ? 1: -1;
-        const slides = button.closest("[data-carousel]").querySelector("[data-slides]");
-        const activeSlide = slides.querySelector("[data-active]");
-        let newIndex = [...slides.children].indexOf(activeSlide) + offset;
-        if (newIndex < 0) newIndex = slides.children.length - 1;
-        if (newIndex >= slides.children.length) newIndex = 0;
-
-        slides.children[newIndex].dataset.active = true;
-        delete activeSlide.dataset.active;
-    })
-})
 
 
 
 
 
-document.querySelector('.close').addEventListener("click", () =>{
-    document.querySelector(".popup").classList = "popup menuclose";
 
-    setTimeout(function (){
-        document.querySelector(".popup").style.opacity = 0;
-        document.querySelector(".popup").style.zIndex = 0;
-        document.querySelector(".popup").style.display = "none";
-        document.querySelector(".popup").classList = "popup";
-    }, 300)
-    
-});
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~Csoki~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-let activeIndex = 0;
-const colours = document.querySelector(".colors").children;
-console.log("szex")
-for (let i = 0; i < colours.length; i++){
-    colours[i].addEventListener("click", () =>{
-        colours[i].dataset.active = true;
-        activeIndex = i;
-        for (let m = 0; m < colours.length; m++){
-            if (activeIndex != m){
-                delete colours[m].dataset.active;
-            }
-
-        }
-    })
-}
-
-let sizeIndex = 0;
-const sizes = document.querySelector(".sizes").children;
-for (let i = 0; i < sizes.length; i++){
-    sizes[i].addEventListener("click", () =>{
-        sizes[i].dataset.active = true;
-        sizeIndex = i;
-        for (let m = 0; m < sizes.length; m++){
-            if (sizeIndex != m){
-                delete sizes[m].dataset.active;
-            }
-
-        }
-    })
-}
 
 
-
-document.getElementById("tocart").addEventListener("click", () =>{
-    document.getElementById("cart_popup").innerHTML = ""
-    let product_id = document.getElementById("tocart").closest("[data-info]").querySelector("[data]").id;
-
-    let product = products.find((value) => {return value.id === product_id})
-    
-    if (product === undefined) {
-        alert("Product not found.")
-    }
-    
-    let newProduct = new Product(product.id, product.Price, product.Name)
-
-    
-    newProduct.Color = document.getElementById("tocart").closest("[data-info]").querySelector("[data-active]").classList.value;
-    newProduct.Size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
-    //product.Amount = document.getElementById("tocart").closest("[data-info]").querySelector("[number]").value;
-    
-    //console.log(product)
-    cart.push(newProduct)
-
-    cart.forEach(carted =>{
-        document.getElementById("cart_popup").innerHTML += ` 
-        <div>
-            <p>${carted.Name}</p>
-            <p>${carted.Color}</p>
-            <p>${carted.Size}</p>
-            <p></p>
-            <p></p>
-        </div>`
-        console.log(carted)
-    })
-
-
-    
-
-    
-
-    //name;price;colour;size;amount
-    /*
-    document.getElementById("name").innerHTML = product.Name;
-    document.getElementById("price").innerHTML = product.Price;
-    document.getElementById("colour").innerHTML = product.Color;
-    document.getElementById("size").innerHTML = product.Size;
-    //document.getElementById("amount").innerHTML = product.Amount;
-
-
-
-    //Remove
-    // cart.pop(cart.find((value) => {return value.id == product.id && product.Size == value.Size && product.Color == value.Color}))
-    //+html-ből törlés
-    */
-});
 
 document.querySelector(".cart").addEventListener("click", () =>{
     //#cart_popup
+    document.getElementById("cart_popup").innerHTML = ""
+
+    cart.forEach(carted =>{
+        if (carted.id != "mug" &&  carted.id != "sticker"){
+            document.getElementById("cart_popup").innerHTML += ` 
+            <div>
+                <p>${carted.Name}</p>
+                <p>${carted.Color}</p>
+                <p>${carted.Size}</p>
+                <p>${carted.Price}Ft</p>
+                <p></p>
+            </div>`
+
+        }
+        else{
+            document.getElementById("cart_popup").innerHTML += ` 
+            <div>
+                <p>${carted.Name}</p>
+                <p>${carted.Price}Ft</p>
+                <p></p>
+            </div>`
+        }
+    })
+
     document.getElementById("cart_popup").style.display = "block";
     document.getElementById("cart_popup").innerHTML += `<button id="purchaseButton">Purchase</button>
     <button class="close2">Bezár</button>`
+
+    document.querySelector('.close2').addEventListener("click", () =>{
+        document.getElementById("cart_popup").style.display = "none"
+    });
+
+    document.getElementById("purchaseButton").addEventListener("click", () => {
+        const cart_data = {};
+        
+        
+        Object.keys(cart).forEach((key) => {
+            const array = cart[key]
+            cart_data[key] = []
+            array.forEach((product) => {
+                cart_data[key].push(product.toServerRepr())
+            })
+        });
+        
+        
+        console.log(JSON.stringify(cart_data))
+        return
+        fetch('/create-checkout-session', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cart_data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.url) {
+                window.location.href = data.url;
+            } else {
+                alert('No redirect URL in response.');
+            }
+        })
+        .catch(error => {
+            console.error('Error creating session:', error);
+            alert('Error creating payment session');
+        });
+    });
 })
 
-document.querySelector('.close2').addEventListener("click", () =>{
-                document.getElementById("cart_popup").style.display = "none"
-});
 
-document.getElementById("purchaseButton").addEventListener("click", () => {
-    const cart_data = {};
-    
-    
-    Object.keys(cart).forEach((key) => {
-        const array = cart[key]
-        cart_data[key] = []
-        array.forEach((product) => {
-            cart_data[key].push(product.toServerRepr())
-        })
-    });
-    
-    
-    console.log(JSON.stringify(cart_data))
-    return
-    fetch('/create-checkout-session', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(cart_data)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.url) {
-            window.location.href = data.url;
-        } else {
-            alert('No redirect URL in response.');
-        }
-    })
-    .catch(error => {
-        console.error('Error creating session:', error);
-        alert('Error creating payment session');
-    });
-});
+
+
