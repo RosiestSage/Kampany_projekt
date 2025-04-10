@@ -9,6 +9,7 @@ const tanardata = [
     'Ágoston Anett;206;11.D,10.A,12.E,11.A,13.B;Sigma;Feleletmentesítő,Dogamentesítő;"../static/images/Ágoston Anett.jpg"',
     'Balogh Anna;10;11.A,12.D,9.B,11.E,13.A,12.C;Spanom Anna;Feleletmentesítő,Dogamentesítő;"../static/images/Balogh Anna.jpg"',
     'Bors Henriette;206;11.A,12.A,9.KNY,12.D,11.D,10.D,13.D,13.E;Chill guy;Feleletmentesítő,Dogamentesítő;"../static/images/Bors Henriette.jpg"',
+    'Csókáné Judit;206;9.D,12.D,13.A,10.D,13.E,12.A;Csók;Feleletmentesítő;"../static/images/Csókáné Judit.jpg"',
 ]
 
 const merch = [

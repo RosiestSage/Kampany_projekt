@@ -302,25 +302,67 @@ section{
 
 .sizes > [data-active]{
     box-shadow: 2px 2px 5px black, inset 2px 2px 3px  black;
-
+    background-color: green;
 }
 
 
 
 
 #cart_popup{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 300px;
-    width: 500px;
-    background-color: aliceblue;
+    height: 100%;
+    width: 100%;
     display: none;
+    flex-wrap: wrap;
+    background-color: rgba(43, 41, 41, 0.7);
+    backdrop-filter: blur(5px);
+    position: fixed;
+    justify-content: center;
+    align-content: end;
 }
 
 
+.cart_popup_window{
+    height: 60%;
+    width: 80%;
+    border-radius: 5%;
+    position: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(5px);
+    align-self: center;
+}
 
+#cart_opacitybackground{
+    border-radius: 5%;
+    background-color: rgba(0,0,0, 0.7);
 
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cartwindow_buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+}
+
+.carted{
+    margin: 10px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.item{
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+}
 
 
 .funfact{
@@ -362,6 +404,11 @@ section{
     color: white;
     border: 1px solid black;
     margin-bottom: 10px;
+}
+
+.close2:hover{
+    cursor: pointer;
+    box-shadow: inset 2px 2px 10px  rgba(0,0,0) ;
 }
 
 /* cart */

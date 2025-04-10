@@ -1,8 +1,14 @@
-Scrollos kosár
-Remove item
-Szín változtatás ---> póló, pulcsi
-Matrica változtatás 
+//Szín változtatás ---> póló, pulcsi
+//Matrica változtatás 
+//Scrollos kosár
+Kosár javítás
+    -kis kép
+    -style javítása
+    -mennyiség számláló
+    -gomb decor
+    -remove item
 
-Csóka hozzáadása
+//Csóka hozzáadása
 
 Kurva sok css mindenhol
+    -reszponzív!!!!

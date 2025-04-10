@@ -250,6 +250,8 @@ function popup(tanar){
         document.querySelector('.popup').classList.add("menuopen");
         document.querySelector('.popup_window').style.backgroundImage = "url('../static/images/product bkg.avif')";
 
+        
+
         if (document.URL.includes("modos_merch.html")){
             console.log("megolom mafam")
                 if (tanar == 0){
@@ -277,7 +279,7 @@ function popup(tanar){
                             <h1>Szín: </h1>
                             <div class="colors">
                                 <p class="${merchinfo[tanar].Colours[0]}"></p>
-                                <p class="${merchinfo[tanar].Colours[1]}"></p>
+                                <p class="${merchinfo[tanar].Colours[1]}" data-active></p>
                                 <p class="${merchinfo[tanar].Colours[2]}"></p>
                                 <p class="${merchinfo[tanar].Colours[3]}"></p>
                             </div>
@@ -296,7 +298,7 @@ function popup(tanar){
                             </div>
                             </div>
                     <button class="close">Bezár</button>`
-                    ColorAndSize()
+                    ColorAndSize(tanar)
     
                 }
                 
@@ -320,7 +322,7 @@ function popup(tanar){
                     <h1>Szín: </h1>
                     <div class="colors">
                     <p class="${merchinfo[tanar].Colours[0]}"></p>
-                    <p class="${merchinfo[tanar].Colours[1]}"></p>
+                    <p class="${merchinfo[tanar].Colours[1]}" data-active></p>
                     <p class="${merchinfo[tanar].Colours[2]}"></p>
                     <p class="${merchinfo[tanar].Colours[3]}"></p>
                     </div>
@@ -341,7 +343,7 @@ function popup(tanar){
                     <button class="close">Bezár</button>`
                 
 
-                    ColorAndSize()
+                    ColorAndSize(tanar)
                 }
 
                 if (tanar == 2){
@@ -386,8 +388,6 @@ function popup(tanar){
                     <div class="productpopup">
                             <article>
                                 <div class="carousel" data-carousel>
-                                    <button data-carousel-button="prev" class="carousel-button prev">&#10094</button>
-                                    <button data-carousel-button="next" class="carousel-button next">&#10095</button>
                                     <ul data-slides>
                                         <li class="slide" data-active>
                                             <img src=${merchinfo[tanar].Sources[0]} alt="">
@@ -411,9 +411,9 @@ function popup(tanar){
                             <h1>Típus: </h1>
     
                             <div class="sizes">
-                                <p>S</p>
-                                <p>M</p>
-                                <p>L</p>
+                                <p data-active>#1</p>
+                                <p>#2</p>
+                                <p>#3</p>
                             </div>
                             <div>
                             <button id="tocart">Kosárba</button>
@@ -421,7 +421,7 @@ function popup(tanar){
                             </div>
                             </div>
                     <button class="close">Bezár</button>`
-                    Size()
+                    Size(tanar)
     
                 }
     
@@ -444,24 +444,7 @@ function popup(tanar){
             slides.children[newIndex].dataset.active = true;
             delete activeSlide.dataset.active;
         })
-    })
-    
-    
-
-    
-    
-            document.querySelector('.close').addEventListener("click", () =>{
-            document.querySelector(".popup").classList = "popup menuclose";
-    
-            setTimeout(function (){
-                document.querySelector(".popup").style.opacity = 0;
-                document.querySelector(".popup").style.zIndex = 0;
-                document.querySelector(".popup").style.display = "none";
-                document.querySelector(".popup").classList = "popup";
-            }, 300)
-            
-        });
-    
+        })    
         document.getElementById("tocart").addEventListener("click", () =>{
             let product_id = document.getElementById("tocart").closest("[data-info]").querySelector("[data]").id;
     
@@ -477,6 +460,10 @@ function popup(tanar){
 
                 newProduct.Color = document.getElementById("tocart").closest("[data-info]").querySelector("[data-active]").classList.value;
                 newProduct.Size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
+            }
+            if(newProduct.id == "sticker"){
+                newProduct.Size = document.getElementById("tocart").closest("[data-info]").querySelector(".sizes").querySelector("[data-active]").innerHTML;
+
             }
             //product.Amount = document.getElementById("tocart").closest("[data-info]").querySelector("[number]").value;
             
@@ -502,27 +489,56 @@ function popup(tanar){
             //+html-ből törlés
             */
         });
-    
-    
-
 
     }
+
+
+    document.querySelector('.close').addEventListener("click", () =>{
+        document.querySelector(".popup").classList = "popup menuclose";
+
+        setTimeout(function (){
+            document.querySelector(".popup").style.opacity = 0;
+            document.querySelector(".popup").style.zIndex = 0;
+            document.querySelector(".popup").style.display = "none";
+            document.querySelector(".popup").classList = "popup";
+        }, 300)
+        
+    });
 };
 
 
-function ColorAndSize(){
-    Size();
-    Colour();
+function ColorAndSize(tanar){
+    Size(tanar);
+    Colour(tanar);
 
 }
 
-function Size(){
+function Size(tanar){
     let sizeIndex = 0;
     const sizes = document.querySelector(".sizes").children;
     for (let i = 0; i < sizes.length; i++){
         sizes[i].addEventListener("click", () =>{
             sizes[i].dataset.active = true;
             sizeIndex = i;
+            console.log(tanar)
+            if (merchinfo[tanar].id == "sticker"){
+                switch (sizes[i].innerHTML){
+                    case "#1":
+                        document.querySelector("[data-slides]").children[0].innerHTML = 
+                            `<img src="../static/images/kampány/matrica/matrica1.png" alt="">`;
+                        break;
+                    case "#2":
+                        document.querySelector("[data-slides]").children[0].innerHTML = 
+                            `<img src="../static/images/kampány/matrica/matrica2.png" alt="">`;
+                        break;
+                    case "#3":
+                        document.querySelector("[data-slides]").children[0].innerHTML = 
+                            `<img src="../static/images/kampány/matrica/matrica3.png" alt="">`;
+                        break;
+                }
+            }
+
+
             for (let m = 0; m < sizes.length; m++){
                 if (sizeIndex != m){
                     delete sizes[m].dataset.active;
@@ -533,14 +549,63 @@ function Size(){
     }
 }
 
-function Colour(){
+function Colour(tanar){
     let activeIndex = 0;
     const colours = document.querySelector(".colors").children;
-    console.log("szex")
     for (let i = 0; i < colours.length; i++){
         colours[i].addEventListener("click", () =>{
             colours[i].dataset.active = true;
             activeIndex = i;
+            switch (colours[i].classList.value){
+                case "black":
+                    if (merchinfo[tanar].Id == "hoodie"){
+                        document.querySelector("[data-slides]").children[0].innerHTML = 
+                        `<img src="../static/images/kampány/pulover/szurkeeleje.png" alt="">`;
+                        document.querySelector("[data-slides]").children[1].innerHTML = 
+                        `<img src="../static/images/kampány/pulover/szurkehatulja.png" alt="">`;
+                    }
+                    else{
+                        document.querySelector("[data-slides]").children[0].innerHTML = 
+                        `<img src="../static/images/kampány/polo/feketemodos.png" alt="">`;
+                    }
+                    break;
+                case "white":
+                    if (merchinfo[tanar].Id == "hoodie"){
+                        document.querySelector("[data-slides]").children[0].innerHTML = 
+                        `<img src="../static/images/kampány/pulover/fehereleje.png" alt="">`;
+                        document.querySelector("[data-slides]").children[1].innerHTML = 
+                        `<img src="../static/images/kampány/pulover/feherhatulja.png" alt="">`;
+                    }
+                    else{
+                        document.querySelector("[data-slides]").children[0].innerHTML = 
+                        `<img src="../static/images/kampány/polo/fehermodos.png" alt="">`;
+                    }
+                    break;
+                case "red":
+                    if (merchinfo[tanar].Id == "hoodie"){
+                        document.querySelector("[data-slides]").children[0].innerHTML = 
+                        `<img src="../static/images/kampány/pulover/piroseleje.png" alt="">`;
+                        document.querySelector("[data-slides]").children[1].innerHTML = 
+                        `<img src="../static/images/kampány/pulover/piroshatulja.png" alt="">`;
+                    }
+                    else{
+                        document.querySelector("[data-slides]").children[0].innerHTML = 
+                        `<img src="../static/images/kampány/polo/pirosmodos.png" alt="">`;
+                    }
+                    break;
+                case "blue":
+                    if (merchinfo[tanar].Id == "hoodie"){
+                        document.querySelector("[data-slides]").children[0].innerHTML = 
+                        `<img src="../static/images/kampány/pulover/kekeleje.png" alt="">`;
+                        document.querySelector("[data-slides]").children[1].innerHTML = 
+                        `<img src="../static/images/kampány/pulover/kekhatulja.png" alt="">`;
+                    }
+                    else{
+                        document.querySelector("[data-slides]").children[0].innerHTML = 
+                        `<img src="../static/images/kampány/polo/kekmodos.png" alt="">`;
+                    }
+                    break;
+            }
             for (let m = 0; m < colours.length; m++){
                 if (activeIndex != m){
                     delete colours[m].dataset.active;
@@ -595,6 +660,9 @@ function loadCards(tanarok, merchinfo){
         })
         document.getElementById("9").addEventListener("click", () =>{
             popup(8)
+        })
+        document.getElementById("10").addEventListener("click", () =>{
+            popup(9)
         })
 
     }
@@ -708,55 +776,63 @@ function loadCards(tanarok, merchinfo){
 
 
 
-//módos
-
-//carousel
-
-
-
-
-
-
-
-
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~Csoki~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
 
 
 document.querySelector(".cart").addEventListener("click", () =>{
-    //#cart_popup
-    document.getElementById("cart_popup").innerHTML = ""
+    document.getElementById("cart_opacitybackground").innerHTML = "";
+    document.getElementById("cart_opacitybackground").innerHTML = `<div class="carted"></div>`;
 
+
+    document.getElementById('cart_popup').style.display = 'flex';
+    document.getElementById('cart_popup').classList = "menuopen";
+    document.querySelector('.cart_popup_window').style.backgroundImage = 'url("../static/images/cartbkg.jpg")';
+    //#cart_popup
     cart.forEach(carted =>{
+        console.log(carted)
         if (carted.id != "mug" &&  carted.id != "sticker"){
-            document.getElementById("cart_popup").innerHTML += ` 
-            <div>
+            document.querySelector(".carted").innerHTML += ` 
+            <div class="item">
                 <p>${carted.Name}</p>
                 <p>${carted.Color}</p>
                 <p>${carted.Size}</p>
                 <p>${carted.Price}Ft</p>
-                <p></p>
             </div>`
 
         }
-        else{
-            document.getElementById("cart_popup").innerHTML += ` 
-            <div>
+        if (carted.id == "sticker"){
+            document.querySelector(".carted").innerHTML += ` 
+            <div class="item">
+                <p>${carted.Name}</p>
+                <p>${carted.Size}</p>
+                <p>${carted.Price}Ft</p>
+            </div>`
+
+        }
+        if (carted.id == "mug"){
+            document.querySelector(".carted").innerHTML += ` 
+            <div class="item">
                 <p>${carted.Name}</p>
                 <p>${carted.Price}Ft</p>
-                <p></p>
             </div>`
         }
     })
 
-    document.getElementById("cart_popup").style.display = "block";
-    document.getElementById("cart_popup").innerHTML += `<button id="purchaseButton">Purchase</button>
-    <button class="close2">Bezár</button>`
+    document.getElementById("cart_opacitybackground").innerHTML += `
+    <div class="cartwindow_buttons">
+    <button id="purchaseButton">Purchase</button>
+    <button class="close2">Bezár</button>
+    </div>`
 
     document.querySelector('.close2').addEventListener("click", () =>{
-        document.getElementById("cart_popup").style.display = "none"
+
+        
+        document.getElementById("cart_popup").classList = "menuclose";
+    
+        setTimeout(function (){
+            document.getElementById("cart_popup").style.opacity = 0;
+            document.getElementById("cart_popup").style.zIndex = 0;
+            document.getElementById("cart_popup").style.display = "none";
+        }, 300)
     });
 
     document.getElementById("purchaseButton").addEventListener("click", () => {
@@ -764,6 +840,7 @@ document.querySelector(".cart").addEventListener("click", () =>{
         
         
         Object.keys(cart).forEach((key) => {
+            console.log(key)
             const array = cart[key]
             cart_data[key] = []
             array.forEach((product) => {
