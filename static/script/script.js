@@ -8,7 +8,7 @@ let mrgleftKivonando = 0;
 let navHeight = 0;
 let csukas = 0;
 let slideIndex = 1;
-
+let counter;
 
 
 
@@ -429,6 +429,7 @@ function popup(tanar){
         })
         })    
         document.getElementById("tocart").addEventListener("click", () =>{
+            counter = 0;
             let product_id = document.getElementById("tocart").closest("[data-info]").querySelector("[data]").id;
     
             let product = products.find((value) => {return value.id === product_id})
@@ -471,6 +472,19 @@ function popup(tanar){
             // cart.pop(cart.find((value) => {return value.id == product.id && product.Size == value.Size && product.Color == value.Color}))
             //+html-ből törlés
             */
+        
+            document.querySelector(".popup").classList = "popup menuclose";
+
+            setTimeout(function (){
+                document.querySelector(".popup").style.opacity = 0;
+                document.querySelector(".popup").style.zIndex = 0;
+                document.querySelector(".popup").style.display = "none";
+                document.querySelector(".popup").classList = "popup";
+            }, 300)
+        
+
+
+            document.getElementById("counter").innerHTML = cart.length;
         });
 
     }
@@ -487,6 +501,9 @@ function popup(tanar){
         }, 300)
         
     });
+
+    console.log(cart.length)
+    
 };
 
 
@@ -768,7 +785,17 @@ document.querySelector(".cart").addEventListener("click", () =>{
 
     document.getElementById('cart_popup').style.display = 'flex';
     document.getElementById('cart_popup').classList = "menuopen";
-    document.querySelector('.cart_popup_window').style.backgroundImage = 'url("../static/images/cartbkg.jpg")';
+    document.querySelector('.cart_popup_window').style.backgroundImage = 'url("../static/images/cartbkg.avif")';
+    document.querySelector(".carted").innerHTML += ` 
+    <div class="item item_header">
+        <p>Termék név</p>
+        <p>Szín</p>
+        <p>Típus</p>
+        <p>Ár</p>
+        <p></p>
+    </div>`
+
+
     //#cart_popup
     cart.forEach(carted =>{
         console.log(carted)
@@ -779,6 +806,9 @@ document.querySelector(".cart").addEventListener("click", () =>{
                 <p>${carted.Color}</p>
                 <p>${carted.Size}</p>
                 <p>${carted.Price}Ft</p>
+                <div class="remove_grid">
+                <button class="remove_item">X</button>
+                </div>
             </div>`
 
         }
@@ -786,8 +816,11 @@ document.querySelector(".cart").addEventListener("click", () =>{
             document.querySelector(".carted").innerHTML += ` 
             <div class="item">
                 <p>${carted.Name}</p>
+                <p>-</p>
                 <p>${carted.Size}</p>
                 <p>${carted.Price}Ft</p>
+                <button class="remove_item">X</button>
+                
             </div>`
 
         }
@@ -795,7 +828,11 @@ document.querySelector(".cart").addEventListener("click", () =>{
             document.querySelector(".carted").innerHTML += ` 
             <div class="item">
                 <p>${carted.Name}</p>
+                <p>-</p>
+                <p>-</p>
                 <p>${carted.Price}Ft</p>
+                <button class="remove_item">X</button>
+                
             </div>`
         }
     })
