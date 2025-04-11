@@ -26,7 +26,7 @@ export class Product {
     }
 
     toServerRepr() {
-        return {"color": this.Color, "size": this.Size, "quantity": Number(this.Amount)}
+        return {"color": this.Color, "size": this.Size, "id": this.id}
     }
 }
 

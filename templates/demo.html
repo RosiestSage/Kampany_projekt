@@ -125,7 +125,7 @@
         // Add event listeners for "Add to Cart" buttons
         document.querySelectorAll(".add-to-cart").forEach(button => {
             button.addEventListener("click", () => {
-                const product = this.getAttribute("data-product");
+                const product = button.getAttribute("data-product");
                 const quantity = parseInt(document.querySelector(`.quantity-selector[data-product='${product}']`).value);
                 addToCart(product, quantity);
             });
@@ -155,7 +155,7 @@
         // Handle Purchase Button
         document.getElementById("purchaseButton").addEventListener("click", () => {
 
-            fetch('/create-session', {
+            fetch('/create-checkout-session', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

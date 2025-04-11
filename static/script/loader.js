@@ -1,27 +1,21 @@
 let intervalId;
 
-function showFallbackSpinner() {
-    document.getElementById('image-loader').style.display = 'none';
-    document.getElementById('spinner').style.display = 'block';
-};
-
 function showErrorMessage() {
-    document.getElementById('image-loader').style.display = 'none';
     document.getElementById('spinner').style.display = 'none';
 
     document.querySelector('.text').innerText = 'An error occurred while processing your request. Please try again later.';
     clearInterval(intervalId);
 }
 
-function fetchInvoice() {
-    fetch(`/fetch-invoice-url?id=${new URLSearchParams(window.location.search).get("id")}`)
+function fetchInvoice(id) {
+    fetch(`/fetch-invoice-url?id=${id}`)
         .then(res => {
             if (res.status === 400) {
                 showErrorMessage();
                 console.log('Received 400, stopping interval.');
             }
             if (res.status != 200) {
-                return;
+                return {};
             }
 
             return res.json();
@@ -37,7 +31,10 @@ function fetchInvoice() {
         });
 };
 
-window.onload = function() {
-    fetchInvoice();
-    intervalId = setInterval(fetchInvoice, 3000);
+window.onload = () => {
+    const params = new URLSearchParams(window.location.search)
+    const id = params.get("id") ?? "unknown"
+    const interval = Number(params.get("interval") ?? 3) * 1000
+    fetchInvoice(id);
+    intervalId = setInterval(fetchInvoice, interval, id);
 };

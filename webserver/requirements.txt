@@ -1,2 +1,4 @@
 stripe
 quart
+aiomysql
+httpx

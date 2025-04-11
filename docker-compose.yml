@@ -3,8 +3,6 @@ services:
     image: mariadb:11.4
     container_name: arab_mariadb
     restart: unless-stopped
-    ports:
-      - "3306:3306"
     env_file:
       - .env
     environment:
