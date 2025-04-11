@@ -37,23 +37,6 @@ const products = [new Product("hoodie", 6000, "Módos Pulcsi"),
                     new Product("sticker", 500, "Módos Matrica"),
 ];
 
-fetch('/get-products', {
-    method: 'GET'
-})
-.then(response => response.json())
-.then(data => {
-    if (data.error) {
-        throw new Error(data.error)
-    } else {
-        data.forEach((value) => {
-            products.push(new Product(value.id, value.price, value.name))
-        })
-    }
-})
-.catch(error => {
-    console.error('Error fetching products:', error);
-});
-
 window.addEventListener("load", () =>{
     setTimeout(function () { loadCards(tanarok, merchinfo)}, 100)
 
@@ -225,7 +208,7 @@ document.querySelector(".xbutton").addEventListener("click", () =>{
 
 
 function popup(tanar){
-    if (document.URL.includes("tamogato_tanarok.html")){
+    if (document.URL.includes("tamogato_tanarok")){
 
         let osztalyok = document.getElementById("tanitott_osztalyok");
         osztalyok.innerHTML = "";
@@ -245,14 +228,14 @@ function popup(tanar){
             osztalyok.appendChild(li);
         })
     }
-    if (document.URL.includes("modos_merch.html")){
+    if (document.URL.includes("modos_merch")){
         document.querySelector('.popup').style.display = 'flex';
         document.querySelector('.popup').classList.add("menuopen");
         document.querySelector('.popup_window').style.backgroundImage = "url('../static/images/product bkg.avif')";
 
         
 
-        if (document.URL.includes("modos_merch.html")){
+        if (document.URL.includes("modos_merch")){
             console.log("megolom mafam")
                 if (tanar == 0){
                     document.querySelector(".opacitybackground").innerHTML = `                
@@ -617,7 +600,7 @@ function Colour(tanar){
 }
 
 function loadCards(tanarok, merchinfo){
-    if (document.URL.includes("tamogato_tanarok.html")){
+    if (document.URL.includes("tamogato_tanarok")){
         console.log(tanarok.length)
         
         tanarok.forEach(tanar =>{
@@ -666,7 +649,7 @@ function loadCards(tanarok, merchinfo){
         })
 
     }
-    if (document.URL.includes("modos_merch.html")){
+    if (document.URL.includes("modos_merch")){
         let index = 0;
         merchinfo.forEach(merch =>{
             if (merch.Id == "hoodie"){
@@ -836,21 +819,17 @@ document.querySelector(".cart").addEventListener("click", () =>{
     });
 
     document.getElementById("purchaseButton").addEventListener("click", () => {
-        const cart_data = {};
+        const cart_data = [];
         
         
-        Object.keys(cart).forEach((key) => {
-            console.log(key)
-            const array = cart[key]
-            cart_data[key] = []
-            array.forEach((product) => {
-                cart_data[key].push(product.toServerRepr())
-            })
+        cart.forEach((product) => {
+            console.log(product.toServerRepr())
+            cart_data.push(product.toServerRepr())
         });
         
         
         console.log(JSON.stringify(cart_data))
-        return
+
         fetch('/create-checkout-session', {
             method: 'POST',
             headers: {
