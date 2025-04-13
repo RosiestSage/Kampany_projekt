@@ -22,19 +22,19 @@ else:
     ITEMS = {
         "hoodie": {
             "name": "Módos Pulóver",
-            "price": 6_000_000 # 600 Ft
+            "price": 6000
         },
         "tshirt": {
             "name": "Módos Póló",
-            "price": 4_000_000
+            "price": 4000
         },
         "mug": {
             "name": "Módos Bögre",
-            "price": 2_000_000
+            "price": 2000
         },
         "sticker": {
             "name": "Módos Matrica",
-            "price": 500_000
+            "price": 500
         }
     }
 
@@ -128,10 +128,10 @@ async def create_checkout_session():
                     "name": get_item_data(item["id"])["name"],
                     "description": f"Szín: {item['color']}, Méret: {item['size']}" if 'size' in item and 'color' in item else f"Típus: {item['size']}" if 'size' in item else "",
                     "metadata": item
-                }
+                },
+                "unit_amount": int(get_item_data(item["id"])["price"]) * 100
             },
-            "quantity": 1,
-            "unit_amount": int(get_item_data(item["id"])["price"])
+            "quantity": 1
         }
         for item in data
     ]
