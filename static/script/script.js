@@ -520,8 +520,8 @@ function Size(tanar){
         sizes[i].addEventListener("click", () =>{
             sizes[i].dataset.active = true;
             sizeIndex = i;
-            console.log(tanar)
-            if (merchinfo[tanar].id == "sticker"){
+            console.log(merchinfo[tanar].Id)
+            if (merchinfo[tanar].Id == "sticker"){
                 switch (sizes[i].innerHTML){
                     case "#1":
                         document.querySelector("[data-slides]").children[0].innerHTML = 
@@ -780,28 +780,29 @@ function loadCards(tanarok, merchinfo){
 
 document.querySelector(".cart").addEventListener("click", () =>{
     document.getElementById("cart_opacitybackground").innerHTML = "";
-    document.getElementById("cart_opacitybackground").innerHTML = `<div class="carted"></div>`;
-
-
-    document.getElementById('cart_popup').style.display = 'flex';
-    document.getElementById('cart_popup').classList = "menuopen";
-    document.querySelector('.cart_popup_window').style.backgroundImage = 'url("../static/images/cartbkg.avif")';
-    document.querySelector(".carted").innerHTML += ` 
+    document.getElementById("cart_opacitybackground").innerHTML += ` 
     <div class="item item_header">
         <p>Termék név</p>
         <p>Szín</p>
         <p>Típus</p>
         <p>Ár</p>
-        <p></p>
+        
     </div>`
+    document.getElementById("cart_opacitybackground").innerHTML += `<div class="carted"></div>`;
+
+
+    document.getElementById('cart_popup').style.display = 'flex';
+    document.getElementById('cart_popup').classList = "menuopen";
+    document.querySelector('.cart_popup_window').style.backgroundImage = 'url("../static/images/cartbkg.avif")';
 
 
     //#cart_popup
+    let i = 0;
     cart.forEach(carted =>{
         console.log(carted)
         if (carted.id != "mug" &&  carted.id != "sticker"){
             document.querySelector(".carted").innerHTML += ` 
-            <div class="item">
+            <div class="item" id="${i}item">
                 <p>${carted.Name}</p>
                 <p>${carted.Color}</p>
                 <p>${carted.Size}</p>
@@ -814,7 +815,7 @@ document.querySelector(".cart").addEventListener("click", () =>{
         }
         if (carted.id == "sticker"){
             document.querySelector(".carted").innerHTML += ` 
-            <div class="item">
+            <div class="item" id="${i}item">
                 <p>${carted.Name}</p>
                 <p>-</p>
                 <p>${carted.Size}</p>
@@ -826,7 +827,7 @@ document.querySelector(".cart").addEventListener("click", () =>{
         }
         if (carted.id == "mug"){
             document.querySelector(".carted").innerHTML += ` 
-            <div class="item">
+            <div class="item" id="${i}item">
                 <p>${carted.Name}</p>
                 <p>-</p>
                 <p>-</p>
@@ -835,6 +836,7 @@ document.querySelector(".cart").addEventListener("click", () =>{
                 
             </div>`
         }
+        i++;
     })
 
     document.getElementById("cart_opacitybackground").innerHTML += `
