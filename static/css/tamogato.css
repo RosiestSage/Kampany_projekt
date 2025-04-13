@@ -86,9 +86,9 @@ section{
     border-top-right-radius: 5%;
     margin: 0;
     height: 70%;
-    background-size: 70%;
+    background-size: 100%;
     background-position-x: 50%;
-    background-position-y: 150%;
+    background-position-y: 0;
     background-repeat: no-repeat;
     background-color: rgb(139, 134, 140);
 }
@@ -357,7 +357,7 @@ section{
     }
 
     .popup_window{
-        height: 80%;
+        height: 90%;
         width: 100%;
     }
 
@@ -369,6 +369,10 @@ section{
         align-items: center;
     }
 
+    .tanarnev{
+        display: none;
+    }
+
     .close{
         margin-top: 20px;
     }
@@ -378,15 +382,26 @@ section{
     }
 
     #tanitott_osztalyok{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 90%;
         padding: 0;
         list-style-type: none;
+        text-align: center;
+    }
+
+    #tanitott_osztalyok li{
+        float: left;
+        padding: 5px;
+        text-align: center;
     }
 
     
     #popup_ekcsölikep{
         margin-top: 20px;
-        width: 150px;
-        height: 200px;
+        width: 120px;
+        height: 150px;
     }
 }
 
@@ -460,7 +475,7 @@ section{
 
 
     .popup_window{
-        height: 80%;
+        height: 90%;
         width: 100%;
     }
 
@@ -472,6 +487,11 @@ section{
         align-items: center;
     }
 
+
+    .tanarnev{
+        display: none;
+    }
+
     .close{
         margin-top: 20px;
     }
@@ -481,19 +501,28 @@ section{
     }
 
     #tanitott_osztalyok{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
         padding: 0;
         list-style-type: none;
+    }
+
+    #tanitott_osztalyok li{
+        float: left;
+        padding: 5px;
+        text-align: center;
     }
 
     
     #popup_ekcsölikep{
         margin-top: 20px;
-        width: 150px;
-        height: 200px;
+        width: 120px;
+        height: 150px;
     }
 
-
 }
+
 /*smol laptop vagymittomén lófaszok*/
 @media screen and (width > 600px) and (width < 1000px){
 
@@ -633,7 +662,7 @@ section{
     }
 
     .popup_window{
-        height: 60%;
+        height: 80%;
         width: 80%;
     }
 
@@ -641,9 +670,6 @@ section{
         align-items: center;
     }
 
-    .close{
-        margin-top: 20px;
-    }
 
     .tanardata div{
         text-align: center;

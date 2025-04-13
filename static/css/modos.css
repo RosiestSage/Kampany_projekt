@@ -539,7 +539,6 @@ article{
 
 .slide > img{
     display: block;
-    height: 300px;
     width: 230px;
 }
 
@@ -691,21 +690,47 @@ article{
     /*index*/
 
     /*támogatók*/
+
+
+    .carousel ul{
+        height: 230px;
+    }
     section{
         margin-top: 300px;
     }
 
     .cardgrid{
         height: 500px;
+        flex-direction: column;
     }
 
     .card{
         width: 270px;
         height: 400px;
+        margin-bottom: 50px;
+    }
+
+    .pricetag{
+        margin: 10px 0 0 0;
+        width: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .colors{
+        float: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    .sizes{
+        float: right;
+        margin: 0;
     }
 
     .popup_window{
-        height: 80%;
+        height: 90%;
         width: 100%;
     }
 
@@ -714,15 +739,31 @@ article{
     }
 
     .product{
-        align-items: center;
+        display: block;
+        width: 90%;
+        align-items: start;
     }
 
-    .close{
-        margin-top: 20px;
+    [data]{
+        display: none;
+    }
+
+    .product h1{
+        margin-top: 5px;
+        font-size: 120%;
+        justify-self:start;
+        float: left;
     }
 
     .product div{
-        text-align: center;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    .close{
+        align-self: end;
+        margin-top: -90px;
+        margin-right: 30px;
     }
 
     #tanitott_osztalyok{

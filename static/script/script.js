@@ -65,7 +65,7 @@ window.addEventListener("load", () =>{
     if (bodyWidth > 1000 && bodyWidth < 1500){
         //imgHeight = 50;
         //document.querySelector('.nav_img').style.width = imgHeight + "%";
-        mrgleftKivonando = 5; 
+        mrgleftKivonando = 30; 
         csukas = 100;
     }
     if (bodyWidth > 1500){
@@ -224,7 +224,7 @@ function popup(tanar){
         let tanítottak = tanarok[tanar].TanitottOsztalyok.split(",");
         tanítottak.forEach(osztaly =>{
             let li = document.createElement("li");
-            li.innerText = osztaly;
+            li.innerText = osztaly ;
             osztalyok.appendChild(li);
         })
     }
@@ -258,7 +258,7 @@ function popup(tanar){
                             </article>
                         <div class="product" data-info>
                             <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
-                            <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
+                            <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}Ft</span></div>
                             <h1>Szín: </h1>
                             <div class="colors">
                                 <p class="${merchinfo[tanar].Colours[0]}"></p>
@@ -301,7 +301,7 @@ function popup(tanar){
                     </article>
                     <div class="product" data-info>
                     <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
-                    <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
+                    <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}Ft</span></div>
                     <h1>Szín: </h1>
                     <div class="colors">
                     <p class="${merchinfo[tanar].Colours[0]}"></p>
@@ -351,7 +351,7 @@ function popup(tanar){
                     </article>
                     <div class="product" data-info>
                     <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
-                    <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
+                    <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}Ft</span></div>
                     
                     
                     
@@ -389,7 +389,7 @@ function popup(tanar){
                             </article>
                         <div class="product" data-info>
                             <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
-                            <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
+                            <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}Ft</span></div>
                             
                             <h1>Típus: </h1>
     
@@ -799,7 +799,6 @@ document.querySelector(".cart").addEventListener("click", () =>{
     //#cart_popup
     let i = 0;
     cart.forEach(carted =>{
-        console.log(carted)
         if (carted.id != "mug" &&  carted.id != "sticker"){
             document.querySelector(".carted").innerHTML += ` 
             <div class="item" id="${i}item">
@@ -820,8 +819,9 @@ document.querySelector(".cart").addEventListener("click", () =>{
                 <p>-</p>
                 <p>${carted.Size}</p>
                 <p>${carted.Price}Ft</p>
+                <div class="remove_grid">
                 <button class="remove_item">X</button>
-                
+                </div>
             </div>`
 
         }
@@ -832,8 +832,9 @@ document.querySelector(".cart").addEventListener("click", () =>{
                 <p>-</p>
                 <p>-</p>
                 <p>${carted.Price}Ft</p>
+                <div class="remove_grid">
                 <button class="remove_item">X</button>
-                
+                </div>
             </div>`
         }
         i++;
@@ -856,6 +857,33 @@ document.querySelector(".cart").addEventListener("click", () =>{
             document.getElementById("cart_popup").style.display = "none";
         }, 300)
     });
+
+/*
+    document.querySelector(".remove_item").addEventListener("click", ()=>{
+        let remove_buttons = document.querySelector(".remove_item");
+        console.log(remove_buttons.closest(".item").id[0])
+        console.log(cart)
+        //cart.splice(remove_buttons.closest(".item").id[0], 1)
+        //console.log(cart)
+
+    })
+*/
+
+    console.log(cart);
+    let remove_buttons = document.querySelectorAll(".remove_item");
+    remove_buttons.forEach(button =>{
+        button.addEventListener("click", () =>{
+            
+            cart.splice(button.closest(".item").id[0], 1)
+            console.log(cart)
+            console.log()
+            document.querySelector(".carted").removeChild(document.getElementById(`${button.closest(".item").id[0]}item`))
+            document.getElementById("counter").innerHTML = cart.length;
+
+        })
+
+    })
+
 
     document.getElementById("purchaseButton").addEventListener("click", () => {
         const cart_data = [];
