@@ -14,8 +14,8 @@ const tanardata = [
 
 const merch = [
     //Id;Merchnév;Kép1,Kép2;Ár;színek
-    'hoodie;Módos Pulóver;"../static/images/kampány/pulover/fehereleje.png","../static/images/kampány/pulover/feherhatulja.png";6000;black,white,red,blue',
-    'tshirt;Módos Póló;"../static/images/kampány/polo/fehermodos.png";4000;black,white,red,blue',
+    'hoodie;Módos Pulóver;"../static/images/kampány/pulover/fehereleje.png","../static/images/kampány/pulover/feherhatulja.png";8500;black,white,red,blue',
+    'tshirt;Módos Póló;"../static/images/kampány/polo/fehermodos.png";5000;black,white,red,blue',
     'mug;Módos Bögre;"../static/images/kampány/bogre/bögre1.png","../static/images/kampány/bogre/bögre2.png";2000;white',
     'sticker;Módos Matrica;"../static/images/kampány/matrica/matrica1.png","../static/images/kampány/matrica/matrica2.png","../static/images/kampány/matrica/matrica3.png";500;-',
 

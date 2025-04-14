@@ -31,7 +31,7 @@ merchdata.forEach(dt => {
 })
 
 /** @type {Array<Product>} */
-const products = [new Product("hoodie", 6000, "Módos Pulcsi"),
+const products = [new Product("hoodie", 8500, "Módos Pulcsi"),
                     new Product("tshirt", 5000, "Módos Póló"),
                     new Product("mug", 2000, "Módos Bögre"),
                     new Product("sticker", 500, "Módos Matrica"),
@@ -292,7 +292,7 @@ function popup(tanar){
                     <article>
                     <div class="carousel" data-carousel>
     
-                    <ul data-slides>
+                    <ul data-slides id="modospolo">
                     <li class="slide" data-active>
                     <img src=${merchinfo[tanar].Sources[0]} alt="">
                     </li>
@@ -371,7 +371,9 @@ function popup(tanar){
                     <div class="productpopup">
                             <article>
                                 <div class="carousel" data-carousel>
-                                    <ul data-slides>
+                                <button data-carousel-button="prev" class="carousel-button prev">&#10094</button>
+                                    <button data-carousel-button="next" class="carousel-button next">&#10095</button> 
+                                    <ul data-slides >
                                         <li class="slide" data-active>
                                             <img src=${merchinfo[tanar].Sources[0]} alt="">
                                         </li>
