@@ -4,34 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <title>Támogatók</title>
-    <link rel="stylesheet" href="../static/css/header.css">
-    <link rel="stylesheet" href="../static/css/tamogato.css">
-    <link rel="shortcut icon" href="../static/images/arabok_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modos.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/arabok_icon.png') }}" type="image/x-icon">
 </head>
 <body>
     <div class="telefon_menu">
-        <p><a href="../templates/index.html">Fő oldal</a></p>
-        <p>Támogató tanáraink</p>
-        <p><a href="../templates/modos_merch.html">Módos merch</a></p>
-        <p><img class="xbutton" src="../static/images/x.png" alt=""></p>
+        <p><a href="#">Támogató tanáraink</a></p>
+        <p><a href="/modos_merch">Módos merch</a></p>
+        <p><img class="xbutton" src="{{ url_for('static', filename='images/x.png') }}" alt=""></p>
     </div>
 
     <nav>
         <!-- https://www.finisher.co/lab/header/ -->
         <div class="nav_logo">
-            <img class="nav_img" src="../static/images/arabok_icon.png" alt="">
+            <img class="nav_img" src="{{ url_for('static', filename='images/arabok_icon.png') }}" alt="">
             <div class="arabok11">
                 <p class="a11">11.A</p>
                 <p class="arabok">Arabok</p>
             </div>
-            <img class="hamburgermenu" src="../static/images/ekcsöli hamburger.png" alt="">
+            <img class="hamburgermenu" src="{{ url_for('static', filename='images/ekcsöli hamburger.png') }}" alt="">
 
         </div>
 
         <div class="nav_options">
-            <p><a href="../templates/index">Főoldal</a></p>
-            <p>Támogató tanáraink</p>
-            <p><a href="../templates/modos_merch">Módos merch</a></p>
+            <p><a href="#">Támogató tanáraink</a></p>
+            <p><a href="/modos_merch">Módos merch</a></p>
         </div>
 
     </nav>
@@ -131,6 +129,6 @@
 
     </section>
 
-    <script type="module" src="../static/script/script.js"></script>
+    <script type="module" src="{{ url_for('static', filename='script/script.js') }}"></script>
 </body>
 </html>

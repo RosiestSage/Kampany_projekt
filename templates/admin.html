@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <link rel="stylesheet" href="../static/css/admin.css">
-    <link rel="shortcut icon" href="../static/images/arabok_icon.png" type="image/x-icon">
+    <link rel="stylesheet" href='{{ url_for("static", filename="/css/admin.css")  }}'> 
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/images/arabok_icon.png') }}" type="image/x-icon">
 </head>
 <body>
     <nav>
         <ul>
+            
             <li><a href="/admin/logs">Logs</a></li>
             <li><a href = "#" onclick="showCouponPopUp()">Coupons</a></li>
             <li><a href="/">Public</a></li>
@@ -52,6 +53,6 @@
     </div>
 
 
-    <script src="../static/script/admin.js"></script>
+    <script src="{{ url_for('static', filename='/script/admin.js') }}"></script>
 </body>
 </html>

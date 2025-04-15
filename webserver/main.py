@@ -9,8 +9,11 @@ import hypercorn.middleware
 import jinja2.exceptions
 
 import stripe as s
+from stripe import SignatureVerificationError, Event
+from stripe.checkout import Session as CheckoutSession
+
 import quart as q
-from quart import session, request
+from quart import session, request, jsonify, Response
 
 import aiomysql
 
@@ -67,13 +70,43 @@ async def test():
 
 @app.get("/")
 async def index():
-    await check_login()
-    return await q.render_template("index.html"), 200
-
-@app.get("/modos_merch")
-async def modos():
-    await check_login()
     return await q.render_template("modos_merch.html"), 200
+
+@app.post("/stripe-webhook")
+async def stripe_webhook():
+    event: Event | Response = await get_event_from_request()
+    
+    if isinstance(event, Response):
+        return event
+    
+    if event.type != "checkout.session.completed":
+        return jsonify(success=False)
+
+    asyncio.get_running_loop().create_task(process_completed_session(event))
+
+    return jsonify(success=True)
+
+async def process_completed_session(event: Event) -> None:
+    session: CheckoutSession = await CheckoutSession.retrieve_async(event.data.object["id"], expand=["customer"])
+
+    async with pool.acquire() as conn:
+        async with conn.cursor() as cur:
+            await cur.execute("INSERT INTO orders (invoice_id, name, email, class, items) VALUES (%,%,%,%,%)", (session.invoice, session.customer.name, session.customer_email, session.custom_fields[0].text.value, list(session.line_items.data)))
+    
+async def get_event_from_request() -> Event | Response:
+    data = await request.data
+    payload = data.decode("utf-8")
+    received_sig = request.headers.get("Stripe-Signature", None)
+
+    try:
+        return s.Webhook.construct_event(
+            payload, received_sig, os.environ["STRIPE_WEBHOOK_SECRET"]
+        )
+    except ValueError:
+        return jsonify(success = False)
+        
+    except SignatureVerificationError:
+        return jsonify(success = False)
 
 @app.get("/tamogato_tanarok")
 async def tancik():
@@ -83,18 +116,7 @@ async def tancik():
 @app.post("/create-checkout-session")
 async def create_checkout_session():
 
-    # [{"color":"red","size":"L","id":"hoodie"}, {"color":"red","size":"XL","id":"tshirt"}]
-    # [
-    #     {"color":"blue","size":"XL","id":"tshirt"},
-    #     {"id":"mug"},
-    #     {"size":"#1","id":"sticker"},
-    #     {"size":"#2","id":"sticker"},
-    #     {"size":"#3","id":"sticker"}
-    # ]
-    
-
     data: list[dict] = await request.json
-
     session = await s.checkout.Session.create_async(
         success_url=app.url_for("payment_success", _external=True, _scheme="https") + "?id={CHECKOUT_SESSION_ID}",
         mode="payment",
@@ -216,6 +238,7 @@ async def main():
                     invoice_id VARCHAR(30),
                     name VARCHAR(255),
                     email VARCHAR(255),
+                    class VARCHAR(6),
                     items JSON
                 );
 

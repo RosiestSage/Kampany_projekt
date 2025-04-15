@@ -10,8 +10,6 @@ let csukas = 0;
 let slideIndex = 1;
 let counter;
 
-
-
 /**
  * @type {Array<Product>}
  */
@@ -208,7 +206,7 @@ document.querySelector(".xbutton").addEventListener("click", () =>{
 
 
 function popup(tanar){
-    if (document.URL.includes("tamogato_tanarok")){
+    if (!document.getElementById("ruha")){
 
         let osztalyok = document.getElementById("tanitott_osztalyok");
         osztalyok.innerHTML = "";
@@ -228,14 +226,14 @@ function popup(tanar){
             osztalyok.appendChild(li);
         })
     }
-    if (document.URL.includes("modos_merch")){
+    if (document.getElementById("ruha")){
         document.querySelector('.popup').style.display = 'flex';
         document.querySelector('.popup').classList.add("menuopen");
         document.querySelector('.popup_window').style.backgroundImage = "url('../static/images/product bkg.avif')";
 
         
 
-        if (document.URL.includes("modos_merch")){
+        if (document.getElementById("ruha")){
             console.log("megolom mafam")
                 if (tanar == 0){
                     document.querySelector(".opacitybackground").innerHTML = `                
@@ -617,7 +615,7 @@ function Colour(tanar){
 }
 
 function loadCards(tanarok, merchinfo){
-    if (document.URL.includes("tamogato_tanarok")){
+    if (!document.getElementById("ruha")){
         console.log(tanarok.length)
         
         tanarok.forEach(tanar =>{
@@ -666,7 +664,7 @@ function loadCards(tanarok, merchinfo){
         })
 
     }
-    if (document.URL.includes("modos_merch")){
+    if (document.getElementById("ruha")){
         let index = 0;
         merchinfo.forEach(merch =>{
             if (merch.Id == "hoodie"){
@@ -772,13 +770,12 @@ function loadCards(tanarok, merchinfo){
 
 }
 
+function removeItem(id) {
+    cart.pop(id)
+    renderCart()
+}
 
-
-
-
-
-
-document.querySelector(".cart").addEventListener("click", () =>{
+function renderCart() {
     document.getElementById("cart_opacitybackground").innerHTML = "";
     document.getElementById("cart_opacitybackground").innerHTML = `<div class="carted"></div>`;
 
@@ -795,7 +792,7 @@ document.querySelector(".cart").addEventListener("click", () =>{
         <p></p>
     </div>`
 
-
+    let cartIndex = 0;
     //#cart_popup
     cart.forEach(carted =>{
         console.log(carted)
@@ -807,10 +804,9 @@ document.querySelector(".cart").addEventListener("click", () =>{
                 <p>${carted.Size}</p>
                 <p>${carted.Price}Ft</p>
                 <div class="remove_grid">
-                <button class="remove_item">X</button>
+                <button class="remove_item" id="removeitem-${cartIndex}" onclick="module.removeItem(${cartIndex})">X</button>
                 </div>
             </div>`
-
         }
         if (carted.id == "sticker"){
             document.querySelector(".carted").innerHTML += ` 
@@ -819,7 +815,7 @@ document.querySelector(".cart").addEventListener("click", () =>{
                 <p>-</p>
                 <p>${carted.Size}</p>
                 <p>${carted.Price}Ft</p>
-                <button class="remove_item">X</button>
+                <button class="remove_item" id="removeitem-${cartIndex}" onclick="module.removeItem(${cartIndex})">X</button>
                 
             </div>`
 
@@ -831,12 +827,13 @@ document.querySelector(".cart").addEventListener("click", () =>{
                 <p>-</p>
                 <p>-</p>
                 <p>${carted.Price}Ft</p>
-                <button class="remove_item">X</button>
+                <button class="remove_item" id="removeitem-${cartIndex}" onclick="module.removeItem(${cartIndex})">X</button>
                 
             </div>`
         }
+        cartIndex++;
     })
-
+    
     document.getElementById("cart_opacitybackground").innerHTML += `
     <div class="cartwindow_buttons">
     <button id="purchaseButton">Purchase</button>
@@ -887,8 +884,12 @@ document.querySelector(".cart").addEventListener("click", () =>{
             alert('Error creating payment session');
         });
     });
-})
+}
+
+
+document.querySelector(".cart").addEventListener("click", renderCart)
 
 
 
 
+export default removeItem
