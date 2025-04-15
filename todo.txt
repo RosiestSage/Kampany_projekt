@@ -1,8 +1,8 @@
 //Szín változtatás ---> póló, pulcsi
 //Matrica változtatás 
 //Scrollos kosár
-Kosár javítás
-    -kis kép
+//Kosár javítás
+    -kis kép ==> kell a fasznak
     -style javítása
     -mennyiség számláló
     -gomb decor

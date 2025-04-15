@@ -29,7 +29,7 @@ merchdata.forEach(dt => {
 })
 
 /** @type {Array<Product>} */
-const products = [new Product("hoodie", 6000, "Módos Pulcsi"),
+const products = [new Product("hoodie", 8500, "Módos Pulcsi"),
                     new Product("tshirt", 5000, "Módos Póló"),
                     new Product("mug", 2000, "Módos Bögre"),
                     new Product("sticker", 500, "Módos Matrica"),
@@ -63,7 +63,7 @@ window.addEventListener("load", () =>{
     if (bodyWidth > 1000 && bodyWidth < 1500){
         //imgHeight = 50;
         //document.querySelector('.nav_img').style.width = imgHeight + "%";
-        mrgleftKivonando = 5; 
+        mrgleftKivonando = 30; 
         csukas = 100;
     }
     if (bodyWidth > 1500){
@@ -222,7 +222,7 @@ function popup(tanar){
         let tanítottak = tanarok[tanar].TanitottOsztalyok.split(",");
         tanítottak.forEach(osztaly =>{
             let li = document.createElement("li");
-            li.innerText = osztaly;
+            li.innerText = osztaly ;
             osztalyok.appendChild(li);
         })
     }
@@ -256,7 +256,7 @@ function popup(tanar){
                             </article>
                         <div class="product" data-info>
                             <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
-                            <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
+                            <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}Ft</span></div>
                             <h1>Szín: </h1>
                             <div class="colors">
                                 <p class="${merchinfo[tanar].Colours[0]}"></p>
@@ -290,7 +290,7 @@ function popup(tanar){
                     <article>
                     <div class="carousel" data-carousel>
     
-                    <ul data-slides>
+                    <ul data-slides id="modospolo">
                     <li class="slide" data-active>
                     <img src=${merchinfo[tanar].Sources[0]} alt="">
                     </li>
@@ -299,7 +299,7 @@ function popup(tanar){
                     </article>
                     <div class="product" data-info>
                     <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
-                    <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
+                    <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}Ft</span></div>
                     <h1>Szín: </h1>
                     <div class="colors">
                     <p class="${merchinfo[tanar].Colours[0]}"></p>
@@ -349,7 +349,7 @@ function popup(tanar){
                     </article>
                     <div class="product" data-info>
                     <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
-                    <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
+                    <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}Ft</span></div>
                     
                     
                     
@@ -369,7 +369,9 @@ function popup(tanar){
                     <div class="productpopup">
                             <article>
                                 <div class="carousel" data-carousel>
-                                    <ul data-slides>
+                                <button data-carousel-button="prev" class="carousel-button prev">&#10094</button>
+                                    <button data-carousel-button="next" class="carousel-button next">&#10095</button> 
+                                    <ul data-slides >
                                         <li class="slide" data-active>
                                             <img src=${merchinfo[tanar].Sources[0]} alt="">
                                         </li>
@@ -387,7 +389,7 @@ function popup(tanar){
                             </article>
                         <div class="product" data-info>
                             <h1 id="${merchinfo[tanar].Id}" data>${merchinfo[tanar].MerchName}</h1>
-                            <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}</span>Ft</div>
+                            <div class="pricetag"><h1>Ár: </h1> <span class="price">${merchinfo[tanar].Price}Ft</span></div>
                             
                             <h1>Típus: </h1>
     
@@ -518,8 +520,8 @@ function Size(tanar){
         sizes[i].addEventListener("click", () =>{
             sizes[i].dataset.active = true;
             sizeIndex = i;
-            console.log(tanar)
-            if (merchinfo[tanar].id == "sticker"){
+            console.log(merchinfo[tanar].Id)
+            if (merchinfo[tanar].Id == "sticker"){
                 switch (sizes[i].innerHTML){
                     case "#1":
                         document.querySelector("[data-slides]").children[0].innerHTML = 
@@ -777,28 +779,28 @@ function removeItem(id) {
 
 function renderCart() {
     document.getElementById("cart_opacitybackground").innerHTML = "";
-    document.getElementById("cart_opacitybackground").innerHTML = `<div class="carted"></div>`;
-
-
-    document.getElementById('cart_popup').style.display = 'flex';
-    document.getElementById('cart_popup').classList = "menuopen";
-    document.querySelector('.cart_popup_window').style.backgroundImage = 'url("../static/images/cartbkg.avif")';
-    document.querySelector(".carted").innerHTML += ` 
+    document.getElementById("cart_opacitybackground").innerHTML += ` 
     <div class="item item_header">
         <p>Termék név</p>
         <p>Szín</p>
         <p>Típus</p>
         <p>Ár</p>
-        <p></p>
+        
     </div>`
+    document.getElementById("cart_opacitybackground").innerHTML += `<div class="carted"></div>`;
 
-    let cartIndex = 0;
+
+    document.getElementById('cart_popup').style.display = 'flex';
+    document.getElementById('cart_popup').classList = "menuopen";
+    document.querySelector('.cart_popup_window').style.backgroundImage = 'url("../static/images/cartbkg.avif")';
+
+
     //#cart_popup
+    let i = 0;
     cart.forEach(carted =>{
-        console.log(carted)
         if (carted.id != "mug" &&  carted.id != "sticker"){
             document.querySelector(".carted").innerHTML += ` 
-            <div class="item">
+            <div class="item" id="${i}item">
                 <p>${carted.Name}</p>
                 <p>${carted.Color}</p>
                 <p>${carted.Size}</p>
@@ -810,28 +812,30 @@ function renderCart() {
         }
         if (carted.id == "sticker"){
             document.querySelector(".carted").innerHTML += ` 
-            <div class="item">
+            <div class="item" id="${i}item">
                 <p>${carted.Name}</p>
                 <p>-</p>
                 <p>${carted.Size}</p>
                 <p>${carted.Price}Ft</p>
-                <button class="remove_item" id="removeitem-${cartIndex}" onclick="module.removeItem(${cartIndex})">X</button>
-                
+                <div class="remove_grid">
+                <button class="remove_item">X</button>
+                </div>
             </div>`
 
         }
         if (carted.id == "mug"){
             document.querySelector(".carted").innerHTML += ` 
-            <div class="item">
+            <div class="item" id="${i}item">
                 <p>${carted.Name}</p>
                 <p>-</p>
                 <p>-</p>
                 <p>${carted.Price}Ft</p>
-                <button class="remove_item" id="removeitem-${cartIndex}" onclick="module.removeItem(${cartIndex})">X</button>
-                
+                <div class="remove_grid">
+                <button class="remove_item">X</button>
+                </div>
             </div>`
         }
-        cartIndex++;
+        i++;
     })
     
     document.getElementById("cart_opacitybackground").innerHTML += `
@@ -851,6 +855,33 @@ function renderCart() {
             document.getElementById("cart_popup").style.display = "none";
         }, 300)
     });
+
+/*
+    document.querySelector(".remove_item").addEventListener("click", ()=>{
+        let remove_buttons = document.querySelector(".remove_item");
+        console.log(remove_buttons.closest(".item").id[0])
+        console.log(cart)
+        //cart.splice(remove_buttons.closest(".item").id[0], 1)
+        //console.log(cart)
+
+    })
+*/
+
+    console.log(cart);
+    let remove_buttons = document.querySelectorAll(".remove_item");
+    remove_buttons.forEach(button =>{
+        button.addEventListener("click", () =>{
+            
+            cart.splice(button.closest(".item").id[0], 1)
+            console.log(cart)
+            console.log()
+            document.querySelector(".carted").removeChild(document.getElementById(`${button.closest(".item").id[0]}item`))
+            document.getElementById("counter").innerHTML = cart.length;
+
+        })
+
+    })
+
 
     document.getElementById("purchaseButton").addEventListener("click", () => {
         const cart_data = [];

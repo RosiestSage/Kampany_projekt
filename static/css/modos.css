@@ -368,13 +368,18 @@ section{
     
 }
 
+.item p{
+    width: 200px;
+    text-align: center;
+}
+
 .remove_item{
     align-self: center;
     justify-self: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    background-color: rgb(173, 16, 16);
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, .5);
     color: white;
     border: 1px solid black;
     margin-bottom: 10px;
@@ -391,6 +396,11 @@ section{
 .remove_item:hover{
     cursor: pointer;
     box-shadow: inset 2px 2px 10px  rgba(0,0,0) ;
+}
+
+.item_header{
+    margin: 10px;
+    width: 70%;
 }
 
 
@@ -529,7 +539,6 @@ article{
 
 .slide > img{
     display: block;
-    height: 300px;
     width: 230px;
 }
 
@@ -681,21 +690,56 @@ article{
     /*index*/
 
     /*támogatók*/
+
+
+    .carousel ul{
+        height: 230px;
+    }
     section{
         margin-top: 300px;
     }
 
     .cardgrid{
         height: 500px;
+        flex-direction: column;
     }
 
     .card{
         width: 270px;
         height: 400px;
+        margin-bottom: 50px;
     }
 
+    .pricetag{
+        margin: 10px 0 0 0;
+        width: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .colors{
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 90px;
+    }
+
+    .sizes{
+        float: right;
+        margin: 0;
+        position: absolute;
+        right: 0;
+        top: 140px;
+    }
+
+    #modospolo{
+        margin-top: -50px;
+   }
+
     .popup_window{
-        height: 80%;
+        height: 90%;
         width: 100%;
     }
 
@@ -704,15 +748,41 @@ article{
     }
 
     .product{
-        align-items: center;
+        display: block;
+        width: 90%;
+        align-items: start;
+        position: absolute;
+        height: 10%;
     }
 
-    .close{
-        margin-top: 20px;
+    [data]{
+        display: none;
+    }
+
+    .price{
+        margin-top: 30px;
+    }
+
+    .product h1{
+        margin-top: 30px;
+        font-size: 120%;
+        justify-self:start;
     }
 
     .product div{
-        text-align: center;
+        padding: 0;
+        margin-bottom: 20px;
+    }
+
+    #tocart{
+        position: absolute;
+        margin-top: 25px;
+    }
+
+    .close{
+        align-self: end;
+        margin-top: -90px;
+        margin-right: 30px;
     }
 
     #tanitott_osztalyok{
@@ -725,6 +795,12 @@ article{
         margin-top: 20px;
         width: 150px;
         height: 200px;
+    }
+
+
+    article{
+        position: absolute;
+        top: 0;
     }
 }
 
