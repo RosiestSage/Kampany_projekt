@@ -550,7 +550,7 @@ article{
     font-size: 30px;
     top: 50%;
     transform: translateY(-50%);
-    color: rgba(255, 255, 255, .7);
+    color: rgba(0, 0, 0, 0.7);
     cursor: pointer;
     border-radius: 2px;
     padding: 2px;
@@ -559,7 +559,7 @@ article{
 
 .carousel-button:hover,
 .carousel-button:focus{
-    color: white;
+    color: rgb(0, 0, 0);
 
 }
 
@@ -616,6 +616,16 @@ article{
     background-color: blue;
 }
 
+#purchaseButton{
+    align-self: center;
+    justify-self: center;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(68, 0, 255);
+    color: white;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
 
 #tocart{
     margin: 0;
@@ -691,14 +701,14 @@ article{
 
     /*támogatók*/
 
-
+    
     .carousel ul{
         height: 230px;
     }
     section{
         margin-top: 300px;
     }
-
+    
     .cardgrid{
         height: 500px;
         flex-direction: column;
@@ -709,7 +719,7 @@ article{
         height: 400px;
         margin-bottom: 50px;
     }
-
+    
     .pricetag{
         margin: 10px 0 0 0;
         width: 100px;
@@ -717,7 +727,7 @@ article{
         justify-content: space-between;
         align-items: center;
     }
-
+    
     .colors{
         margin: 0;
         padding: 0;
@@ -725,7 +735,7 @@ article{
         right: 0;
         top: 90px;
     }
-
+    
     .sizes{
         float: right;
         margin: 0;
@@ -733,20 +743,20 @@ article{
         right: 0;
         top: 140px;
     }
-
+    
     #modospolo{
         margin-top: -50px;
-   }
-
+    }
+    
     .popup_window{
         height: 90%;
         width: 100%;
     }
-
+    
     .productpopup{
         flex-direction: column;
     }
-
+    
     .product{
         display: block;
         width: 90%;
@@ -754,53 +764,78 @@ article{
         position: absolute;
         height: 10%;
     }
-
+    
     [data]{
         display: none;
     }
-
+    
     .price{
         margin-top: 30px;
     }
-
+    
     .product h1{
         margin-top: 30px;
         font-size: 120%;
         justify-self:start;
     }
-
+    
     .product div{
         padding: 0;
         margin-bottom: 20px;
     }
-
+    
     #tocart{
         position: absolute;
         margin-top: 25px;
     }
-
+    
     .close{
         align-self: end;
         margin-top: -90px;
         margin-right: 30px;
     }
-
+    
     #tanitott_osztalyok{
         padding: 0;
         list-style-type: none;
     }
-
+    
     
     #popup_ekcsölikep{
         margin-top: 20px;
         width: 150px;
         height: 200px;
     }
-
-
+    
+    
     article{
         position: absolute;
         top: 0;
+    }
+
+    .stickerop{
+        top: 80px !important;
+    }
+
+    .slide .legyenagy{
+        width: 400px;
+    }
+
+
+    .cartwindow_buttons{
+        flex-direction: column;
+    }
+
+    .cart_popup_window{
+        width: 100%;
+    }
+
+    .item_header{
+        display: none;
+    }
+
+    .carted{
+        width: 100%;
     }
 }
 
@@ -865,45 +900,115 @@ article{
 
     .cardgrid{
         height: 500px;
+        flex-direction: column;
     }
 
     .card{
         width: 270px;
         height: 450px;
+        margin-bottom: 50px;
+
     }
-
-
+     
+    .pricetag{
+        margin: 10px 0 0 0;
+        width: 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .colors{
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        right: 0;
+        top: 90px;
+    }
+    
+    .sizes{
+        float: right;
+        margin: 0;
+        position: absolute;
+        right: 0;
+        top: 140px;
+    }
+    
+    #modospolo{
+        margin-top: -50px;
+    }
+    
     .popup_window{
-        height: 80%;
+        height: 90%;
         width: 100%;
     }
-
+    
     .productpopup{
         flex-direction: column;
     }
-
+    
     .product{
-        align-items: center;
+        display: block;
+        width: 90%;
+        align-items: start;
+        position: absolute;
+        height: 10%;
     }
-
-    .close{
-        margin-top: 20px;
+    
+    [data]{
+        display: none;
     }
-
+    
+    .price{
+        margin-top: 30px;
+    }
+    
+    .product h1{
+        margin-top: 30px;
+        font-size: 120%;
+        justify-self:start;
+    }
+    
     .product div{
-        text-align: center;
+        padding: 0;
+        margin-bottom: 20px;
     }
-
+    
+    #tocart{
+        position: absolute;
+        margin-top: 25px;
+    }
+    
+    .close{
+        align-self: end;
+        margin-top: -90px;
+        margin-right: 30px;
+    }
+    
     #tanitott_osztalyok{
         padding: 0;
         list-style-type: none;
     }
-
+    
     
     #popup_ekcsölikep{
         margin-top: 20px;
         width: 150px;
         height: 200px;
+    }
+    
+    
+    article{
+        position: absolute;
+        top: 0;
+    }
+
+    .stickerop{
+        top: 80px !important;
+    }
+
+    .slide .legyenagy{
+        width: 400px;
     }
 
 

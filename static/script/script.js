@@ -29,10 +29,10 @@ merchdata.forEach(dt => {
 })
 
 /** @type {Array<Product>} */
-const products = [new Product("hoodie", 8500, "Módos Pulcsi"),
-                    new Product("tshirt", 5000, "Módos Póló"),
-                    new Product("mug", 2000, "Módos Bögre"),
-                    new Product("sticker", 500, "Módos Matrica"),
+const products = [new Product("hoodie", 8500, "Módos Pulcsi"), //
+                    new Product("tshirt", 4500, "Módos Póló"),
+                    new Product("mug", 3700, "Módos Bögre"),
+                    new Product("sticker", 200, "Módos Matrica"),
 ];
 
 window.addEventListener("load", () =>{
@@ -381,7 +381,7 @@ function popup(tanar){
                                         </li>
 
                                         <li class="slide">
-                                            <img src=${merchinfo[tanar].Sources[2]} alt="">
+                                            <img class="legyenagy" src=${merchinfo[tanar].Sources[2]} alt="">
                                         </li>
                                         
                                     </ul>
@@ -393,7 +393,7 @@ function popup(tanar){
                             
                             <h1>Típus: </h1>
     
-                            <div class="sizes">
+                            <div class="sizes stickerop">
                                 <p data-active>#1</p>
                                 <p>#2</p>
                                 <p>#3</p>
