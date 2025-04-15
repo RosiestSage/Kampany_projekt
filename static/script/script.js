@@ -806,7 +806,7 @@ function renderCart() {
                 <p>${carted.Size}</p>
                 <p>${carted.Price}Ft</p>
                 <div class="remove_grid">
-                <button class="remove_item" id="removeitem-${cartIndex}" onclick="module.removeItem(${cartIndex})">X</button>
+                <button class="remove_item">X</button>
                 </div>
             </div>`
         }
