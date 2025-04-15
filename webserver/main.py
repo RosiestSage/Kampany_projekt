@@ -19,28 +19,24 @@ import aiomysql
 
 app = q.Quart(__name__)
 
-if os.path.exists(os.getcwd() + "items.json"):
-    ITEMS = json.load(os.getcwd() + "items.json")
-else:
-    ITEMS = {
-        "hoodie": {
-            "name": "Módos Pulóver",
-            "price": 6000
-        },
-        "tshirt": {
-            "name": "Módos Póló",
-            "price": 4000
-        },
-        "mug": {
-            "name": "Módos Bögre",
-            "price": 2000
-        },
-        "sticker": {
-            "name": "Módos Matrica",
-            "price": 500
-        }
+ITEMS = {
+    "hoodie": {
+        "name": "Módos Pulóver",
+        "price": 8500
+    },
+    "tshirt": {
+        "name": "Módos Póló",
+        "price": 5000
+    },
+    "mug": {
+        "name": "Módos Bögre",
+        "price": 3500
+    },
+    "sticker": {
+        "name": "Módos Matrica",
+        "price": 200
     }
-
+}
 
 
 def get_item_data(key: str) -> dict[str, int |str]:
@@ -49,19 +45,20 @@ def get_item_data(key: str) -> dict[str, int |str]:
     except:
         q.abort(q.Response(f"Product '{key}' not found.", 400))
 
-async def check_login():
+async def check_admin_login():
 
     if request.headers.get("Cf-Access-Authenticated-User-Email", "a@a.a").split("@")[0] in os.getenv("ADMIN_EMAILS", "kocsis.akos"):
-        session["login"] = True
+        session["admin_login"] = True
         return
     
-    session["login"] = False
+    session["admin_login"] = False
 
     q.abort(401)
 
+
 @app.get("/admin")
 async def admin_area():
-    await check_login()
+    await check_admin_login()
     return await q.render_template("admin.html", items=[("asdasdasd", "Akos", "11a", "kocsis.akos@students.jedlik.eu", 10000)]), 200
 
 @app.get("/admin/test")
@@ -110,7 +107,7 @@ async def get_event_from_request() -> Event | Response:
 
 @app.get("/tamogato_tanarok")
 async def tancik():
-    await check_login()
+    await check_admin_login()
     return await q.render_template("tamogato_tanarok.html"), 200
 
 @app.post("/create-checkout-session")
@@ -127,7 +124,7 @@ async def create_checkout_session():
                 "issuer": {
                     "type": "self"
                 },
-                "description":"asd"
+                "description":"Átvétel kizárólag személyesen a Győri Szakképzési Centrum Jedlik Ányos Gépipari és Informatikai Technikum és Kollégium főépületében. Pontos részletek emailben Április 31. után."
             }
         },
 
@@ -158,7 +155,9 @@ async def create_checkout_session():
         for item in data
     ]
     )
+
     return {"url": session.url}
+
 
 @app.route("/success")
 async def payment_success():
@@ -203,7 +202,7 @@ async def unauthorized(error):
 
 @app.get("/admin/logs")
 async def admin_logs():
-    await check_login()
+    await check_admin_login()
     async with pool.acquire() as conn:
         async with conn.cursor() as cur:
             await cur.execute("SELECT * FROM logs")
@@ -218,7 +217,7 @@ async def admin_logs():
 
 @app.get("/admin/mark-complete/<string:id>")
 async def mark_complete(id: str):
-    await check_login()
+    await check_admin_login()
     async with pool.acquire() as conn:
         async with conn.cursor() as cur:
             await cur.execute("SELECT * FROM orders WHERE invoice_id = %s", (id))
