@@ -21,6 +21,7 @@ services:
       - webserver
     ports:
       - "443:443"
+      - "80:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - /home/akos/ssl/akos60.dev/cloudflare.crt:/etc/nginx/ssl/cloudflare.crt:ro
