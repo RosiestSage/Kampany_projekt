@@ -234,7 +234,6 @@ function popup(tanar){
         
 
         if (document.getElementById("ruha")){
-            console.log("megolom mafam")
                 if (tanar == 0){
                     document.querySelector(".opacitybackground").innerHTML = `                
                     <div class="productpopup">
@@ -439,7 +438,6 @@ function popup(tanar){
             }
             
             let newProduct = new Product(product.id, product.Price, product.Name)
-            console.log(newProduct.id)
             if (newProduct.id != "mug" &&  newProduct.id != "sticker"){
 
                 newProduct.Color = document.getElementById("tocart").closest("[data-info]").querySelector("[data-active]").classList.value;
@@ -502,7 +500,6 @@ function popup(tanar){
         
     });
 
-    console.log(cart.length)
     
 };
 
@@ -520,7 +517,6 @@ function Size(tanar){
         sizes[i].addEventListener("click", () =>{
             sizes[i].dataset.active = true;
             sizeIndex = i;
-            console.log(merchinfo[tanar].Id)
             if (merchinfo[tanar].Id == "sticker"){
                 switch (sizes[i].innerHTML){
                     case "#1":
@@ -618,7 +614,6 @@ function Colour(tanar){
 
 function loadCards(tanarok, merchinfo){
     if (!document.getElementById("ruha")){
-        console.log(tanarok.length)
         
         tanarok.forEach(tanar =>{
             let card = `<div id="${tanarok.indexOf(tanar)}_card" class="cardgrid cardappear"><div class="card"><div id="${tanarok.indexOf(tanar)}_img" class="ekcsölikep" src="" alt=""></div><div class="courtain" alt=""></div><div class="cardtext"><h1 class="tanarnevcard">${tanar.Nev}</h1></div><div class="cardbutton"><button id="${tanarok.indexOf(tanar) + 1}"  class="open_popup"><h1>Info</h1></button></div></div></div>`
@@ -867,14 +862,11 @@ function renderCart() {
     })
 */
 
-    console.log(cart);
     let remove_buttons = document.querySelectorAll(".remove_item");
     remove_buttons.forEach(button =>{
         button.addEventListener("click", () =>{
             
             cart.splice(button.closest(".item").id[0], 1)
-            console.log(cart)
-            console.log()
             document.querySelector(".carted").removeChild(document.getElementById(`${button.closest(".item").id[0]}item`))
             document.getElementById("counter").innerHTML = cart.length;
 
@@ -892,7 +884,6 @@ function renderCart() {
         
         
         cart.forEach((product) => {
-            console.log(product.toServerRepr())
             cart_data.push(product.toServerRepr())
         });
         
