@@ -107,7 +107,6 @@ async def get_event_from_request() -> Event | Response:
 
 @app.get("/tamogato_tanarok")
 async def tancik():
-    await check_admin_login()
     return await q.render_template("tamogato_tanarok.html"), 200
 
 @app.post("/create-checkout-session")

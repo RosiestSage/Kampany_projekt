@@ -884,6 +884,10 @@ function renderCart() {
 
 
     document.getElementById("purchaseButton").addEventListener("click", () => {
+        const btn = document.getElementById("purchaseButton")
+        btn.disabled = true
+        setTimeout(() => {btn.disabled = false}, 2500)
+
         const cart_data = [];
         
         
