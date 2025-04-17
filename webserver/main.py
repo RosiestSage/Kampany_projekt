@@ -227,7 +227,7 @@ async def main():
     global pool
 
     await asyncio.sleep(3)
-    pool = await aiomysql.pool._create_pool(echo=True, host="mariadb", user="arab", password="arab", db="arab", pool_recycle=1, autocommit=True)
+    pool = await aiomysql.pool._create_pool(echo=True, host="arab_mariadb", user="arab", password="arab", db="arab", pool_recycle=1, autocommit=True)
     async with pool.acquire() as conn:
         async with conn.cursor() as cur:
             await cur.execute(

@@ -12,6 +12,8 @@ services:
       MARIADB_DATABASE: arab
     volumes:
       - mysql:/var/lib/mysql:rw
+    networks:
+      - shared-network
 
   webserver:
     restart: unless-stopped
