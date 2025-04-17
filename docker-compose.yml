@@ -13,19 +13,6 @@ services:
     volumes:
       - mysql:/var/lib/mysql:rw
 
-  nginx:
-    image: nginx:latest
-    container_name: arab_nginx
-    restart: unless-stopped
-    depends_on:
-      - webserver
-    ports:
-      - "443:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - /home/akos/ssl/akos60.dev/cloudflare.crt:/etc/nginx/ssl/cloudflare.crt:ro
-      - /home/akos/ssl/akos60.dev/cloudflare.key:/etc/nginx/ssl/cloudflare.key:ro
-
   webserver:
     restart: unless-stopped
     container_name: arab_webserver
@@ -34,13 +21,17 @@ services:
     env_file:
       - .env
     volumes:
-      - logs:/webserver/logs:rw
       - ./static:/webserver/static:ro
       - ./templates:/webserver/templates:ro
     build:
       context: ./webserver/
       dockerfile: Dockerfile
-    
+    networks:
+      - shared-network
+
+networks:
+  shared-network:
+    external: true
+
 volumes:
-  logs:
   mysql:
